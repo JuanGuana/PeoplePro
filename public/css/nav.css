@@ -7,6 +7,19 @@
     --texto-primario: #2D3436;
     --texto-secundario: #636E72;
 }
+
+.header {
+    background: linear-gradient(135deg, #d99bb9, #b39cd4, #93bbe4);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    box-shadow: #bdc2c4 0px 0px 2.5px;
+}
+
+
 *{
     margin: 0;
     padding: 0;
