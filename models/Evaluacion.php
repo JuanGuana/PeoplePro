@@ -1,12 +1,15 @@
 <?php
-require_once 'Database.php'; // Asegúrate que tienes una clase para la conexión PDO
+require_once '../config/Database.php'; // Asegúrate que tienes una clase para la conexión PDO
 
 class Evaluacion {
     private $conn;
 
-    public function __construct() {
-        $this->$conn = Database::connect();
-    }
+   public function __construct() {
+    $this->conn = Database::connect();
+}
+
+
+
 
     public function obtenerTodos() {
         $query = $this->conn->prepare("SELECT * FROM evaluaciones ORDER BY fecha DESC");
