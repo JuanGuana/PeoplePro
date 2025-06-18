@@ -38,11 +38,12 @@
         </form>
         <div class="derecha">
             <p><?= htmlspecialchars($_SESSION["usuario"] ?? 'Usuario') ?></p>
-            <button class="bi-button"><i class="bi bi-gear"></i></button>
+            <button class="bi-button" id="boton-configuracion"><i class="bi bi-gear"></i></button>
         </div>
         <nav class="nav-seccion">
             <li>
                 <select id="tema-select">
+                    <option value="auto">auto</option>
                     <option value="claro">Claro</option>
                     <option value="oscuro">Oscuro</option>
                 </select>
@@ -61,6 +62,7 @@
             <li><a href="/peoplepro/public/capacitacion/index">Capacitaciones</a></li>
             <li><a href="/peoplepro/public/evaluacion/index">Evaluaciones</a></li>
             <li><a href="/peoplepro/public/area/index">Áreas</a></li>
+            <hr>
         </ul>
     </nav><br>
     <h2 class="titulo-usuario">Crear nuevo usuario</h2>
@@ -140,6 +142,7 @@
     <!-- Tu código JS -->
     <script src="/peoplepro/public/js/datatable.js"></script>
     <script src="/peoplepro/public/js/nav.js"></script>
+    <script src="/peoplepro/public/js/darkMode.js"></script>
 
 </body>
 </html>
