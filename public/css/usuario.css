@@ -1,15 +1,33 @@
-:root {
-    --primario: #6C5CE7;
-    --fondo-claro:#F7F7F8;
-    --texto-primario: #2D3436;
-    --texto-secundario: #636E72;
-    --box-shadow: #bdc2c4 0px 0px 2.5px;
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fondo: #202428;
+        --fondo-header:#2B3035;
+        --texto-primario: #ffffff;
+        --texto-secundario: #bdc2c4;
+        --color-logo:#b895e6;
+        --color-icono-menu: #b895e6;
+        --box-shadow:trasparent;
+        --color-buscador:#bdc2c4;
+    }
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --fondo: #F7F7F8;
+        --fondo-header: #ffffff;
+        --texto-primario: #2D3436;
+        --texto-secundario: #636E72;
+        --color-logo: #2D3436;
+        --color-icono-menu: #b895e6;
+        --box-shadow: #bdc2c4 0px 0px 2.5px;
+        --color-buscador:#C6C6C6;
+    }
 }
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
+    color: var(--texto-primario);
 }
 .titulo-usuario{
     text-align: center;
@@ -30,13 +48,13 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-    background-color: white;
+    background-color: var(--fondo-header);
     overflow: hidden;
 }
 .formulario-usuario input{
     border: none;
     border-radius: 8px;
-    background-color: var(--fondo-claro);
+    background-color: var(--fondo);
     padding: 10px;
     width: 200px;
 }
@@ -57,11 +75,11 @@
     transition: all 0.8s;
 }
 .formulario-usuario select{
-    background-color: var(--fondo-claro);
+    background-color: var(--fondo);
     border: none;
     border-radius: 8px;
     padding: 10px;
-    color:#636E72;
+    color: var(--texto-primario);
 }
 .formulario-usuario select option[selected]{
     background-color: var(--fondo-claro);
@@ -72,38 +90,6 @@
     box-shadow: var(--box-shadow);
     margin: 0 auto;
     border-radius: 10px;
-    background-color: white;
-    overflow: hidden;
+    background-color: var(--fondo-header);
 }
-#myTable {
-  border-radius: 12px;
-  overflow: hidden;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  background-color: white;
-}
-#myTable thead th {
-  background-color:rgb(78, 78, 78);
-  color: white;
-  font-weight: bold;
-  text-align: center;
-}
-#myTable tbody td {
-    text-align: center;
-    vertical-align: middle;
-    padding: 10px;
-    font-weight: 500;
-}
-.bi-clipboard-check, .bi-pencil-fill, .bi-trash3-fill {
-    font-size: 1.3rem;
-    margin-right: 5px;
-}
-.bi-trash3-fill{
-    color: rgb(189, 108, 108);
-}
-.bi-pencil-fill{
-    color: rgb(106, 190, 216);
-}
-.bi-clipboard-check{
-   color: rgb(137, 216, 106);
-}
+
