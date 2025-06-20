@@ -2,10 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Beneficios</title>
+  <title>Horarios</title>
   <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
-  <link rel="stylesheet" href="/peoplepro/public/css/beneficio.css">
-  <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
+  <link rel="stylesheet" href="/peoplepro/public/css/horario.css">
 </head>
 <body>
   <header class="header">
@@ -15,9 +14,9 @@
         <span class="linea"></span>
         <span class="linea"></span>
       </button>
-      <div id="logo"></div> 
+      <div id="logo"></div>
     </div>
-    <form action="#" class="buscador">  
+    <form action="#" class="buscador">
       <input type="text" placeholder="Buscar" class="input-icono">
     </form>
     <div class="derecha">
@@ -41,37 +40,45 @@
     </ul>
   </nav>
 
-  <main class="main-beneficio">
-    <h2 class="titulo-beneficio">Gestión de Beneficios</h2>
+  <main class="main-horario">
+    <h2 class="titulo-horario">Lista de Horarios</h2>
+    <a class="btn-horario" href="/peoplepro/public/horario/crear">➕ Nuevo Horario</a>
 
-    <a href="/peoplepro/public/beneficio/crear" class="btn-beneficio">Registrar nuevo beneficio</a>
-
-    <table class="tabla-beneficio">
+    <table border="1" cellpadding="8" cellspacing="0" class="tabla-horario">
       <thead>
         <tr>
           <th>ID</th>
-          <th>Nombre</th>
-          <th>Descripción</th>
-          <th>Inicio</th>
-          <th>Fin</th>
+          <th>Trabajador</th>
+          <th>Fecha Inicio</th>
+          <th>Fecha Fin</th>
+          <th>Hora Inicio</th>
+          <th>Hora Fin</th>
+          <th>Estado</th>
+          <th>Observaciones</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($data['beneficios'] as $b): ?>
-        <tr>
-          <td><?= $b['id'] ?></td>
-          <td><?= htmlspecialchars($b['nombre']) ?></td>
-          <td><?= htmlspecialchars($b['descripcion']) ?></td>
-          <td><?= $b['fecha_inicio'] ?></td>
-          <td><?= $b['fecha_fin'] ?></td>
-          <td>
-            <a class="link-accion editar" href="/peoplepro/public/beneficio/editar/<?= $b['id'] ?>">Editar</a>
-            |
-            <a class="link-accion eliminar" href="/peoplepro/public/beneficio/eliminar/<?= $b['id'] ?>" onclick="return confirm('¿Eliminar este beneficio?')">Eliminar</a>
-          </td>
-        </tr>
-        <?php endforeach; ?>
+        <?php if (!empty($horarios)) : ?>
+          <?php foreach ($horarios as $horario): ?>
+            <tr>
+              <td><?= $horario['id'] ?></td>
+              <td><?= htmlspecialchars($horario['usuario_nombre']) ?></td>
+              <td><?= $horario['fecha'] ?></td>
+              <td><?= $horario['fecha_fin'] ?? '-' ?></td>
+              <td><?= $horario['hora_inicio'] ?></td>
+              <td><?= $horario['hora_fin'] ?></td>
+              <td><?= $horario['estado'] ?></td>
+              <td><?= htmlspecialchars($horario['observaciones']) ?></td>
+              <td>
+                <a href="/peoplepro/public/horario/editar/<?= $horario['id'] ?>">✏️ Editar</a> |
+                <a href="/peoplepro/public/horario/eliminar/<?= $horario['id'] ?>" onclick="return confirm('¿Seguro de eliminar este horario?')">🗑️ Eliminar</a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        <?php else : ?>
+          <tr><td colspan="9">No hay horarios registrados.</td></tr>
+        <?php endif; ?>
       </tbody>
     </table>
   </main>

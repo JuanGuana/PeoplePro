@@ -1,15 +1,62 @@
-<h2>Crear Nueva Capacitación</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Crear Capacitación</title>
+  <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
+  <link rel="stylesheet" href="/peoplepro/public/css/capacitacion.css">
+</head>
+<body>
+  <header class="header">
+    <div class="izquierda">
+      <button class="menu-hamburguesa">
+        <span class="linea"></span>
+        <span class="linea"></span>
+        <span class="linea"></span>
+      </button>
+      <div id="logo"></div>
+    </div>
+    <form action="#" class="buscador">
+      <input type="text" placeholder="Buscar" class="input-icono">
+    </form>
+    <div class="derecha">
+      <p><?= htmlspecialchars($_SESSION["usuario"] ?? 'Usuario') ?></p>
+    </div>
+  </header>
 
-<form method="POST" action="/peoplepro/public/capacitacion/crear">
-    <label for="nombre">Nombre:</label><br>
-    <input type="text" name="nombre" id="nombre" required><br><br>
+  <nav class="nav-desplegable" id="nav-desplegable">
+    <ul class="nav-lista">
+      <li><a href="/peoplepro/public/home/index">Inicio</a></li>
+      <li><a href="/peoplepro/public/usuario/index">Usuarios</a></li>
+      <li><a href="/peoplepro/public/permiso/index">Permisos</a></li>
+      <li><a href="/peoplepro/public/beneficio/index">Beneficios</a></li>
+      <li><a href="/peoplepro/public/visitante/index">Visitantes Externos</a></li>
+      <li><a href="/peoplepro/public/documento/index">Documentos</a></li>
+      <li><a href="/peoplepro/public/capacitacion/index">Capacitaciones</a></li>
+      <li><a href="/peoplepro/public/evaluacion/index">Evaluaciones</a></li>
+      <li><a href="/peoplepro/public/area/index">Áreas</a></li>
+      <li><a href="/peoplepro/public/asistencia/index">Asistencia</a></li>
+      <li><a href="/peoplepro/public/horario/index">Horarios</a></li>
+    </ul>
+  </nav>
 
-    <label for="descripcion">Descripción:</label><br>
-    <textarea name="descripcion" id="descripcion" rows="4" required></textarea><br><br>
+  <main class="main-capacitacion">
+    <h2 class="titulo-capacitacion">Crear Nueva Capacitación</h2>
+    <form class="formulario-capacitacion" method="POST" action="/peoplepro/public/capacitacion/crear">
+      <label for="nombre">Nombre:</label>
+      <input type="text" name="nombre" id="nombre" required>
 
-    <label for="fecha">Fecha:</label><br>
-    <input type="date" name="fecha" id="fecha" required><br><br>
+      <label for="descripcion">Descripción:</label>
+      <textarea name="descripcion" id="descripcion" rows="4" required></textarea>
 
-    <button type="submit">Guardar</button>
-    <a href="/peoplepro/public/capacitacion">Cancelar</a>
-</form>
+      <label for="fecha">Fecha:</label>
+      <input type="date" name="fecha" id="fecha" required>
+
+      <button type="submit">Guardar</button>
+      <a href="/peoplepro/public/capacitacion/index">Cancelar</a>
+    </form>
+  </main>
+
+  <script src="/peoplepro/public/js/nav.js"></script>
+</body>
+</html>

@@ -7,8 +7,7 @@ class Documento
 
     public function __construct()
     {
-        $conexion = new Database();
-        $this->db = $conexion->connect();
+        $this->db = Database::getConnection();
     }
 
     public function guardar($nombre, $archivo)

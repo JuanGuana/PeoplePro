@@ -20,8 +20,8 @@
         <li><a href="/peoplepro/public/evaluacion/index">Módulo Evaluaciones</a></li>
         <li><a href="/peoplepro/public/area/index">Módulo Áreas</a></li>
         <li><a href="/peoplepro/public/asistencia/index">Módulo Asistencia</a></li>
+        <li><a href="/peoplepro/public/horario/index">Módulo Horarios</a></li>
     </ul>
-
 </body>
 
 </html>

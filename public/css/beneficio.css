@@ -1,0 +1,136 @@
+:root {
+  --primario: #6C5CE7;
+  --fondo-claro: #F7F7F8;
+  --texto-primario: #2D3436;
+  --texto-secundario: #636E72;
+  --box-shadow: #bdc2c4 0px 0px 2.5px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.titulo-beneficio {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: var(--texto-primario);
+  margin: 20px 0;
+}
+
+.main-beneficio {
+  width: 90%;
+  padding: 30px;
+  box-shadow: var(--box-shadow);
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.btn-beneficio {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border: 1px solid var(--primario);
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--primario);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-beneficio:hover {
+  background-color: var(--primario);
+  color: white;
+}
+
+.tabla-beneficio {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+}
+
+.tabla-beneficio thead th {
+  background-color: var(--primario);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+}
+
+.tabla-beneficio tbody td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tabla-beneficio tbody tr:nth-child(even) {
+  background-color: var(--fondo-claro);
+}
+
+.link-accion {
+  margin: 0 5px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link-accion.editar {
+  color: rgb(106, 190, 216);
+}
+
+.link-accion.eliminar {
+  color: rgb(189, 108, 108);
+}
+
+.formulario-beneficio {
+  width: 90%;
+  padding: 30px;
+  box-shadow: var(--box-shadow);
+  margin: 20px auto;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formulario-beneficio label {
+  font-weight: 600;
+  color: var(--texto-primario);
+}
+
+.formulario-beneficio input,
+.formulario-beneficio textarea {
+  border: none;
+  border-radius: 8px;
+  background-color: var(--fondo-claro);
+  padding: 10px;
+}
+
+.formulario-beneficio input:focus,
+.formulario-beneficio textarea:focus {
+  outline: var(--primario) solid 2px;
+}
+
+.formulario-beneficio input[type="submit"] {
+  width: fit-content;
+  align-self: flex-start;
+  border: 1px solid var(--primario);
+  background-color: transparent;
+  color: var(--primario);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.formulario-beneficio input[type="submit"]:hover {
+  background-color: var(--primario);
+  color: white;
+}

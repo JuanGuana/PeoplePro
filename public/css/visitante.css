@@ -1,0 +1,142 @@
+/* Título */
+.titulo-visitante {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: var(--texto-primario);
+  margin: 20px 0;
+}
+
+/* Contenedor principal */
+.main-visitante {
+  width: 90%;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+}
+
+/* Botón Nuevo */
+.btn-nuevo {
+  display: inline-block;
+  background: var(--primario);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.btn-nuevo:hover {
+  background: #574b90;
+}
+
+/* Tabla estilo */
+#visitanteTable {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  box-shadow: var(--box-shadow);
+}
+
+#visitanteTable thead th {
+  background: rgb(78, 78, 78);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+#visitanteTable tbody td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#visitanteTable tbody tr:hover {
+  background: #f2f2f2;
+}
+
+/* Íconos en acciones */
+#visitanteTable a {
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+#visitanteTable a:hover {
+  text-decoration: underline;
+}
+
+:root {
+  --primario: #6C5CE7;
+  --fondo-claro: #F7F7F8;
+  --texto-primario: #2D3436;
+  --texto-secundario: #636E72;
+  --box-shadow: #bdc2c4 0px 0px 2.5px;
+}
+
+.titulo-visitante {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: var(--texto-primario);
+  margin: 20px 0;
+}
+
+.formulario-visitante {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formulario-visitante input,
+.formulario-visitante textarea {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  background: var(--fondo-claro);
+  padding: 10px;
+}
+
+.formulario-visitante input:focus,
+.formulario-visitante textarea:focus {
+  outline: 2px solid var(--primario);
+}
+
+.formulario-visitante button {
+  background: var(--primario);
+  border: none;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.formulario-visitante button:hover {
+  background: #574b90;
+}
+
+.formulario-visitante a {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--primario);
+  text-decoration: none;
+}
+
+.formulario-visitante a:hover {
+  text-decoration: underline;
+}

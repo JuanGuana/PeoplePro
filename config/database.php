@@ -1,22 +1,24 @@
 <?php
 class Database {
-    private $host = "localhost";
-    private $db_name = "peoplepro";
-    private $username = "root";
-    private $password = "";
-    public $conn;
+    private static $host = "localhost";
+    private static $db_name = "peoplepro";
+    private static $username = "root";
+    private static $password = "";
+    private static $conn = null;
 
-    public function connect() {
-        $this->conn = null;
-        try {
-            $this->conn = new PDO(
-                "mysql:host={$this->host};dbname={$this->db_name}",
-                $this->username, $this->password
-            );
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $e) {
-            echo "Error en la conexión: " . $e->getMessage();
+    public static function getConnection() {
+        if (self::$conn === null) {
+            try {
+                self::$conn = new PDO(
+                    "mysql:host=" . self::$host . ";dbname=" . self::$db_name,
+                    self::$username,
+                    self::$password
+                );
+                self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $e) {
+                die("Error en la conexión: " . $e->getMessage());
+            }
         }
-        return $this->conn;
+        return self::$conn;
     }
 }

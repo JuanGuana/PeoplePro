@@ -2,11 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Editar Evaluación</title>
+  <title>Asignar Nuevo Horario</title>
   <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
-  <link rel="stylesheet" href="/peoplepro/public/css/evaluacion.css">
+  <link rel="stylesheet" href="/peoplepro/public/css/horario.css">
 </head>
 <body>
+  <!-- Header igual que en otros módulos -->
   <header class="header">
     <div class="izquierda">
       <button class="menu-hamburguesa">
@@ -40,20 +41,45 @@
     </ul>
   </nav>
 
-  <main class="main-evaluacion">
-    <h2 class="titulo-evaluacion">Editar Evaluación</h2>
-    <form class="formulario-evaluacion" action="/peoplepro/public/evaluacion/editar/<?= htmlspecialchars($evaluacion['id']) ?>" method="POST">
-      <label for="nombre">Nombre:</label>
-      <input type="text" name="nombre" id="nombre" value="<?= htmlspecialchars($evaluacion['nombre']) ?>" required>
+  <main class="main-horario">
+    <h2 class="titulo-horario">Asignar Nuevo Horario</h2>
 
-      <label for="descripcion">Descripción:</label>
-      <textarea name="descripcion" id="descripcion" rows="4"><?= htmlspecialchars($evaluacion['descripcion']) ?></textarea>
+    <form class="formulario-horario" action="/peoplepro/public/horario/crear" method="POST">
+      <label>Trabajador:</label>
+      <select name="usuario_id" required>
+        <option value="">Seleccione...</option>
+        <?php foreach ($usuarios as $usuario) : ?>
+          <option value="<?= htmlspecialchars($usuario['id']) ?>">
+            <?= htmlspecialchars($usuario['nombre']) ?>
+          </option>
+        <?php endforeach; ?>
+      </select>
 
-      <label for="fecha">Fecha:</label>
-      <input type="date" name="fecha" id="fecha" value="<?= htmlspecialchars($evaluacion['fecha']) ?>" required>
+      <label>Fecha de Inicio:</label>
+      <input type="date" name="fecha" required>
 
-      <button type="submit">Actualizar</button>
-      <a href="/peoplepro/public/evaluacion/index">Cancelar</a>
+      <label>Fecha de Fin:</label>
+      <input type="date" name="fecha_fin">
+
+      <label>Hora de Inicio:</label>
+      <input type="time" name="hora_inicio" required>
+
+      <label>Hora de Fin:</label>
+      <input type="time" name="hora_fin" required>
+
+      <label>Estado:</label>
+      <select name="estado" required>
+        <option value="Activo">Activo</option>
+        <option value="Permiso">Permiso</option>
+        <option value="Incapacidad">Incapacidad</option>
+        <option value="Inactivo">Inactivo</option>
+      </select>
+
+      <label>Observaciones:</label>
+      <textarea name="observaciones" rows="3" placeholder="Opcional"></textarea>
+
+      <button type="submit">Guardar</button>
+      <a class="btn-volver" href="/peoplepro/public/horario/index">Cancelar</a>
     </form>
   </main>
 
