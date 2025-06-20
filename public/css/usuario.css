@@ -1,109 +1,132 @@
 :root {
-    --primario: #6C5CE7;
-    --fondo-claro:#F7F7F8;
-    --texto-primario: #2D3436;
-    --texto-secundario: #636E72;
-    --box-shadow: #bdc2c4 0px 0px 2.5px;
+  --primario: #6C5CE7;
+  --fondo-claro: #F7F7F8;
+  --texto-primario: #2D3436;
+  --texto-secundario: #636E72;
+  --box-shadow: #bdc2c4 0px 0px 2.5px;
 }
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
-.titulo-usuario{
-    text-align: center;
-    font-weight: 600;
-    font-size: 3rem;
-    color: var(--texto-primario);
-    margin-bottom: 20px;
+
+body {
+  background-color: var(--fondo-claro);
 }
-.formulario-usuario{
-    width: 90%;
-    height: auto;
-    padding:20px;
-    box-shadow: var(--box-shadow);
-    margin: 0 auto;
-    border-radius: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    background-color: white;
-    overflow: hidden;
+
+.titulo-usuario {
+  text-align: center;
+  font-weight: 600;
+  font-size: 3rem;
+  color: var(--texto-primario);
+  margin-bottom: 20px;
 }
-.formulario-usuario input{
-    border: none;
-    border-radius: 8px;
-    background-color: var(--fondo-claro);
-    padding: 10px;
-    width: 200px;
+
+.formulario-usuario {
+  width: 90%;
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  margin: 0 auto;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: white;
+  overflow: hidden;
 }
-.formulario-usuario input:focus, .formulario-usuario select:focus{
-    outline: lightblue solid 2px;
+
+.formulario-usuario input {
+  border: none;
+  border-radius: 8px;
+  background-color: var(--fondo-claro);
+  padding: 10px;
+  width: 200px;
 }
-.formulario-usuario button{
-    border: 1px solid lightblue;
-    background-color: transparent;
-    color: lightblue;
-    border-radius: 8px;
-    padding: 10px;
-    transition: all 0.3s;
+
+.formulario-usuario input:focus,
+.formulario-usuario select:focus {
+  outline: lightblue solid 2px;
 }
-.formulario-usuario button:hover{
-    background-color: lightblue;
-    color: white;
-    transition: all 0.8s;
+
+.formulario-usuario button {
+  border: 1px solid lightblue;
+  background-color: transparent;
+  color: lightblue;
+  border-radius: 8px;
+  padding: 10px;
+  transition: all 0.3s;
 }
-.formulario-usuario select{
-    background-color: var(--fondo-claro);
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-    color:#636E72;
+
+.formulario-usuario button:hover {
+  background-color: lightblue;
+  color: white;
+  transition: all 0.8s;
 }
-.formulario-usuario select option[selected]{
-    background-color: var(--fondo-claro);
+
+.formulario-usuario select {
+  background-color: var(--fondo-claro);
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  color: var(--texto-secundario);
 }
-.main-usuario{
-    width: 90%;
-    padding: 30px;
-    box-shadow: var(--box-shadow);
-    margin: 0 auto;
-    border-radius: 10px;
-    background-color: white;
-    overflow: hidden;
+
+.formulario-usuario select option[selected] {
+  background-color: var(--fondo-claro);
 }
+
+.main-usuario {
+  width: 90%;
+  padding: 30px;
+  box-shadow: var(--box-shadow);
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: white;
+  overflow: hidden;
+}
+
 #myTable {
   border-radius: 12px;
   overflow: hidden;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 14px;
   background-color: white;
 }
+
 #myTable thead th {
-  background-color:rgb(78, 78, 78);
+  background-color: rgb(78, 78, 78);
   color: white;
   font-weight: bold;
   text-align: center;
 }
+
 #myTable tbody td {
-    text-align: center;
-    vertical-align: middle;
-    padding: 10px;
-    font-weight: 500;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  font-weight: 500;
 }
-.bi-clipboard-check, .bi-pencil-fill, .bi-trash3-fill {
-    font-size: 1.3rem;
-    margin-right: 5px;
+
+.bi-clipboard-check,
+.bi-pencil-fill,
+.bi-trash3-fill {
+  font-size: 1.3rem;
+  margin-right: 5px;
 }
-.bi-trash3-fill{
-    color: rgb(189, 108, 108);
+
+.bi-trash3-fill {
+  color: rgb(189, 108, 108);
 }
-.bi-pencil-fill{
-    color: rgb(106, 190, 216);
+
+.bi-pencil-fill {
+  color: rgb(106, 190, 216);
 }
-.bi-clipboard-check{
-   color: rgb(137, 216, 106);
+
+.bi-clipboard-check {
+  color: rgb(137, 216, 106);
 }

@@ -1,51 +1,41 @@
-@media (prefers-color-scheme: dark) {
-    :root {
-        --fondo: #202428;
-        --fondo-header:#2B3035;
-        --texto-primario: #ffffff;
-        --texto-secundario: #bdc2c4;
-        --color-logo:#b895e6;
-        --color-icono-menu: #b895e6;
-        --box-shadow:trasparent;
-    }
+:root {
+    --fondo: #F7F7F8;
+    --fondo-header: #ffffff;
+    --texto-primario: #2D3436;
+    --texto-secundario: #636E72;
+    --color-logo: #2D3436;
+    --color-icono-menu: #b895e6;
+    --box-shadow: #bdc2c4 0px 0px 2.5px;
 }
-@media (prefers-color-scheme: light) {
-    :root {
-        --fondo: #F7F7F8;
-        --fondo-header: #ffffff;
-        --texto-primario: #2D3436;
-        --texto-secundario: #636E72;
-        --color-logo: #2D3436;
-        --color-icono-menu: #b895e6;
-        --box-shadow: #bdc2c4 0px 0px 2.5px;
-    }
-    
-}
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     background-color: var(--fondo);
 }
-/* header */
-.header{
+
+/* Header */
+.header {
     background-color: var(--fondo-header);
     padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: auto;
     box-shadow: var(--box-shadow);
 }
-/* div izquierda con el logo y el menu hamburguesa */
+
+/* Izquierda: logo + hamburguesa */
 .izquierda {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .menu-hamburguesa {
     display: flex;
     flex-direction: column;
@@ -58,23 +48,24 @@ body {
     z-index: 8888;
     border: none;
 }
+
 .menu-hamburguesa:hover {
     border-radius: 50%;
-    background-color:  rgba(92, 91, 91, 0.2);
+    background-color: rgba(92, 91, 91, 0.2);
     transition: all 0.2s ease-in-out;
 }
+
 .linea {
-    position: relative;
     width: 20px;
     height: 2px;
     background-color: var(--color-icono-menu);
     border-radius: 10px;
     transition: all 0.5s ease-in-out;
 }
+
 /* Estados normales */
 .menu-hamburguesa .linea:nth-child(1),
 .menu-hamburguesa .linea:nth-child(3) {
-    top: 0;
     transform: rotate(0deg);
 }
 
@@ -82,6 +73,7 @@ body {
     opacity: 1;
     visibility: visible;
 }
+
 /* Estados activos (hamburguesa abierta) */
 .menu-hamburguesa.activo .linea:nth-child(1) {
     top: 7px;
@@ -97,28 +89,28 @@ body {
     top: -7px;
     transform: rotate(-45deg);
 }
-/* logo aimacion */
+
+/* Logo */
 #logo {
     font-size: 24px;
-    white-space: pre-wrap;
     padding: 0 5px 5px 0;
     animation: blink-caret 0.75s step-end infinite;
     color: var(--color-logo);
     font-family: "Libre Franklin", sans-serif;
-    font-weight:900;
+    font-weight: 900;
     margin-left: 20px;
-    z-index: 7777;
     width: 150px;
-    }
-/* nav desplegable  */
-.nav-desplegable{
-    position: fixed; 
+}
+
+/* Nav desplegable */
+.nav-desplegable {
+    position: fixed;
     top: 0;
     left: 0;
     width: 300px;
     height: 100vh;
     padding: 60px 10px;
-    background-color: var(--fondo-nav);
+    background-color: var(--fondo-header); /* Claro siempre */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -128,47 +120,51 @@ body {
     transition: transform 0.5s ease, opacity 0.5s ease;
     z-index: 7777;
 }
-.nav-desplegable.open{
+
+.nav-desplegable.open {
     transform: translateX(0);
     opacity: 1;
     pointer-events: auto;
 }
-/*nav desplegabe por dentro*/
-/* contenedor */
-.nav-lista{
-    height: auto;
+
+/* Nav interno */
+.nav-lista {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-/* lista */
-.nav-lista  li{
+
+.nav-lista li {
     list-style: none;
-    margin: 15px 0 0 0;
+    margin-top: 15px;
     padding: 9px;
     height: 45px;
 }
-/* texto de la lista */
-.nav-lista  a{
+
+.nav-lista a {
     text-decoration: none;
     color: var(--texto-primario);
     font-size: 1.3rem;
     font-family: "Libre Franklin", sans-serif;
     font-weight: 700;
-    height: 45px;
 }
-/* hover del menu */
-.nav-lista li:hover{
+
+.nav-lista li:hover {
     background-color: rgba(92, 91, 91, 0.1);
     transition: all 0.2s ease-in-out;
 }
-.nav-lista a:hover{
+
+.nav-lista a:hover {
     color: var(--primario);
 }
-.nav-lista li, .nav-lista a, .nav-lista {
+
+.nav-lista li,
+.nav-lista a,
+.nav-lista {
     width: 250px;
 }
-/* barra de busqueda */
+
+/* Buscador */
 .input-icono {
     padding: 8px 10px 8px 32px;
     background: url('../img/3844432-magnifier-search-zoom_110300.svg') no-repeat 10px center;
@@ -180,29 +176,40 @@ body {
     width: 400px;
     font-family: "Libre Franklin", sans-serif;
     font-weight: 600;
-    overflow: hidden;
 }
+
 .input-icono:focus {
     border-color: #8679eb;
 }
-/* div derecha con el nombre y el icono de usuario */
+
+/* Derecha */
 .derecha {
     display: flex;
     align-items: center;
     width: 220px;
 }
- .derecha, .izquierda, .buscador, .menu-hamburguesa, 
- #logo, .nav-lista li, .nav-lista a, .nav-lista {
+
+/* Fondo transparente para contenedores */
+.derecha,
+.izquierda,
+.buscador,
+.menu-hamburguesa,
+#logo,
+.nav-lista li,
+.nav-lista a,
+.nav-lista {
     background-color: transparent;
-    box-sizing: border-box;
 }
-/* titulo de bienvenida al usuario */
-.tituloBienvenida{
+
+/* Título bienvenida */
+.tituloBienvenida {
     text-align: center;
     font-size: 3.5rem;
     margin-top: 5px;
-    color: #2D3436;
+    color: var(--texto-primario);
 }
+
+/* Responsive */
 @media screen and (max-width: 1068px) {
     .input-icono {
         width: 100px;

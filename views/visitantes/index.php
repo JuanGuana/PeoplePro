@@ -6,6 +6,7 @@
   <title>Visitantes Externos</title>
   <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
   <link rel="stylesheet" href="/peoplepro/public/css/visitante.css">
+  <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
 </head>
 
 <body>

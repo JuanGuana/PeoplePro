@@ -1,16 +1,23 @@
 :root {
     --primario: #6C5CE7;
-    --secundario:lightblue;
+    --secundario: lightblue;
     --texto-primario: #2D3436;
     --texto-secundario: #636E72;
-    --fondo-oscuro:#2d3436;
+    --fondo: #F7F7F8; /* fondo claro general */
+    --fondo-header: #ffffff;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
 }
+
+body {
+    background-color: var(--fondo);
+}
+
 /* header del landingpage */
 .landing-header {
     padding: 20px 30px;
@@ -21,11 +28,13 @@
     width: 100%;
     position: sticky;
     top: 0;
-    background-color: rgba(68, 77, 80, 0.3);
+    background-color: var(--fondo-header); /* header claro */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* sombra ligera para separar */
     z-index: 1000;
 }
+
 /* logo (peoplepro) */
-.logo{
+.logo {
     width: 150px;
     height: 50px;
     display: flex;
@@ -35,46 +44,50 @@
     font-weight: 900;
     padding-bottom: 5px;
 }
+
 .logo a {
     text-decoration: none;
-    color:#b895e6;
+    color: var(--primario);
 }
-/* barra de navegacion */
-.landing-nav{
+
+/* barra de navegación */
+.landing-nav {
     display: flex;
-    width: 50%; 
+    width: 50%;
     height: 50px;
     justify-content: space-around;
     align-items: center;
     list-style: none;
 }
+
 .landing-header li {
     display: inline-block;
     padding: 10px;
 }
+
 .landing-nav a {
     text-decoration: none;
     font-size: 1.2rem;
-    color: white;
-    transition: all 0.5s linear;
+    color: var(--texto-primario);
+    transition: all 0.3s ease;
 }
+
 .landing-nav a:hover {
-    text-decoration: 2px #A593E0 underline ;
-    transition: all 0.3s linear;
+    text-decoration: underline 2px var(--primario);
 }
-/* boton de login */
-.login{
+
+/* botón de login */
+.login {
     background-color: transparent;
     padding: 10px;
     text-decoration: none;
-    color: var(--secundario);
+    color: var(--primario);
     font-weight: 400;
-    border: 1px solid var(--secundario);
+    border: 1px solid var(--primario);
     transition: all 0.3s ease;
-
 }
+
 .login:hover {
-    background-color: var(--secundario);
+    background-color: var(--primario);
     color: white;
-    transition: all 0.5s ease;
 }

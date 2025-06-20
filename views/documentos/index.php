@@ -7,6 +7,7 @@
     <title>Lista de Documentos</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
+    <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
 </head>
 
 <body class="container mt-5">

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Registro de Asistencia</title>
     <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
+    <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
 </head>
 
 <body>

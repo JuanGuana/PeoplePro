@@ -6,6 +6,7 @@
   <title>Gestión de Permisos</title>
   <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
   <link rel="stylesheet" href="/peoplepro/public/css/permiso.css">
+  <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
 </head>
 
 <body>

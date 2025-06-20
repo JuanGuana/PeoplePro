@@ -6,12 +6,13 @@
 }
 
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
 
+/* Título de la página Horario */
 .titulo-horario {
   text-align: center;
   font-weight: 600;
@@ -20,16 +21,18 @@
   margin: 20px 0;
 }
 
+/* Contenedor principal de Horario */
 .main-horario {
   width: 90%;
   padding: 30px;
-  box-shadow: var(--box-shadow);
   margin: 20px auto;
   border-radius: 10px;
+  box-shadow: var(--box-shadow);
   background-color: white;
   overflow: hidden;
 }
 
+/* Botón para agregar o volver */
 .btn-horario {
   display: inline-block;
   padding: 10px 20px;
@@ -47,6 +50,7 @@
   color: white;
 }
 
+/* Tabla de horarios */
 .tabla-horario {
   width: 100%;
   border-collapse: collapse;
@@ -74,6 +78,7 @@
   background-color: var(--fondo-claro);
 }
 
+/* Links de acción (editar/eliminar) */
 .link-accion {
   margin: 0 5px;
   text-decoration: none;
@@ -88,12 +93,13 @@
   color: rgb(189, 108, 108);
 }
 
+/* Formulario para crear/editar horarios */
 .formulario-horario {
   width: 90%;
   padding: 30px;
-  box-shadow: var(--box-shadow);
   margin: 20px auto;
   border-radius: 10px;
+  box-shadow: var(--box-shadow);
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -120,6 +126,7 @@
   outline: var(--primario) solid 2px;
 }
 
+/* Botones del formulario (guardar, cancelar) */
 .formulario-horario button,
 .formulario-horario a {
   width: fit-content;

@@ -13,6 +13,7 @@
   font-family: "Inter", sans-serif;
 }
 
+/* Título principal de beneficios */
 .titulo-beneficio {
   text-align: center;
   font-weight: 600;
@@ -21,16 +22,18 @@
   margin: 20px 0;
 }
 
+/* Contenedor principal de beneficios */
 .main-beneficio {
   width: 90%;
   padding: 30px;
-  box-shadow: var(--box-shadow);
   margin: 0 auto;
   border-radius: 10px;
+  box-shadow: var(--box-shadow);
   background-color: white;
   overflow: hidden;
 }
 
+/* Botón estilo link para agregar o volver */
 .btn-beneficio {
   display: inline-block;
   padding: 10px 20px;
@@ -48,12 +51,12 @@
   color: white;
 }
 
+/* Tabla de beneficios */
 .tabla-beneficio {
   width: 100%;
   border-collapse: collapse;
   border-radius: 12px;
   overflow: hidden;
-  font-family: "Inter", sans-serif;
   font-size: 14px;
 }
 
@@ -76,6 +79,7 @@
   background-color: var(--fondo-claro);
 }
 
+/* Enlaces de acción: editar y eliminar */
 .link-accion {
   margin: 0 5px;
   text-decoration: none;
@@ -90,12 +94,13 @@
   color: rgb(189, 108, 108);
 }
 
+/* Formulario de beneficios */
 .formulario-beneficio {
   width: 90%;
   padding: 30px;
-  box-shadow: var(--box-shadow);
   margin: 20px auto;
   border-radius: 10px;
+  box-shadow: var(--box-shadow);
   background-color: white;
   display: flex;
   flex-direction: column;

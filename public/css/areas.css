@@ -1,245 +1,300 @@
 :root {
-    --primario: #6C5CE7;
-    --texto-primario: #2D3436;
-    --texto-secundario: #636E72;
+  --primario: #6C5CE7;
+  --color-carta: #F5F3FF; /* Fondo claro que combina con el primario */
+  --color-fondo-sombra: #E0DBFB; /* Sombra decorativa detrás */
+  --sombra-carta: 0 10px 20px rgba(0, 0, 0, 0.08);
+  --texto-primario: #2D3436;
+  --texto-secundario: #636E72;
 }
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
-/* main */
-.main{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    height: auto;
+
+/* Main contenedor */
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: auto;
 }
-/* titulo de bienvenida */
-.area-titulo{
-    text-align: center;
-    font-size: 3rem;
-    color: var(--texto-primario);
+
+/* Título de bienvenida */
+.area-titulo {
+  text-align: center;
+  font-size: 3rem;
+  color: var(--texto-primario);
 }
-/* boton para agregar area */
+
+/* Botón para agregar área */
 .nueva-area-contenedor {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 20px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20px;
 }
+
 .nueva-area {
-    padding-bottom: 5px; 
-    width: 40px;
-    height: 40px;
-    background-color: var(--primario);
-    color: white;
-    border: 2px solid var(--primario);
-    border-radius: 50%;
-    transition: background-color 0.6s ease, color 0.6s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    margin: 20px 0;
+  width: 40px;
+  height: 40px;
+  background-color: var(--primario);
+  color: white;
+  border: 2px solid var(--primario);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 20px 0;
+  transition: background-color 0.6s ease, color 0.6s ease;
 }
-/* texto del boton  */
+
 .nueva-area a {
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.6s ease;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.6s ease;
 }
-/* Hover: fondo blanco y texto morado */
+
 .nueva-area:hover {
-    background-color: white;
-    color: var(--primario);
+  background-color: white;
+  color: var(--primario);
 }
+
 .nueva-area:hover a {
-    color: var(--primario);
+  color: var(--primario);
 }
-/*contenedor tarjetas de las areas */ 
-.area-contenedor{
-    margin: 10px;
-    width: 330px; height: 280px;
-    position: relative;
-    z-index: 1;
+
+/* Contenedor de tarjetas */
+.area-contenedor {
+  margin: 10px;
+  width: 330px;
+  height: 280px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
 }
-/* el color de fondo / la sombra de color */
-.color-fondo{
-    width:290px; height: 250px;
-    position: absolute;
-    z-index: -1;
-    top: 5px; left: 5px;
-    border-radius: 10px;
+
+/* Fondo decorativo */
+.color-fondo {
+  width: 290px;
+  height: 250px;
+  position: absolute;
+  z-index: -1;
+  top: 5px;
+  left: 5px;
+  border-radius: 15px;
+  background-color: var(--color-fondo-sombra);
 }
-/* tarjetas de areas */
-.area{
-    width:290px; height: 250px;
-    align-items: center;
-    border-radius: 10px;
-    background-color: #ffffff;
-    padding: 0 20px; 
+
+/* Tarjeta de área */
+.area {
+  width: 290px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  background-color: var(--color-carta);
+  box-shadow: var(--sombra-carta);
+  padding: 0 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-/* descriocion del area */
-.area p{
-    font-size: 1.2rem;
-    color: var(--texto-secundario);
-    height: 120px;
-    width: 230px;
-    overflow:hidden;
-    text-overflow: ellipsis;
+
+.area:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.12);
 }
-/* header con titulo y el menu de tres puntos */
-.area-header{
-    display: flex;
-    align-items: center;
-    height: 40px; width: 100%;
-    margin-bottom: 20px;
+
+/* Descripción del área */
+.area p {
+  font-size: 1.2rem;
+  color: var(--texto-secundario);
+  height: 120px;
+  width: 230px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.area-header h2{
-    width:240px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--primario);
+
+/* Header con título y menú de tres puntos */
+.area-header {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 20px;
 }
-/* icono del meni tres puntos */
-.confuguracion-area{
-    width: 25px; height: 25px;
-    position: absolute;
-    cursor: pointer;
-    justify-content: center; align-items: center;
-    top: 8px; right: 50px;
-    border: none;
+
+.area-header h2 {
+  width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--primario);
 }
-.confuguracion-area img{
-    width: 20px; height: 15px;
+
+.confuguracion-area {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 8px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
 }
-/* hover del menu de tres puntos */
-.confuguracion-area:hover{
-    background-color: rgba(92, 91, 92, 0.2);
-    border-radius: 5px;
+
+.confuguracion-area img {
+  width: 20px;
+  height: 15px;
 }
-/* boton de ver mas  */
+
+.confuguracion-area:hover {
+  background-color: rgba(92, 91, 92, 0.2);
+  border-radius: 5px;
+}
+
+/* Botón de ver más */
 .ver-mas {
-    margin-top: auto; margin-bottom: 10px;
-    width: 180px; height: 40px;
-    border-radius: 10px;
-    border: solid 2px #6C5CE7; 
-    background-color: #6C5CE7;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  margin-top: auto;
+  margin-bottom: 10px;
+  width: 180px;
+  height: 40px;
+  border-radius: 10px;
+  border: solid 2px var(--primario);
+  background-color: var(--primario);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
+
 .ver-mas a {
-    text-decoration: none;
-    color: white;
-    z-index: 1;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: white;
+  z-index: 1;
+  transition: color 0.3s ease;
 }
-/* animacion del boton de ver mas */
+
 .ver-mas::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 0;
-    height: 100%;
-    background-color: transparent;
-    backdrop-filter: blur(0);
-    transition: width 1s ease;
-    z-index: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background-color: white;
+  transition: width 1s ease;
+  z-index: 0;
 }
+
 .ver-mas:hover::after {
-    width: 100%;
-    left: 0;
-    right: auto;
-    background-color: white;
+  width: 100%;
+  left: 0;
+  right: auto;
 }
+
 .ver-mas:hover a {
-    color: #6C5CE7;
+  color: var(--primario);
 }
-/* contenedor */
-.area-contenedor, .area, .area-menu, .confuguracion-area{
-    display: flex;
-    flex-direction: column;
+
+/* Menú desplegable de configuración */
+.area-menu {
+  background-color: #ffffff;
+  width: 100px;
+  height: 90px;
+  position: absolute;
+  top: 35px;
+  right: 0;
+  border-radius: 5px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
- .area-header h2, .area-header img, .area p, 
- .confuguracion-area, .area-menu li, .area-menu a, 
- .ver-mas a, .area-menu h2, .area-header, 
- .nueva-area a,.area-contenedor{
-    background-color: transparent;
+
+.area-menu li {
+  list-style: none;
+  margin-top: 2px;
+  padding: 0 0 5px 3px;
+  height: 23px;
+  display: flex;
+  align-items: center;
 }
-/* menu desplegable de configuracion */
-.area-menu{
-    background-color: #ffffff;
-    width: 100px; height: 90px;
-    position: absolute;
-    top:35px; right:0px;
-    border-radius: 5px;
-    justify-content: center;
-    padding: 0 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    display: none;
+
+.area-menu li:hover {
+  border-radius: 3px;
+  background-color: rgba(92, 91, 92, 0.2);
 }
-.area-menu li{
-    list-style: none;
-    margin-top: 2px;
-    padding: 0 0 5px 3px;
-    height: 23px;
-    justify-content: center;
+
+.area-menu a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: var(--texto-primario);
+  font-weight: 600;
 }
-/* hover del menu editar y eliminar */
-.area-menu li:hover{
-    border-radius: 3px;
-    background-color:rgba(92, 91, 92, 0.2);
+
+.area-menu h2 {
+  font-size: 0.8rem;
+  color: var(--texto-primario);
+  margin-bottom: 5px;
 }
-.area-menu a{
-    text-decoration: none;
-    font-size: .8rem;
-    color: var(--texto-primario);
-    font-weight: 600;
-}
-.area-menu h2{
-    font-size: .8rem;
-    color: var(--texto-primario);
-    margin-bottom: 5px;
-}
-/* activo menu desplegable */
+
 .area-menu.activo {
-    display: flex;
+  display: flex;
 }
-/* iframes toggle fondo oscuro*/
+
+/* Fondo oscuro para iframes toggle */
 #pantalla-oscura {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 3;
-    display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  display: none;
 }
+
 #pantalla-oscura.activo {
-    display: block;
+  display: block;
 }
-/* iframes toggle*/
+
 #iframe-contenedor {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 4;
-    width: 500px;
-    height: 500px;
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  width: 500px;
+  height: 500px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  display: none;
 }
+
 #iframe-contenedor.activo {
-    display: block;
+  display: block;
+}
+
+/* Reseteo general de fondo transparente */
+.area-header h2,
+.area-header img,
+.area p,
+.confuguracion-area,
+.area-menu li,
+.area-menu a,
+.ver-mas a,
+.area-menu h2,
+.area-header,
+.nueva-area a {
+  background-color: transparent;
 }

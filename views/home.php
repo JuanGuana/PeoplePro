@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Inicio</title>
   <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
+  <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
 </head>
 <body>
     <!-- http://localhost/peoplepro/public/home/index -->

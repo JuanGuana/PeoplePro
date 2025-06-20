@@ -5,6 +5,7 @@
   <title>Horarios</title>
   <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
   <link rel="stylesheet" href="/peoplepro/public/css/horario.css">
+  <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
 </head>
 <body>
   <header class="header">

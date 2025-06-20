@@ -5,6 +5,7 @@
   <title>Lista de Evaluaciones</title>
   <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
   <link rel="stylesheet" href="/peoplepro/public/css/evaluacion.css">
+  <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
 </head>
 <body>
   <header class="header">
