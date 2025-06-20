@@ -19,6 +19,7 @@
         <li><a href="/peoplepro/public/capacitacion/index">Módulo Capacitaciones</a></li>
         <li><a href="/peoplepro/public/evaluacion/index">Módulo Evaluaciones</a></li>
         <li><a href="/peoplepro/public/area/index">Módulo Áreas</a></li>
+        <li><a href="/peoplepro/public/asistencia/index">Módulo Asistencia</a></li>
     </ul>
 
 </body>

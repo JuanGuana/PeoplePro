@@ -1,5 +1,5 @@
 <?php
-require_once 'models/Documento.php';
+require_once '../models/Documento.php';
 
 class DocumentoController
 {
@@ -13,12 +13,12 @@ class DocumentoController
     public function index()
     {
         $documentos = $this->documentoModel->obtenerTodos();
-        require_once 'views/documentos/index.php';
+        require_once '../views/documentos/index.php';
     }
 
     public function crear()
     {
-        require_once 'views/documentos/crear.php';
+        require_once '../views/documentos/crear.php';
     }
 
     public function guardar()
@@ -78,7 +78,7 @@ class DocumentoController
         $id = $_GET['id'] ?? null;
         if ($id) {
             $documento = $this->documentoModel->buscarPorId($id);
-            require_once 'views/documentos/editar.php';
+            require_once '../views/documentos/editar.php';
         }
     }
 

@@ -58,6 +58,7 @@
             <li><a href="/peoplepro/public/capacitacion/index">Capacitaciones</a></li>
             <li><a href="/peoplepro/public/evaluacion/index">Evaluaciones</a></li>
             <li><a href="/peoplepro/public/area/index">Áreas</a></li>
+            <li><a href="/peoplepro/public/asistencia/index">Asistencia</a></li>
         </ul>
     </nav><br>
     <h2 class="titulo-usuario">Crear nuevo usuario</h2>
