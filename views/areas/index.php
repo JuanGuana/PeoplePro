@@ -38,6 +38,7 @@
             <li><a href="/peoplepro/public/capacitacion/index">Capacitaciones</a></li>
             <li><a href="/peoplepro/public/evaluacion/index">Evaluaciones</a></li>
             <li><a href="/peoplepro/public/area/index">Áreas</a></li>
+            <li><a href="/peoplepro/public/asistencia/index">Asistencia</a></li>
         </ul>
     </nav><br>
     <h2 class="area-titulo">Gestión de Áreas</h2>
