@@ -29,7 +29,7 @@
     font-family: "Inter", sans-serif;
     color: var(--texto-primario);
 }
-.titulo-usuario{
+.titulo-grande{
     text-align: center;
     font-weight: 600;
     font-size: 3rem;
@@ -84,7 +84,7 @@
 .formulario-usuario select option[selected]{
     background-color: var(--fondo-claro);
 }
-.main-usuario{
+.main-datatable{
     width: 90%;
     padding: 30px;
     box-shadow: var(--box-shadow);

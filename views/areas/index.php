@@ -63,9 +63,17 @@
                 <li><a href="/peoplepro/public/area/index">Áreas</a></li>
             </ul>
         </nav><br>
-        <h2 class="area-titulo">Gestión de Áreas</h2>
-        <div class="nueva-area-contenedor"><button class="nueva-area" title="crear nueva área">+</button></div>
-        <main class="main">
+        <h2 class="titulo-grande">Gestión de Áreas</h2>
+        <form action="/peoplepro/public/area/guardar" method="POST">
+        <label class="label">Nombre:</label>
+        <input type="text" name="nombre" required placeholder="Digita el nombre de área" class="input-nombre input"><br>
+
+        <label class="label">Descripción:</label>
+        <textarea name="descripcion" rows="3" placeholder="Digita la descripción de area" class="input-descripcion input"></textarea><br>
+        
+        <input type="submit" value="crear área" class="boton aceptar-btn">
+        </form>
+        <main class="main-datatable">
             <table id="myTable" class="table table-striped nowrap responsive">
                 <thead>    
                     <tr>        
@@ -78,28 +86,15 @@
                 <tbody>
                     <?php foreach ($data['areas'] as $area): ?>  
                     <tr>
+                        <td><?= $area['id'] ?></td>
                         <td><?= $area['nombre'] ?></td>
                         <td><?= $area['descripcion'] ?></td>
-                        <td><?= $area['id'] ?></td>
                         <td>
-                            <a href="/peoplepro/public/area/editar/<?= $area['id'] ?>"></a>
-                            <a href="/peoplepro/public/area/eliminar/<?= $area['id'] ?>"></a>
+                            <a href="/peoplepro/public/area/editar/<?= $area['id'] ?>"><i class="bi bi-pencil-fill"></i></a>
+                            <a href="/peoplepro/public/area/eliminar/<?= $area['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar este usuario?')"><i class="bi bi-trash3-fill"></i></a>
                         </td>
-                        <!-- <div class="area">
-                            <div class="area-header">
-                                <h2 style="color: <?= htmlspecialchars($area['color_fondo']) ?>;"><?= $area['nombre'] ?></h2>
-                                <button class="confuguracion-area" id="configuracion-<?= $area['id'] ?>"><img src="/peoplepro/public/img/dots_three_outline_vertical_icon_173863.svg" alt="Config"></button>
-                            </div>
-                            <p><?= $area['descripcion'] ?></p>
-                            <button class="ver-mas" onclick="window.location.href='#'"><a href="">ver más</a></button>
-                        </div>
-                        <ul class="area-menu" id="area-menu-<?= $area['id'] ?>">
-                            <h2>Configuración</h2>
-                            <li class="abrir-iframe" data-src="/peoplepro/public/area/editar/<?= $area['id'] ?>" style="cursor: pointer;">✏️ Editar</li>
-                            <li><a href="/peoplepro/public/area/eliminar/<?= $area['id'] ?>" onclick="return confirm('¿Eliminar esta área?')">❌ Eliminar</a></li>
-                        </ul>
-                        <div class="color-fondo" style="background-color: <?= htmlspecialchars($area['color_fondo']) ?>;"></div> -->
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </main>

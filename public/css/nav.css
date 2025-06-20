@@ -42,6 +42,7 @@ body {
     width: 100%;
     height: auto;
     box-shadow: var(--box-shadow);
+    position: sticky;
 }
 /* div izquierda con el logo y el menu hamburguesa */
 .izquierda {

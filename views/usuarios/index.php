@@ -65,7 +65,7 @@
             <hr>
         </ul>
     </nav><br>
-    <h2 class="titulo-usuario">Crear nuevo usuario</h2>
+    <h2 class="titulo-grande">Crear nuevo usuario</h2>
     <form method="POST" action="/peoplepro/public/index.php?url=usuario/crear" class="formulario-usuario">
         <input type="text" name="nombre" placeholder="Nombre" required>
         <input type="email" name="email" placeholder="Email" required>
@@ -85,7 +85,7 @@
         <button type="submit">Crear usuario</button>
     </form>
     <br>
-    <main class="main-usuario">
+    <main class="main-datatable">
         <table id="myTable" class="table table-striped nowrap responsive">
             <thead>
                 <tr>
