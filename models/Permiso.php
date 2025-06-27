@@ -14,10 +14,23 @@ class Permiso extends Model {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function crear($tipo, $usuario_id) {
-        $stmt = $this->conn->prepare("INSERT INTO $this->table (tipo, usuario_id) VALUES (:tipo, :usuario_id)");
+    public function obtenerPorUsuario($usuario_id) {
+        $stmt = $this->conn->prepare("
+            SELECT p.*, u.nombre AS usuario 
+            FROM $this->table p 
+            LEFT JOIN users u ON p.usuario_id = u.id
+            WHERE p.usuario_id = :usuario_id
+        ");
+        $stmt->bindParam(':usuario_id', $usuario_id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function crear($tipo, $usuario_id, $estado = 'Pendiente') {
+        $stmt = $this->conn->prepare("INSERT INTO $this->table (tipo, usuario_id, estado) VALUES (:tipo, :usuario_id, :estado)");
         $stmt->bindParam(':tipo', $tipo);
         $stmt->bindParam(':usuario_id', $usuario_id);
+        $stmt->bindParam(':estado', $estado);
         return $stmt->execute();
     }
 
@@ -33,6 +46,13 @@ class Permiso extends Model {
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':tipo', $tipo);
         $stmt->bindParam(':usuario_id', $usuario_id);
+        return $stmt->execute();
+    }
+
+    public function actualizarEstado($id, $estado) {
+        $stmt = $this->conn->prepare("UPDATE $this->table SET estado = :estado WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':estado', $estado);
         return $stmt->execute();
     }
 

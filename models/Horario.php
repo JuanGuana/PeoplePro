@@ -63,5 +63,17 @@ class Horario extends Model {
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function obtenerPorUsuario($usuario_id) {
+    $stmt = $this->conn->prepare("
+        SELECT h.*, u.nombre AS usuario_nombre
+        FROM horarios h
+        JOIN users u ON h.usuario_id = u.id
+        WHERE h.usuario_id = ?
+        ORDER BY h.fecha DESC
+    ");
+    $stmt->execute([$usuario_id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
 }

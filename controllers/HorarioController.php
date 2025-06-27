@@ -7,18 +7,27 @@ class HorarioController extends Controller {
 
     public function __construct() {
         $this->model = new Horario();
+        if (session_status() === PHP_SESSION_NONE) session_start();
     }
 
-    // Mostrar lista de horarios
     public function index() {
-        $horarios = $this->model->obtenerTodos();
+        // Si es usuario, solo ve sus propios horarios
+        if ($_SESSION['usuario_rol'] === 'usuario') {
+            $horarios = $this->model->obtenerPorUsuario($_SESSION['usuario_id']);
+        } else {
+            $horarios = $this->model->obtenerTodos();
+        }
+
         $this->view('horarios/index', ['horarios' => $horarios]);
     }
 
-    // Crear nuevo horario
     public function crear() {
+        if ($_SESSION['usuario_rol'] !== 'admin') {
+            $this->redirect('/peoplepro/public/index.php?action=horario');
+            return;
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Recoger datos del formulario
             $data = [
                 'usuario_id'    => $_POST['usuario_id'] ?? null,
                 'fecha'         => $_POST['fecha'] ?? null,
@@ -29,24 +38,26 @@ class HorarioController extends Controller {
                 'observaciones' => $_POST['observaciones'] ?? null
             ];
 
-            // Validación básica (puedes expandirla)
             if ($this->model->crear($data)) {
-                $this->redirect('/peoplepro/public/index.php?action=horario&method=index');
+                $this->redirect('/peoplepro/public/index.php?action=horario');
             } else {
                 echo "Error al crear el horario.";
             }
         } else {
-            // Mostrar formulario de creación
             $usuarios = $this->model->obtenerUsuarios();
             $this->view('horarios/crear', ['usuarios' => $usuarios]);
         }
     }
 
-    // Editar horario existente
     public function editar($id) {
+        if ($_SESSION['usuario_rol'] !== 'admin') {
+            $this->redirect('/peoplepro/public/index.php?action=horario');
+            return;
+        }
+
         $horario = $this->model->obtenerPorId($id);
         if (!$horario) {
-            $this->redirect('/peoplepro/public/index.php?action=horario&method=index');
+            $this->redirect('/peoplepro/public/index.php?action=horario');
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -61,7 +72,7 @@ class HorarioController extends Controller {
             ];
 
             if ($this->model->actualizar($id, $data)) {
-                $this->redirect('/peoplepro/public/index.php?action=horario&method=index');
+                $this->redirect('/peoplepro/public/index.php?action=horario');
             } else {
                 echo "Error al actualizar el horario.";
             }
@@ -74,9 +85,10 @@ class HorarioController extends Controller {
         }
     }
 
-    // Eliminar horario
     public function eliminar($id) {
-        $this->model->eliminar($id);
-        $this->redirect('/peoplepro/public/index.php?action=horario&method=index');
+        if ($_SESSION['usuario_rol'] === 'admin') {
+            $this->model->eliminar($id);
+        }
+        $this->redirect('/peoplepro/public/index.php?action=horario');
     }
 }

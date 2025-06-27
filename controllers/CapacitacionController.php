@@ -7,6 +7,7 @@ class CapacitacionController extends Controller {
 
     public function __construct() {
         $this->model = new Capacitacion();
+        if (session_status() === PHP_SESSION_NONE) session_start();
     }
 
     public function index() {
@@ -15,6 +16,11 @@ class CapacitacionController extends Controller {
     }
 
     public function crear() {
+        if ($_SESSION['usuario_rol'] !== 'admin') {
+            $this->redirect('/peoplepro/public/index.php?action=capacitacion');
+            return;
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = [
                 'nombre' => $_POST['nombre'],
@@ -32,6 +38,11 @@ class CapacitacionController extends Controller {
     }
 
     public function editar($id = null) {
+        if ($_SESSION['usuario_rol'] !== 'admin') {
+            $this->redirect('/peoplepro/public/index.php?action=capacitacion');
+            return;
+        }
+
         if ($id === null) {
             $this->redirect('/peoplepro/public/index.php?action=capacitacion');
         }
@@ -57,6 +68,11 @@ class CapacitacionController extends Controller {
     }
 
     public function eliminar($id) {
+        if ($_SESSION['usuario_rol'] !== 'admin') {
+            $this->redirect('/peoplepro/public/index.php?action=capacitacion');
+            return;
+        }
+
         if ($this->model->eliminar($id)) {
             $this->redirect('/peoplepro/public/index.php?action=capacitacion');
         } else {
