@@ -65,4 +65,11 @@ class Usuario {
         $stmt = $this->conn->query("SELECT * FROM areas");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Método necesario para módulo de permisos (usuarios básicos)
+    public function obtenerTodos() {
+        $stmt = $this->conn->prepare("SELECT id, nombre FROM users WHERE rol = 'usuario'");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

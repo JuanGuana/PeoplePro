@@ -9,29 +9,33 @@ class PermisoController extends Controller {
     }
 
     public function crear() {
-        $this->view('permisos/crear');
+        $usuarios = $this->model('Usuario')->obtenerTodos(); // corregido
+        $this->view('permisos/crear', ['usuarios' => $usuarios]);
     }
 
     public function guardar() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tipo = $_POST['tipo'];
+            $usuario_id = $_POST['usuario_id'];
             $permiso = $this->model('Permiso');
-            $permiso->crear($tipo);
+            $permiso->crear($tipo, $usuario_id);
             $this->redirect('/peoplepro/public/index.php?action=permiso');
         }
     }
 
     public function editar($id) {
         $permiso = $this->model('Permiso');
+        $usuarios = $this->model('Usuario')->obtenerTodos(); // corregido
         $data = $permiso->obtenerPorId($id);
-        $this->view('permisos/editar', ['permiso' => $data]);
+        $this->view('permisos/editar', ['permiso' => $data, 'usuarios' => $usuarios]);
     }
 
     public function actualizar($id) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tipo = $_POST['tipo'];
+            $usuario_id = $_POST['usuario_id'];
             $permiso = $this->model('Permiso');
-            $permiso->actualizar($id, $tipo);
+            $permiso->actualizar($id, $tipo, $usuario_id);
             $this->redirect('/peoplepro/public/index.php?action=permiso');
         }
     }
