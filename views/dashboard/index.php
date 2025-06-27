@@ -1,3 +1,8 @@
+<?php 
+// Verificar que existen los datos esperados
+$nombre = $data['nombre'] ?? 'Invitado';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,8 +12,12 @@
     <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
 </head>
 <body>
-    <?php include __DIR__ . '/../menu/menu.php'; ?><br>
-    <h1 class="titulo-principal">Welcome, <?= htmlspecialchars($nombre) ?>! 👋</h1>
-  <script src="/peoplepro/public/js/nav.js"></script>
+    <?php include __DIR__ . '/../menu/menu.php'; ?>
+
+    <main>
+        <h1 class="tituloBienvenida">¡Bienvenido, <?= htmlspecialchars($nombre) ?>! 👋</h1>
+    </main>
+
+    <script src="/peoplepro/public/js/nav.js"></script>
 </body>
 </html>

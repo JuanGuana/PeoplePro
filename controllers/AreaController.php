@@ -7,6 +7,7 @@ class AreaController extends Controller {
 
     public function __construct() {
         $this->area = new Area();
+        if (session_status() === PHP_SESSION_NONE) session_start();
     }
 
     public function index() {
@@ -15,17 +16,26 @@ class AreaController extends Controller {
     }
 
     public function crear() {
+        if ($_SESSION['usuario_rol'] !== 'admin') {
+            $this->redirect('/peoplepro/public/index.php?action=area');
+            return;
+        }
         $this->view('areas/crear');
     }
 
     public function guardar() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['usuario_rol'] === 'admin') {
             $this->area->guardar($_POST);
-            $this->redirect('/peoplepro/public/index.php?action=area');
         }
+        $this->redirect('/peoplepro/public/index.php?action=area');
     }
 
     public function editar($id) {
+        if ($_SESSION['usuario_rol'] !== 'admin') {
+            $this->redirect('/peoplepro/public/index.php?action=area');
+            return;
+        }
+
         $area = $this->area->obtenerPorId($id);
         if (!$area) {
             echo "Área no encontrada";
@@ -35,16 +45,16 @@ class AreaController extends Controller {
     }
 
     public function actualizar() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['usuario_rol'] === 'admin') {
             $this->area->actualizar($_POST);
-            $this->redirect('/peoplepro/public/index.php?action=area');
         }
+        $this->redirect('/peoplepro/public/index.php?action=area');
     }
 
     public function eliminar($id) {
-        $this->area->eliminar($id);
+        if ($_SESSION['usuario_rol'] === 'admin') {
+            $this->area->eliminar($id);
+        }
         $this->redirect('/peoplepro/public/index.php?action=area');
     }
 }
-
-
