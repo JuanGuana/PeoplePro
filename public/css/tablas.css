@@ -32,7 +32,7 @@
     background-color:white;
     border-bottom: 2px solid var(--primario);
 }
-.bt-eliminar, .bt-editar{
+.bt-eliminar, .bt-editar, .bt-rechazar{
     text-decoration: none;
     color: white;
     padding: 10px;
@@ -44,12 +44,19 @@
 }
 .bt-eliminar{
     background-color: lightcoral;
+    margin: 5px;
+}
+.bt-rechazar{
+    background-color: lightsalmon;
 }
 .bt-editar:hover{
     background-color: rgb(93, 175, 93);
 }
 .bt-eliminar:hover{
     background-color: rgb(168, 77, 77);
+}
+.bt-rechazar:hover{
+    background-color: rgb(177, 101, 71);
 }
 .btn-tabla {
     display: inline-block;

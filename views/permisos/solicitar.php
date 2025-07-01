@@ -11,9 +11,22 @@
 
   <form action="/peoplepro/public/index.php?action=permiso&method=guardarSolicitud" method="POST" class="formulario">
     <label for="tipo">Tipo de permiso:</label>
-    <input type="text" name="tipo" required>
+    <select name="tipo" id="select-permiso">
+      <option value="Permiso por enfermedad">Permiso por enfermedad</option>
+      <option value="Permiso por maternidad/paternidad">Permiso por maternidad/paternidad</option>
+      <option value="Permiso por matrimonio">Permiso por matrimonio</option>
+      <option value="Permiso por calamidad doméstica">Permiso por calamidad doméstica</option>
+      <option value="Permiso por luto">Permiso por luto</option>
+      <option value="Permiso para citas médicas">Permiso para citas médicas</option>
+      <option value="Permiso para votar">Permiso para votar</option>
+      <option value="Permiso para cumplir con deberes públicos">Permiso para cumplir con deberes públicos</option>
+      <option value="Permiso para funciones sindicales">Permiso para funciones sindicales</option>
+      <option value="Permiso por mudanza">Permiso por mudanza</option>
+      <option value="Permiso por vacaciones">Permiso por vacaciones</option>
+    </select>
     <br><br>
     <button type="submit">Enviar Solicitud</button>
   </form>
+  <script src="/peoplepro/public/js/nav.js"></script>
 </body>
 </html>

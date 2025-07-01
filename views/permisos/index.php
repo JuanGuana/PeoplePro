@@ -2,14 +2,6 @@
 if (session_status() === PHP_SESSION_NONE) session_start();
 $rol = $_SESSION['usuario_rol'] ?? '';
 $usuario_id = $_SESSION['usuario_id'] ?? null;
-
-// Contar permisos pendientes (solo para admin)
-$pendientes = 0;
-foreach ($permisos as $permiso) {
-    if ($permiso['estado'] === 'Pendiente') {
-        $pendientes++;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -29,14 +21,7 @@ foreach ($permisos as $permiso) {
 
   <main class="main-tabla">
 
-    <?php if ($rol === 'admin'): ?>
-      <a class="btn-tabla" href="/peoplepro/public/index.php?action=permiso&method=crear">
-        <i class="bi bi-luggage-fill"></i> Nuevo Permiso
-      </a>
-      <?php if ($pendientes > 0): ?>
-        <p style="color: red; margin-top: 10px;"><strong>🔔 Tienes <?= $pendientes ?> solicitudes pendientes.</strong></p>
-      <?php endif; ?>
-    <?php elseif ($rol === 'usuario'): ?>
+    <?php if ($rol === 'usuario'): ?>
       <a class="btn-tabla" href="/peoplepro/public/index.php?action=permiso&method=solicitud">
         <i class="bi bi-envelope-plus"></i> Solicitar Permiso
       </a>
@@ -78,7 +63,7 @@ foreach ($permisos as $permiso) {
                 <a href="/peoplepro/public/index.php?action=permiso&method=actualizarEstado&id=<?= $permiso['id'] ?>&estado=Aprobado" class="bt-editar">
                   <i class="bi bi-check-circle-fill"></i> Aprobar
                 </a>
-                <a href="/peoplepro/public/index.php?action=permiso&method=actualizarEstado&id=<?= $permiso['id'] ?>&estado=Rechazado" class="bt-eliminar">
+                <a href="/peoplepro/public/index.php?action=permiso&method=actualizarEstado&id=<?= $permiso['id'] ?>&estado=Rechazado" class="bt-rechazar">
                   <i class="bi bi-x-circle-fill"></i> Rechazar
                 </a>
                 <a href="/peoplepro/public/index.php?action=permiso&method=eliminar&id=<?= $permiso['id'] ?>" class="bt-eliminar" onclick="return confirm('¿Eliminar este permiso?')">
