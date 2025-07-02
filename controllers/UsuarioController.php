@@ -16,20 +16,18 @@ class UsuarioController extends Controller {
         $usuarios = $this->userModel->obtenerTodosConArea();
         $areas = $this->userModel->obtenerAreas();
         $this->view('usuarios/index', ['usuarios' => $usuarios, 'areas' => $areas]);
-        
     }
 
     public function crear() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nombre = $_POST['nombre'] ?? '';
             $email = $_POST['email'] ?? '';
-            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $password = $_POST['password'] ?? ''; // ✅ No se hashea aquí
             $rol = $_POST['rol'] ?? 'usuario';
             $area_id = $_POST['area_id'] ?? null;
 
             $this->userModel->crear($nombre, $email, $password, $rol, $area_id);
 
-            // Redirección corregida
             header('Location: /peoplepro/public/index.php?action=usuario');
             exit;
         } else {
