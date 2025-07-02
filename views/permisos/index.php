@@ -16,70 +16,75 @@ $usuario_id = $_SESSION['usuario_id'] ?? null;
 </head>
 <body>
   <?php include __DIR__ . '/../menu/menu.php'; ?><br>
-
+  <!-- titulo principal -->
   <h2 class="titulo-principal">Gestión de Permisos</h2>
 
   <main class="main-tabla">
-
+    <!-- boton para solicitar permiso -->
     <?php if ($rol === 'usuario'): ?>
       <a class="btn-tabla" href="/peoplepro/public/index.php?action=permiso&method=solicitud">
         <i class="bi bi-envelope-plus"></i> Solicitar Permiso
       </a>
     <?php endif; ?>
-
+    <!-- tabla de permisos -->
     <table class="tablas">
       <thead>
         <tr>
           <th>ID</th>
-          <th>Tipo</th>
           <th>Trabajador</th>
+          <th>Tipo</th>
+          <th>Fecha de Inicio</th>
+          <th>Fecha de Fin</th>
           <th>Estado</th>
-          <?php if ($rol === 'admin'): ?>
-            <th>Acciones</th>
-          <?php endif; ?>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <?php if (!empty($permisos)) : ?>
-          <?php foreach ($permisos as $permiso): ?>
-            <tr>
-              <td><?= htmlspecialchars($permiso['id']) ?></td>
-              <td><?= htmlspecialchars(trim($permiso['tipo'])) ?></td>
-              <td><?= htmlspecialchars($permiso['usuario'] ?? 'Sin asignar') ?></td>
-              <td>
-                <?php if ($permiso['estado'] === 'Pendiente'): ?>
-                  <span style="color: orange;"><strong>Pendiente</strong></span>
-                <?php elseif ($permiso['estado'] === 'Aprobado'): ?>
-                  <span style="color: green;"><strong>Aprobado</strong></span>
-                <?php elseif ($permiso['estado'] === 'Rechazado'): ?>
-                  <span style="color: red;"><strong>Rechazado</strong></span>
-                <?php else: ?>
-                  <?= htmlspecialchars($permiso['estado']) ?>
-                <?php endif; ?>
-              </td>
+          <?php if (!empty($permisos)) : ?>
+            <?php foreach ($permisos as $permiso): ?>
+              <?php
+                $esPropietario = ($permiso['usuario_id'] ?? null) == ($_SESSION['usuario_id'] ?? null);
+                $estado = strtolower($permiso['estado']);
+              ?>
+              <tr>
+                <td><?= htmlspecialchars($permiso['id']) ?></td>
+                <td><?= htmlspecialchars($permiso['usuario'] ?? 'Sin asignar') ?></td>
+                <td><?= htmlspecialchars(trim($permiso['tipo'])) ?></td>
+                <td><?= htmlspecialchars($permiso['fecha_inicio']) ?></td>
+                <td><?= htmlspecialchars($permiso['fecha_fin']) ?></td>
+                <td>
+                  <?php
+                    $estado = strtolower(trim($permiso['estado']));
+                    $clase = "estado estado-" . $estado;
+                  ?>
+                  <span class="<?= $clase ?>"><?= htmlspecialchars($permiso['estado']) ?></span>
+                </td>
+                <td>
+                  <?php if ($rol === 'admin'): ?>
+                    <a href="/peoplepro/public/index.php?action=permiso&method=actualizarEstado&id=<?= $permiso['id'] ?>&estado=Aprobado" class="bt-editar">
+                      <i class="bi bi-check-circle-fill"></i> Aprobar
+                    </a>
+                    <a href="/peoplepro/public/index.php?action=permiso&method=actualizarEstado&id=<?= $permiso['id'] ?>&estado=Rechazado" class="bt-rechazar">
+                      <i class="bi bi-x-circle-fill"></i> Rechazar
+                    </a>
+                    <a href="/peoplepro/public/index.php?action=permiso&method=eliminar&id=<?= $permiso['id'] ?>" class="bt-eliminar" onclick="return confirm('¿Eliminar este permiso?')">
+                      <i class="bi bi-trash3-fill"></i> Eliminar
+                    </a>
+                  <?php elseif ($rol === 'usuario' && $esPropietario && $estado === 'pendiente'): ?>
+                    <a href="/peoplepro/public/index.php?action=permiso&method=eliminar&id=<?= $permiso['id'] ?>" class="bt-eliminar" onclick="return confirm('¿Eliminar este permiso?')">
+                      <i class="bi bi-trash3-fill"></i> Eliminar
+                    </a>
+                  <?php endif; ?>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <tr><td colspan="<?= $rol === 'admin' ? 6 : 6 ?>">No hay permisos registrados.</td></tr>
+          <?php endif; ?>
+        </tbody>
 
-              <?php if ($rol === 'admin'): ?>
-              <td>
-                <a href="/peoplepro/public/index.php?action=permiso&method=actualizarEstado&id=<?= $permiso['id'] ?>&estado=Aprobado" class="bt-editar">
-                  <i class="bi bi-check-circle-fill"></i> Aprobar
-                </a>
-                <a href="/peoplepro/public/index.php?action=permiso&method=actualizarEstado&id=<?= $permiso['id'] ?>&estado=Rechazado" class="bt-rechazar">
-                  <i class="bi bi-x-circle-fill"></i> Rechazar
-                </a>
-                <a href="/peoplepro/public/index.php?action=permiso&method=eliminar&id=<?= $permiso['id'] ?>" class="bt-eliminar" onclick="return confirm('¿Eliminar este permiso?')">
-                  <i class="bi bi-trash3-fill"></i> Eliminar
-                </a>
-              </td>
-              <?php endif; ?>
-            </tr>
-          <?php endforeach; ?>
-        <?php else: ?>
-          <tr><td colspan="<?= $rol === 'admin' ? 5 : 4 ?>">No hay permisos registrados.</td></tr>
-        <?php endif; ?>
-      </tbody>
     </table>
   </main>
-
   <script src="/peoplepro/public/js/nav.js"></script>
 </body>
 </html>

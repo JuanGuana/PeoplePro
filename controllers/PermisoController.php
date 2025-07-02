@@ -15,27 +15,6 @@ class PermisoController extends Controller {
         $this->view('permisos/index', ['permisos' => $data]);
     }
 
-    public function crear() {
-        if ($_SESSION['usuario_rol'] !== 'admin') {
-            $this->redirect('/peoplepro/public/index.php?action=permiso');
-            return;
-        }
-
-        $usuarios = $this->model('Usuario')->obtenerTodos();
-        $this->view('permisos/crear', ['usuarios' => $usuarios]);
-    }
-
-    public function guardar() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['usuario_rol'] === 'admin') {
-            $tipo = $_POST['tipo'];
-            $usuario_id = $_POST['usuario_id'];
-            $permiso = $this->model('Permiso');
-            $permiso->crear($tipo, $usuario_id, 'Aprobado');
-        }
-
-        $this->redirect('/peoplepro/public/index.php?action=permiso');
-    }
-
     public function solicitud() {
         if ($_SESSION['usuario_rol'] !== 'usuario') {
             $this->redirect('/peoplepro/public/index.php?action=permiso');
@@ -48,9 +27,12 @@ class PermisoController extends Controller {
     public function guardarSolicitud() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['usuario_rol'] === 'usuario') {
             $tipo = $_POST['tipo'];
+            $fecha_inicio = $_POST['fecha_inicio'] ?? null;
+            $fecha_fin = $_POST['fecha_fin'] ?? null;
             $usuario_id = $_SESSION['usuario_id'];
+
             $permiso = $this->model('Permiso');
-            $permiso->crear($tipo, $usuario_id); // Estado por defecto: Pendiente
+            $permiso->crear($tipo, $usuario_id, 'pendiente', $fecha_inicio, $fecha_fin);
         }
 
         $this->redirect('/peoplepro/public/index.php?action=permiso');

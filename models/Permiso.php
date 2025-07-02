@@ -26,26 +26,16 @@ class Permiso extends Model {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function crear($tipo, $usuario_id, $estado = 'Pendiente') {
-        $stmt = $this->conn->prepare("INSERT INTO $this->table (tipo, usuario_id, estado) VALUES (:tipo, :usuario_id, :estado)");
+    public function crear($tipo, $usuario_id, $estado = 'pendiente', $fecha_inicio = null, $fecha_fin = null) {
+        $stmt = $this->conn->prepare("
+            INSERT INTO $this->table (tipo, usuario_id, estado, fecha_inicio, fecha_fin)
+            VALUES (:tipo, :usuario_id, :estado, :fecha_inicio, :fecha_fin)
+        ");
         $stmt->bindParam(':tipo', $tipo);
         $stmt->bindParam(':usuario_id', $usuario_id);
         $stmt->bindParam(':estado', $estado);
-        return $stmt->execute();
-    }
-
-    public function obtenerPorId($id) {
-        $stmt = $this->conn->prepare("SELECT * FROM $this->table WHERE id = :id");
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-    public function actualizar($id, $tipo, $usuario_id) {
-        $stmt = $this->conn->prepare("UPDATE $this->table SET tipo = :tipo, usuario_id = :usuario_id WHERE id = :id");
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':tipo', $tipo);
-        $stmt->bindParam(':usuario_id', $usuario_id);
+        $stmt->bindParam(':fecha_inicio', $fecha_inicio);
+        $stmt->bindParam(':fecha_fin', $fecha_fin);
         return $stmt->execute();
     }
 

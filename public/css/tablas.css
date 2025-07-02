@@ -1,3 +1,4 @@
+/* estilos de las tablas */
 .main-tabla{
     width: 95%;
     padding: 30px;
@@ -32,6 +33,7 @@
     background-color:white;
     border-bottom: 2px solid var(--primario);
 }
+/* botones de acciones */
 .bt-eliminar, .bt-editar, .bt-rechazar{
     text-decoration: none;
     color: white;
@@ -58,6 +60,23 @@
 .bt-rechazar:hover{
     background-color: rgb(177, 101, 71);
 }
+/* estado de permisos */
+.estado {
+  font-weight: bold;
+  color: white;
+  padding: 8px;
+  border-radius: 10px;
+}
+.estado-pendiente {
+  background-color: lightskyblue;
+}
+.estado-aprobado {
+  background-color: lightgreen;
+}
+.estado-rechazado {
+  background-color: lightcoral;
+}
+/* boton para solicitar permisos */
 .btn-tabla {
     display: inline-block;
     padding: 10px 20px;

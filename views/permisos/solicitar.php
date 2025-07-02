@@ -25,6 +25,12 @@
       <option value="Permiso por vacaciones">Permiso por vacaciones</option>
     </select>
     <br><br>
+    <label for="fecha_inicio">Fecha de inicio:</label>
+    <input type="date" name="fecha_inicio" id="fecha_inicio" required>
+    <br><br>
+    <label for="fecha_fin">Fecha de fin:</label>
+    <input type="date" name="fecha_fin" id="fecha_fin" required>
+    <br><br>
     <button type="submit">Enviar Solicitud</button>
   </form>
   <script src="/peoplepro/public/js/nav.js"></script>
