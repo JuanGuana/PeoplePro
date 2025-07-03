@@ -1,0 +1,162 @@
+body {
+    display: flex;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #A593E0 !important;
+    color: white;
+    min-height: 100vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    width: 240px;
+    background-color: #2d3436;
+    color: #fff;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s;
+    z-index: 1000;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.sidebar .rol {
+    font-size: 14px;
+    color: #bbb;
+    margin-bottom: 30px;
+}
+
+.sidebar nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin: 10px 0;
+    transition: 0.3s;
+}
+
+.sidebar nav a:hover {
+    color: #74b9ff;
+}
+
+.sidebar-hidden {
+    transform: translateX(-260px);
+}
+
+.main {
+    margin-left: 240px;
+    padding: 40px;
+    width: 100%;
+    transition: margin-left 0.3s;
+}
+
+.sidebar.sidebar-hidden~.main,
+.main.sidebar-hidden {
+    margin-left: 0;
+}
+
+.main h1 {
+    margin-bottom: 40px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 280px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #333333;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card.blue {
+    border-left: 6px solid #3498db;
+}
+
+.card.green {
+    border-left: 6px solid #2ecc71;
+}
+
+.card.orange {
+    border-left: 6px solid #f39c12;
+}
+
+.card.red {
+    border-left: 6px solid #e74c3c;
+}
+
+.card.purple {
+    border-left: 6px solid #9b59b6;
+}
+
+.card.teal {
+    border-left: 6px solid #1abc9c;
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+    .main {
+        padding: 20px;
+    }
+
+    .card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-260px);
+        position: fixed;
+        z-index: 1000;
+    }
+
+    .sidebar.sidebar-hidden {
+        transform: translateX(0);
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .cards {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #toggleSidebar {
+        left: 10px !important;
+        top: 10px !important;
+    }
+}

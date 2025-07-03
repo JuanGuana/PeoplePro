@@ -56,5 +56,11 @@ class Visitante extends Model
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute(['id' => $id]);
     }
+    public function contarVisitantesHoy()
+    {
+        $hoy = date('Y-m-d');
+        $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM visitantes WHERE DATE(fecha_visita) = ?");
+        $stmt->execute([$hoy]);
+        return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
 }
-

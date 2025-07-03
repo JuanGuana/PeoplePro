@@ -1,43 +1,133 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeoplePro - Dashboard</title>
+    <link rel="stylesheet" href="/peoplepro/public/css/dashboard.css?v=<?= time(); ?>">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #A593E0;
+        }
+    </style>
 </head>
+
 <body>
-     <header class="header">
-        <div class="izquierda">
-            <button class="menu-hamburguesa">
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-            </button>
-            <div id="logo"></div> 
+    <main class="main">
+
+        <!-- Bienvenida -->
+        <p style="font-size:1.2rem;margin-bottom:20px;">
+            👋 Bienvenido, <strong><?= $_SESSION['usuario_nombre'] ?? 'Administrador' ?></strong>
+        </p>
+
+        <!-- Tarjetas principales -->
+        <h1>Panel de Control</h1>
+        <div class="cards">
+            <a class="card blue" href="/peoplepro/public/index.php?action=usuario">
+                <h3>Usuarios</h3>
+                <p>Gestiona todos los usuarios registrados.</p>
+            </a>
+            <a class="card green" href="/peoplepro/public/index.php?action=beneficio">
+                <h3>Beneficios</h3>
+                <p>Revisa y asigna beneficios.</p>
+            </a>
+            <a class="card orange" href="/peoplepro/public/index.php?action=permiso">
+                <h3>Permisos</h3>
+                <p>Gestiona incapacidades y licencias.</p>
+            </a>
+            <a class="card red" href="/peoplepro/public/index.php?action=visitante">
+                <h3>Visitantes</h3>
+                <p>Registra y controla visitas externas.</p>
+            </a>
+            <a class="card purple" href="/peoplepro/public/index.php?action=capacitacion">
+                <h3>Capacitaciones</h3>
+                <p>Consulta y crea nuevas capacitaciones.</p>
+            </a>
+            <a class="card teal" href="/peoplepro/public/index.php?action=horario">
+                <h3>Gestión de Horarios</h3>
+                <p>Administra y consulta los horarios del personal.</p>
+            </a>
         </div>
-        <form action="#" class="buscador">  
-        <input type="text" placeholder="Buscar..." class="input-buscador">
-        <button type="submit" class="buscador-icono"><i class="bi bi-search"></i></button>
-        </form>
-        <div class="derecha">
-            <p><?= htmlspecialchars($nombre) ?></p>
-            <a href="index.php?action=logout">Cerrar sesión</a>
+
+        <!-- Rejilla de estadísticas dinámicas -->
+        <div class="stats-grid" style="margin-top:40px;">
+
+            <pre style="color:white; background:#000; padding:10px;">
+<?php var_dump($totalUsuarios); ?>
+</pre>
+
+
+            <div class="stat-card">
+                <h2><?= $totalUsuarios ?? 0 ?></h2>
+                <p>Usuarios</p>
+            </div>
+
+            <div class="stat-card">
+                <h2><?= $totalBeneficios ?></h2>
+                <p>Beneficios</p>
+            </div>
+            <div class="stat-card">
+                <h2><?= $totalPermisos ?></h2>
+                <p>Permisos activos</p>
+            </div>
+            <div class="stat-card">
+                <h2><?= $totalVisitantes ?></h2>
+                <p>Visitantes hoy</p>
+            </div>
         </div>
-    </header>
-    <nav class="nav-desplegable" id="nav-desplegable">
-        <ul class="nav-lista">
-            <li><a href="/peoplepro/public/index.php?action=dashboard">Inicio</a></li>
-            <li><a href="/peoplepro/public/index.php?action=usuario">Usuarios</a></li>
-            <li><a href="/peoplepro/public/index.php?action=permiso">Permisos</a></li>
-            <li><a href="/peoplepro/public/index.php?action=beneficio">Beneficios</a></li>
-            <li><a href="/peoplepro/public/index.php?action=visitante">Visitantes Externos</a></li>
-            <li><a href="/peoplepro/public/index.php?action=documento">Documentos</a></li>
-            <li><a href="/peoplepro/public/index.php?action=capacitacion">Capacitaciones</a></li>
-            <li><a href="/peoplepro/public/index.php?action=horario">Horarios</a></li>
-            <li><a href="/peoplepro/public/index.php?action=area">Áreas</a></li>
-        </ul>
-    </nav>
-    <h1 class="tituloBienvenida">Welcome, <?= htmlspecialchars($nombre) ?>! 👋</h1>
-  <script src="/peoplepro/public/js/nav.js"></script>
+
+
+        <!-- Gráfica de ejemplo -->
+        <div style="background:#fff;border-radius:8px;padding:24px;margin:32px 0;box-shadow:0 2px 8px rgba(44,62,80,0.08);">
+            <canvas id="myChart" height="80"></canvas>
+        </div>
+
+        <!-- Actividad reciente -->
+        <div style="background:#fff;border-radius:8px;padding:24px;margin-bottom:32px;box-shadow:0 2px 8px rgba(44,62,80,0.08);">
+            <h3 style="color:#6c5ce7;margin-bottom:16px;">Actividad reciente</h3>
+            <ul style="color:#636e72;">
+                <li>Nuevo usuario registrado: <strong>Juan Pérez</strong> (hace 2 horas)</li>
+                <li>Permiso aprobado para <strong>Ana Gómez</strong> (hace 4 horas)</li>
+                <li>Nuevo visitante: <strong>Empresa XYZ</strong> (hoy)</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <!-- Script para la gráfica -->
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'],
+                datasets: [{
+                    label: 'Usuarios activos',
+                    data: [12, 19, 14, 17, 22],
+                    borderColor: '#6c5ce7',
+                    backgroundColor: 'rgba(108,92,231,0.1)',
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
 </body>
+
 </html>
