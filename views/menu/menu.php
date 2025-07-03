@@ -33,17 +33,15 @@ $rol = $_SESSION['usuario_rol'] ?? '';
 
     <!-- Cerrar sesión -->
     <div class="derecha">
-        <a href="/peoplepro/public/index.php?action=logout">Cerrar sesión</a>
     </div>
 </header>
 
 <!-- Menú desplegable -->
 <nav class="nav-desplegable" id="nav-desplegable">
     <ul class="nav-lista">
-        <li><a href="/peoplepro/public/index.php?action=dashboard">Inicio</a></li>
-
+        <li class="first-li"><a href="/peoplepro/public/index.php?action=dashboard">Inicio</a></li>
         <?php if ($rol === 'admin'): ?>
-            <li><a href="/peoplepro/public/index.php?action=usuario">Usuarios</a></li>
+            <li><a href="/peoplepro/public/index.php?action=usuario">Empleados</a></li>
             <li><a href="/peoplepro/public/index.php?action=permiso">Permisos</a></li>
             <li><a href="/peoplepro/public/index.php?action=beneficio">Beneficios</a></li>
             <li><a href="/peoplepro/public/index.php?action=visitante">Visitantes Externos</a></li>
@@ -51,7 +49,12 @@ $rol = $_SESSION['usuario_rol'] ?? '';
             <li><a href="/peoplepro/public/index.php?action=capacitacion">Capacitaciones</a></li>
             <li><a href="/peoplepro/public/index.php?action=horario">Horarios</a></li>
             <li><a href="/peoplepro/public/index.php?action=area">Áreas</a></li>
-
+            <hr>
+            <div class="contenedor-acciones-rapidas">
+                <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesión</a>
+                <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-gear-fill"></i>  Configuración</a>
+            </div>
+            <hr>
         <?php elseif ($rol === 'usuario'): ?>
             <li><a href="/peoplepro/public/index.php?action=horario">Mis Horarios</a></li>
             <li><a href="/peoplepro/public/index.php?action=permiso">Mis Permisos</a></li>
@@ -59,6 +62,12 @@ $rol = $_SESSION['usuario_rol'] ?? '';
             <li><a href="/peoplepro/public/index.php?action=documento">Documentos</a></li>
             <li><a href="/peoplepro/public/index.php?action=beneficio">Beneficios</a></li>
             <li><a href="/peoplepro/public/index.php?action=area">Áreas</a></li>
+            <hr>
+            <div class="contenedor-acciones-rapidas">
+                <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesión</a>
+                <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-gear-fill"></i>  Configuración</a>
+            </div>
+            <hr>
         <?php endif; ?>
     </ul>
 </nav>

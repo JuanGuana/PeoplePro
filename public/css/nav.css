@@ -99,7 +99,7 @@ body {
     width: 400px;
     height: 100vh;
     padding: 60px 0;
-    background-color: var(--fondo-header);
+    background-color: var(--color-menu-izquierdo);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -108,6 +108,8 @@ body {
     pointer-events: none;
     transition: transform 0.5s ease, opacity 0.5s ease;
     z-index: 7777;
+    overflow: scroll;
+    scrollbar-width: none; /* Firefox */
 }
 .nav-desplegable.open{
     transform: translateX(0);
@@ -141,7 +143,7 @@ body {
 .nav-lista  a{
     text-decoration: none;
     color: var(--texto-primario);
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-family: "Libre Franklin", sans-serif;
     font-weight: 700;
 }
@@ -149,6 +151,9 @@ body {
 .nav-lista a:hover{
     color: var(--color-icono-menu);
     text-decoration: underline 2px var(--color-icono-menu);
+}
+.first-li{
+    margin-top: 6vh !important;
 }
 .nav-lista li, .nav-lista a, .nav-lista {
     width: 250px;
@@ -245,11 +250,22 @@ body {
     display: block;
 }
 /* foto de perfil del usuario el cual abre el menu */
-.bi-button{
-    background-color: transparent;
-    border: none;
-    margin-left:5px;
+.cerrar-sesion{
+    font-size: 1.1rem !important;
+    text-align: center;
 }
-.bi-gear{
-    color: var(--color-icono-menu); 
+.cerrar-sesion:hover{
+    opacity: 0.3 !important;
+    color: var(--texto-primario)  !important;
+    text-decoration: none !important;
+}
+hr {
+    opacity: 0.3 !important;
+    height: 1px !important;
+    border: none !important;
+}
+.contenedor-acciones-rapidas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

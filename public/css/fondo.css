@@ -9,6 +9,7 @@
         --box-shadow:trasparent;
         --color-buscador:#bdc2c4;
         --primario:#b895e6;
+        --color-menu-izquierdo: rgba(0, 0, 0, 0.3);
     }
 }
 @media (prefers-color-scheme: light) {
@@ -22,6 +23,7 @@
         --box-shadow: #bdc2c4 0px 0px 2.5px;
         --color-buscador:#C6C6C6;
         --primario:#b895e6;
+        --color-menu-izquierdo: rgba(255, 255, 255, 0.8);
     }
     
 }

@@ -16,12 +16,6 @@ $(document).ready( function () {
                 extend: 'colvis',
                 text: 'Columnas',
                 init: function(api, node, config) {
-                $(node).css({
-                    backgroundColor: 'lightblue',
-                    color: 'white',
-                    borderRadius: '8px',
-                    border: 'none',
-                });
                 }
             }
             ]
