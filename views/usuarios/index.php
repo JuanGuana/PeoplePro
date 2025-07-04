@@ -75,7 +75,7 @@
                             <td><?= htmlspecialchars($usuario['nombre']) ?></td>
                             <td><?= htmlspecialchars($usuario['email']) ?></td>
                             <td><?= htmlspecialchars($usuario['rol']) ?></td>
-                            <td><?= htmlspecialchars($usuario['area_nombre'] ?? 'Sin área') ?></td>
+                            <td><?= htmlspecialchars($usuario['nombre_area'] ?? 'Sin asignar') ?></td>
                             <td>
                                 <a class="bt-editar" title="Editar" href="/peoplepro/public/index.php?action=usuario&method=editar&id=<?= $usuario['id'] ?>">
                                     <i class="bi bi-pencil-fill"></i> Editar

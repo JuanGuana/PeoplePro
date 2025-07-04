@@ -1,0 +1,109 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--fondo) !important;
+  color: var(--texto-primario) !important;
+  padding: 20px;
+}
+
+form {
+  max-width: 500px;
+  margin: 20px auto;
+  background-color: var(--fondo-header);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--texto-primario);
+    margin: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc !important;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border: 2px solid lightblue !important;
+    box-shadow: 0 0 5px rgba(173, 216, 230, 0.5) !important;
+    outline: none;
+}
+
+button,
+input[type="submit"]{
+  background-color: lightgreen;
+  color: #fff;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px !important;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  width: 50%;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: rgb(104, 170, 104);
+}
+.btn-volver {
+  background-color: lightcoral;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 10px !important;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-right: 25%;
+}
+.btn-volver:hover {
+  background-color: rgb(184, 99, 99);
+}
+/* Mensajes */
+.error {
+  color: #e74c3c;
+  background-color: #fdecea;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.success {
+  color: #2ecc71;
+  background-color: #eafaf1;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}

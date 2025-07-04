@@ -3,41 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Asignar Nuevo Horario</title>
-  <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
-  <link rel="stylesheet" href="/peoplepro/public/css/horario.css">
+  <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
+  <link rel="stylesheet" href="/peoplepro/public/css/formularios.css">
+    <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- botstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
 </head>
 <body>
-  <!-- Header igual que en otros módulos -->
-  <header class="header">
-    <div class="izquierda">
-      <button class="menu-hamburguesa">
-        <span class="linea"></span>
-        <span class="linea"></span>
-        <span class="linea"></span>
-      </button>
-      <div id="logo"></div>
-    </div>
-    <form action="#" class="buscador">
-      <input type="text" placeholder="Buscar" class="input-icono">
-    </form>
-    <div class="derecha">
-      <p><?= htmlspecialchars($_SESSION["usuario"] ?? 'Usuario') ?></p>
-    </div>
-  </header>
-
-    <nav class="nav-desplegable" id="nav-desplegable">
-        <ul class="nav-lista">
-            <li><a href="/peoplepro/public/index.php?action=dashboard">Inicio</a></li>
-            <li><a href="/peoplepro/public/index.php?action=usuario">Usuarios</a></li>
-            <li><a href="/peoplepro/public/index.php?action=permiso">Permisos</a></li>
-            <li><a href="/peoplepro/public/index.php?action=beneficio">Beneficios</a></li>
-            <li><a href="/peoplepro/public/index.php?action=visitante">Visitantes Externos</a></li>
-            <li><a href="/peoplepro/public/index.php?action=documento">Documentos</a></li>
-            <li><a href="/peoplepro/public/index.php?action=capacitacion">Capacitaciones</a></li>
-            <li><a href="/peoplepro/public/index.php?action=horario">Horarios</a></li>
-            <li><a href="/peoplepro/public/index.php?action=area">Áreas</a></li>
-        </ul>
-    </nav>
     <main class="main-horario"> 
     <h2 class="titulo-horario">Asignar Nuevo Horario</h2>
     
@@ -80,9 +55,8 @@
         <label for="observaciones">Observaciones:</label>
         <textarea name="observaciones" id="observaciones" rows="3" placeholder="Opcional"></textarea>
 
-        <button type="submit">Guardar</button>
         <a class="btn-volver" href="/peoplepro/public/index.php?action=horario&method=index">Cancelar</a>
-        
+        <button type="submit">Guardar</button>
     </form>
 </main>
 
