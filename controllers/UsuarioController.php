@@ -10,6 +10,7 @@ class UsuarioController extends Controller {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
+        $this->requireLogin();
     }
 
     public function index() {

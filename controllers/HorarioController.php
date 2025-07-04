@@ -8,6 +8,7 @@ class HorarioController extends Controller {
     public function __construct() {
         $this->model = new Horario();
         if (session_status() === PHP_SESSION_NONE) session_start();
+        $this->requireLogin();
     }
 
     public function index() {

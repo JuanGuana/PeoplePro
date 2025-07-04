@@ -6,8 +6,9 @@ class DocumentoController extends Controller {
     private $documento;
 
     public function __construct() {
-        $this->documento = new Documento();
         if (session_status() === PHP_SESSION_NONE) session_start();
+        $this->requireLogin();
+        $this->documento = new Documento();
     }
 
     public function index() {

@@ -7,7 +7,10 @@ class AreaController extends Controller {
 
     public function __construct() {
         $this->area = new Area();
+
         if (session_status() === PHP_SESSION_NONE) session_start();
+        
+        $this->requireLogin();
     }
 
     public function index() {

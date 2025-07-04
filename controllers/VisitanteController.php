@@ -7,11 +7,14 @@ class VisitanteController extends Controller
 
     public function __construct()
     {
+       if (session_status() === PHP_SESSION_NONE) session_start();
+        $this->requireLogin(); // 🔐 Protege todas las acciones
         $this->visitanteModel = $this->model('Visitante');
     }
 
     public function index()
     {
+        $this->requireLogin();
         $visitantes = $this->visitanteModel->obtenerTodos();
         $this->view('visitantes/index', ['visitantes' => $visitantes]);
     }

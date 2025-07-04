@@ -16,5 +16,15 @@ class Controller {
         header("Location: $url");
         exit;
     }
-    
+
+    public function requireLogin() {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if (!isset($_SESSION['usuario_id'])) {
+        $this->redirect('/peoplepro/public/index.php?action=login');
+    }
+}
+
 }

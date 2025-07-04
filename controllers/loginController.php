@@ -7,21 +7,27 @@ class LoginController extends Controller {
     private $usuario;
 
     public function __construct() {
+        if (session_status() === PHP_SESSION_NONE) session_start();
         $this->usuario = new Usuario();
     }
 
-    // Muestra el login y procesa el intento de login
     public function index() {
+        if (isset($_SESSION['usuario_id'])) {
+            $this->redirect('/peoplepro/public/index.php?action=dashboard');
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'] ?? '';
             $password = $_POST['password'] ?? '';
 
+            if (empty($email) || empty($password)) {
+                $this->view('login/index', ['error' => 'Debes llenar todos los campos.']);
+                return;
+            }
+
             $resultado = $this->usuario->autenticar($email, $password);
 
             if (isset($resultado['usuario'])) {
-                if (session_status() === PHP_SESSION_NONE) session_start();
-
-                // ✅ Guardar datos del usuario en la sesión
                 $_SESSION['usuario_id'] = $resultado['usuario']['id'];
                 $_SESSION['usuario_nombre'] = $resultado['usuario']['nombre'];
                 $_SESSION['usuario_rol'] = $resultado['usuario']['rol'];
@@ -31,16 +37,13 @@ class LoginController extends Controller {
                 $this->view('login/index', ['error' => $resultado['error']]);
             }
         } else {
-            // Mostrar formulario de login
             $this->view('login/index');
         }
     }
 
-    // Envía el token de recuperación
     public function enviarToken() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'] ?? '';
-
             $usuario = $this->usuario->buscarPorEmail($email);
 
             if ($usuario) {
@@ -48,8 +51,7 @@ class LoginController extends Controller {
                 $expiracion = date('Y-m-d H:i:s', strtotime('+1 hour'));
 
                 $this->usuario->guardarToken($usuario['id'], $token, $expiracion);
-
-                enviarCorreoRecuperacion($email, $token); // función definida en helpers/mailer.php
+                enviarCorreoRecuperacion($email, $token);
 
                 $this->view('login/index', [
                     'mensaje' => '📧 Se envió un enlace de recuperación a tu correo.'
@@ -62,11 +64,10 @@ class LoginController extends Controller {
         }
     }
 
-    // Muestra el formulario para escribir nueva contraseña
     public function resetear() {
         $token = $_GET['token'] ?? '';
 
-        if (empty($token)) {
+        if (!preg_match('/^[a-f0-9]{64}$/', $token)) {
             echo "❌ Token inválido.";
             return;
         }
@@ -74,7 +75,6 @@ class LoginController extends Controller {
         $this->view('login/resetear', ['token' => $token]);
     }
 
-    // Actualiza la contraseña en la base de datos
     public function actualizarPassword() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $token = $_POST['token'] ?? '';
@@ -94,12 +94,5 @@ class LoginController extends Controller {
                 ]);
             }
         }
-    }
-
-    // Cierra sesión
-    public function logout() {
-        session_start();
-        session_destroy();
-        $this->redirect('/peoplepro/public/index.php?action=login');
     }
 }

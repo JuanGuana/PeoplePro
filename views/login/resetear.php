@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Restablecer Contraseña</title>
-    <link rel="stylesheet" href="/peoplepro/public/css/estilos.css"> <!-- si tienes un CSS -->
+    <link rel="stylesheet" href="/peoplepro/public/css/estilos.css">
 </head>
 <body>
     <div class="container">

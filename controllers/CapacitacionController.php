@@ -6,8 +6,9 @@ class CapacitacionController extends Controller {
     private $model;
 
     public function __construct() {
-        $this->model = new Capacitacion();
         if (session_status() === PHP_SESSION_NONE) session_start();
+        $this->requireLogin();
+        $this->model = new Capacitacion();
     }
 
     public function index() {

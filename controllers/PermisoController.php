@@ -2,8 +2,12 @@
 require_once __DIR__ . '/../core/Controller.php';
 
 class PermisoController extends Controller {
-    public function index() {
+    public function __construct() {
         if (session_status() === PHP_SESSION_NONE) session_start();
+        $this->requireLogin(); // 🔐 Protege todo el controlador
+    }
+
+    public function index() {
         $permiso = $this->model('Permiso');
 
         if ($_SESSION['usuario_rol'] === 'usuario') {

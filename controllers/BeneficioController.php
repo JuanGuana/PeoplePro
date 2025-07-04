@@ -6,8 +6,9 @@ class BeneficioController extends Controller {
     private $model;
 
     public function __construct() {
-        $this->model = new Beneficio();
         if (session_status() === PHP_SESSION_NONE) session_start();
+        $this->requireLogin();
+        $this->model = new Beneficio();
     }
 
     public function index() {
