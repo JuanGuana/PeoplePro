@@ -11,7 +11,10 @@ $rol = $_SESSION['usuario_rol'] ?? '';
   <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
   <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
   <link rel="stylesheet" href="/peoplepro/public/css/tablas.css">
+  <!-- botstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <!-- icono de la pestaña -->
+  <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
 </head>
 <body>
   <?php include __DIR__ . '/../menu/menu.php'; ?><br>

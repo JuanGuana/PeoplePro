@@ -18,6 +18,8 @@ $rol = $_SESSION['usuario_rol'] ?? '';
 
   <!-- Íconos Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <!-- icono de la pestaña -->
+  <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
 </head>
 <body>
 

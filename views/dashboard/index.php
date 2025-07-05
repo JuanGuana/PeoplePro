@@ -10,6 +10,8 @@ $nombre = $data['nombre'] ?? 'Invitado';
     <title>Dashboard</title>
     <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
     <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
+    <!-- icono de la pestaña -->
+    <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
 </head>
 <body>
     <?php include __DIR__ . '/../menu/menu.php'; ?>

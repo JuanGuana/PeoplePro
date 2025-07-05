@@ -11,7 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <!-- botstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <!-- icono de la pestaña -->
+    <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
+    <title>Editar Usuario</title>
 </head>
 <body>
     <h2>Editar Usuario</h2>

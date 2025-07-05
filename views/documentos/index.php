@@ -10,6 +10,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
     <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
     <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
     <link rel="stylesheet" href="/peoplepro/public/css/tablas.css">
+    <!-- icono de la pestaña -->
+    <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
 </head>
 <body>
 <?php include __DIR__ . '/../menu/menu.php'; ?><br>

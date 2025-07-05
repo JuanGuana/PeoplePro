@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Restablecer Contraseña</title>
     <link rel="stylesheet" href="/peoplepro/public/css/estilos.css">
+    <!-- icono de la pestaña -->
+    <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
 </head>
 <body>
     <div class="container">

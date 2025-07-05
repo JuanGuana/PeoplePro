@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
     <link rel="stylesheet" href="/peoplepro/public/css/usuario.css">
     <link rel="stylesheet" href="/peoplepro/public/css/tablas.css">
+    <!-- icono de la pestaña -->
+    <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
     
 
 </head>

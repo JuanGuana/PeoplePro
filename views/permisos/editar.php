@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Editar Permiso</title>
   <link rel="stylesheet" href="/peoplepro/public/css/formularios.css">
+  <!-- icono de la pestaña -->
+    <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
 </head>
 <body>
   <h2>Editar Permiso</h2>
