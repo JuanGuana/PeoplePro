@@ -10,16 +10,31 @@ $(document).ready( function () {
         { responsivePriority: 2, targets: -1 }
     ],
     layout: {
-        topStart: {
-           buttons: [
+    topStart: {
+        buttons: [
+            {
+                extend: 'copy',
+                className: 'btn-copy btn',
+                text: '<i class="bi bi-clipboard-check"></i> Copiar',
+            },
+            {
+                extend: 'excel',
+                className: 'btn-excel btn',
+                text: '<i class="bi bi-filetype-exe"></i> Excel',
+            },
+            {
+                extend: 'pdf',
+                className: 'btn-pdf btn',
+                text: '<i class="bi bi-filetype-pdf"></i> PDF',
+            },
             {
                 extend: 'colvis',
-                text: 'Columnas',
-                init: function(api, node, config) {
-                }
+                className: 'btn-colvis btn',
+                text: '<i class="bi bi-sort-alpha-down"></i> Filtrar columnas',
             }
-            ]
-        }
-    },
+        ]
+    }
+}
+
 });
 });
