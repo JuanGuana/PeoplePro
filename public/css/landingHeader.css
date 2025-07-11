@@ -1,5 +1,5 @@
 :root {
-    --primario: #6C5CE7;
+    --primario: #5433eb;
     --secundario:lightblue;
     --texto-primario: #2D3436;
     --texto-secundario: #636E72;
@@ -59,7 +59,7 @@
     transition: all 0.5s linear;
 }
 .landing-nav a:hover {
-    text-decoration: 2px #A593E0 underline ;
+    text-decoration: 2px #5433eb underline ;
     transition: all 0.3s linear;
 }
 /* boton de login */
