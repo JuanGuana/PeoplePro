@@ -53,8 +53,6 @@
         <button type="submit">Crear usuario <i class="bi bi-person-plus-fill"></i></button>
     </form>
 
-
-
 <br>
 
     <main class="main-usuario">
