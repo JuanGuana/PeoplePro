@@ -31,6 +31,9 @@
 
         <label>Fecha y hora de ingreso:</label><br>
         <input type="datetime-local" name="fecha_ingreso" required><br><br>
+        
+        <label>Fecha y hora de salida:</label><br>
+        <input type="datetime-local" name="fecha_salida"><br><br
 
         <label>Motivo:</label><br>
         <textarea name="motivo" rows="3" cols="40"></textarea><br><br>
