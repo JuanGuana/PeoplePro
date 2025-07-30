@@ -5,8 +5,11 @@
     --texto-secundario: #636E72;
     --fondo-oscuro:#0F0F0F;
 }
+
 body{
     background-color:var(--fondo-oscuro);
+    margin: 0;
+    padding: 0;
 }
 /* menu hamburgesa  */
 .menu-hamburguesa {
@@ -75,12 +78,13 @@ body{
     z-index: 2;
 }
 .titulo-landing{
-    font-size: 8vh;
+    font-size: 7vh;
     color: rgb(147, 197, 214);
-    text-align: center;
-    margin-bottom: 20px;
+    text-align: center !important;
     width: 90%;
     z-index: 2;
+    margin-bottom: 20px;
+    margin: 0 auto;
 }
 .titulo-landing span{
     text-decoration: underline var(--primario);
@@ -161,18 +165,18 @@ body{
     height: auto;
 }
 .tarjeta1 h5{
-    font-size: 1.3rem;
+    font-size: 2rem;
     text-align: center;
     margin-bottom: 10px;
 }
 .tarjeta1 p{
-    font-size: .9rem;
+    font-size: 90%;
     text-align: center;
     margin-bottom: 10px;
     width: 90%;
 }
 .tarjeta1 img{
-    width: 60px; height: 60px;
+    width: 35%; height: auto;
     margin-bottom: 10px;
 }
 .tarjeta1{
@@ -182,7 +186,8 @@ body{
     padding: 10px;
     border-radius: 5px;
     border: 1px solid var(--primario);
-    width: 350px; 
+    width: 20VW;
+    height: 50vh;
     margin-top: 20px;
     color: white;
 }
@@ -202,35 +207,48 @@ body{
     padding: 0 20px;
 }
 /* formulario de contactanos */
-.fondo-formulario{
+.contenedor-contacto{
+    width: 100%;
+    height: 60vh;
+    display: flex;
     background-color: rgba(68, 77, 80, 0.3);
-    width: 30%;
-    height: 60%;
+    margin: 10px 0 0 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-bottom: 10px;
+}
+.fondo-formulario{
+    width: 80%;
+    height: 100%;
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .formulario-contacto{
-    width: 90%;
-    height: auto;
+    width: 40%;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
+}
+.img-formulario{
+    width: 30% !important;
+    height: auto !important;
+    margin-top: 5%;
 }
 .input-contacto{
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    width: 70%;
+    padding: 10px; 
     display: flex;
     flex-direction: column;
     font-weight: 600;
 }
 .form-control{
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     border-radius: 5px;
     border: none;
     background-color: rgb(233, 231, 231);
@@ -238,6 +256,7 @@ body{
     margin-top:5px;
 }
 .form-label{
+    font-size: 1rem;
     font-weight: 600;
     color: var(--secundario);
 }
@@ -246,41 +265,22 @@ body{
 }
 /* boton de contacto */
 .boton-contacto{
-    width: 50%;
+    width: 30%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid var(--secundario);
     background-color: transparent;
     color: var(--secundario);
     font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-top: 5px;
 }
 .boton-contacto:hover{
     background-color: var(--secundario);
     color: white;
     transition: all 0.3s ease;
-}
-/* footer */
-.landing-footer{
-    width: 100%;
-    height: 100px;
-    background-color: rgba(68, 77, 80, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-.landing-footer p{
-    font-size: 1rem;
-    text-align: center;
-    margin: 0 60px 0 10px;
-}
-.icono-footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 20px;
 }
 .landing-nav.open {
         display: flex;

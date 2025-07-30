@@ -24,7 +24,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
                 <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#contacto">contactanos</a></li>
+                <li><a href="#contacto">Contáctanos</a></li>
             </ul>
         </nav>
         <a href="/peoplepro/views/login/index.php" class="login">iniciar sesión</a>
@@ -38,7 +38,7 @@
                 </p>
                  <button class="boton-home"><a href="#contacto">Conoce Más</a></button>
             </div>
-            <img src="/peoplepro/public/img/home.png" alt="">
+            <img src="/peoplepro/public/img/perro-home.gif" alt="">
         </section>
         <section id="sobre-nosotros" class="contenedor">
             <img src="/peoplepro/public/img/nosotros.gif" alt=""> 
@@ -82,11 +82,10 @@
                 </div>
             </div>
         </section>
-        <section id="contacto" class="contenedor">
-            <div class="contenedor-contacto">
-                <h2 class="titulo-landing">Contáctanos</h2>
-
+        <h2 class="titulo-landing">Contáctanos</h2>
+        <section id="contacto" class="contenedor-contacto">
                     <div class="fondo-formulario">
+                        <img class="img-formulario" src="/peoplepro/public/img/formularioLanding.gif" alt="">
                         <form action="#" method="post" class="formulario-contacto">
                         <div class="input-contacto">
                             <label for="nombre" class="form-label">Nombre:</label>
@@ -103,26 +102,8 @@
                         <button type="submit" class="boton-contacto">Enviar</button>
                         </form>
                     </div>
-  
-            </div>
         </section>
     </main>
-    <footer class="landing-footer">
-        <div class="contenedor-footer">
-            <div class="icono-footer">
-                <img src="/peoplepro/public/img/email.png" alt="correo" width="30px">
-                <p>contacto@peoplepro.com</p>
-            </div>
-            <div class="icono-footer">
-                <img src="/peoplepro/public/img/celular.png" alt="celular" width="30px">
-                <p>+57 300 000 0000</p>
-            </div>
-            <div class="icono-footer">
-                <img src="/peoplepro/public/img/ubicacion.png" alt="ubicacion" width="30px">
-                <p>Calle Ficticia #123, Bogotá, Colombia</p>
-            </div>
-        </div>
-    </footer>
     <script src="/peoplepro/public/js/landing.js"></script>
 </body>
 </html>
