@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
 </head>
 <body>
-    <header class="landing-header">
+     <header class="landing-header">
         <button class="menu-hamburguesa">
                 <span class="linea"></span>
                 <span class="linea"></span>
@@ -29,7 +29,7 @@
         </nav>
         <a href="/peoplepro/views/login/index.php" class="login">iniciar sesión</a>
     </header>
-    <main>
+    <!--<main>
         <section id="home" class="contenedor">
             <div class="contenedor-texto">
                 <h1 class="titulo-landing">Centraliza tu gestión humana con <span>PeoplePro</span></h1>
@@ -103,7 +103,71 @@
                         </form>
                     </div>
         </section>
-    </main>
-    <script src="/peoplepro/public/js/landing.js"></script>
+    </main>--> 
+    <section class="home">
+        <div>
+            <h2>Gestionar personas no debería ser complicado</h2>
+            <p></p>
+        </div>
+        <img src="" alt="">
+    </section>
+
+    <section class="introduccion-del-software">
+        <div>
+            <h2>Herramientas claras para una gestión humana eficiente</h2>
+            <p>¿Necesitas tener claridad sobre quién trabaja en qué área? ¿Coordinar horarios, registrar visitantes o informar sobre capacitaciones sin perder el control? Este sistema te permite centralizar toda la información del personal en una sola plataforma, ahorrando tiempo y mejorando la organización del día a día en tu empresa. Úsalo como una herramienta de apoyo para tomar decisiones claras, rápidas y basadas en datos.</p>
+        </div>
+        <img src="" alt="">
+    </section>
+
+    <section class="servicios">
+    
+        <div class="recuadro-informativo">
+            <h2>Asignación de empleados por áreas</h2>
+            <p>Organiza tu talento según su función. Asigna cada empleado al área correspondiente y obtén una visualización clara del equipo en tiempo real, lista para tomar decisiones acertadas.</p>
+        </div>
+        <div class="recuadro-informativo">
+            <h2>Registro de visitantes externos</h2>
+            <p>Controla quién entra y sale. Registra visitantes fácilmente, con nombre, motivo y hora de ingreso. Mejora la seguridad y ten todo el historial a la mano cuando lo necesites.</p>
+        </div>
+        <div class="recuadro-informativo">
+            <h2>Gestión de horarios y capacitaciones</h2>
+            <p>Crea y ajusta horarios de trabajo en minutos. Publica anuncios de capacitaciones para todo el equipo o por áreas específicas, y mantén a tu personal siempre informado y alineado.</p>
+        </div>
+    </section>
+
+    <section class="desarrolladores">
+        <div class="contenedor-integrantes">
+            <h3></h3>
+            <img src="" alt="">
+        </div>
+        <div class="contenedor-integrantes">
+            <h3></h3>
+            <img src="" alt="">
+        </div>
+        <div class="contenedor-integrantes">
+            <h3></h3>
+            <img src="" alt="">
+        </div>
+    </section>
+    <section class="contacto">
+        <img src="" alt="">
+        <form action="">
+            <div class="input-contacto">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Tu nombre completo">
+            </div>
+            <div class="input-contacto">
+                <label for="correo" class="form-label">Correo:</label>
+                <input type="email" class="form-control" id="correo" placeholder="">
+            </div>
+            <div class="input-contacto">
+                <label for="mensaje" class="form-label">Mensaje:</label>
+                <textarea class="form-control" id="mensaje" rows="4" placeholder=""></textarea>
+            </div>
+            <button type="submit" class="boton-contacto">Enviar</button>
+        </form>
+    </section>
+    <script src="/peoplepro/public/js/landing.js"></script> 
 </body>
 </html>
