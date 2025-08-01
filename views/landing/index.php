@@ -165,7 +165,7 @@
             </div>
             <button type="submit" class="boton-contacto">Enviar</button>
         </form>
-        <img src="/peoplepro/public/img/contacto.gif" class="contacto-imagen" alt="Contacto">
+        <img src="/peoplepro/public/img/contacto.gif" class="contacto-img" alt="Contacto">
     </section>
     <script src="/peoplepro/public/js/landing.js"></script> 
 </body>
