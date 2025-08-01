@@ -21,8 +21,8 @@
         <p class="logo"><a href="#">peoplepro</a></p>
         <nav class="landing-nav">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#software">Sobre nosotros</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#contacto">Contáctanos</a></li>
             </ul>
@@ -104,35 +104,34 @@
                     </div>
         </section>
     </main>--> 
-    <section class="home">
-        <div>
-            <h2>Gestionar personas no debería ser complicado</h2>
-            <p></p>
-        </div>
-        <img src="" alt="">
+    <section class="home" id="home">
+        <h2 class="home-titulo">Gestionar personas no debería ser complicado</h2>
+        <img src="/peoplepro/public/img/perro-home.gif" class="home-imagen" alt="Perro animado">
     </section>
 
-    <section class="introduccion-del-software">
-        <div>
+    <section class="introduccion-del-software" id="software">
+        <div class="software-contenedor-texto">
             <h2>Herramientas claras para una gestión humana eficiente</h2>
             <p>¿Necesitas tener claridad sobre quién trabaja en qué área? ¿Coordinar horarios, registrar visitantes o informar sobre capacitaciones sin perder el control? Este sistema te permite centralizar toda la información del personal en una sola plataforma, ahorrando tiempo y mejorando la organización del día a día en tu empresa. Úsalo como una herramienta de apoyo para tomar decisiones claras, rápidas y basadas en datos.</p>
         </div>
-        <img src="" alt="">
+        <img src="/peoplepro/public/img/informacion.gif" class="informacion-img">
     </section>
 
-    <section class="servicios">
-    
+    <section class="servicios" id="servicios">
         <div class="recuadro-informativo">
             <h2>Asignación de empleados por áreas</h2>
             <p>Organiza tu talento según su función. Asigna cada empleado al área correspondiente y obtén una visualización clara del equipo en tiempo real, lista para tomar decisiones acertadas.</p>
+            <img src="/peoplepro/public/img/areas.gif" alt="">
         </div>
         <div class="recuadro-informativo">
             <h2>Registro de visitantes externos</h2>
             <p>Controla quién entra y sale. Registra visitantes fácilmente, con nombre, motivo y hora de ingreso. Mejora la seguridad y ten todo el historial a la mano cuando lo necesites.</p>
+            <img src="/peoplepro/public/img/visitante.gif" alt="">
         </div>
         <div class="recuadro-informativo">
             <h2>Gestión de horarios y capacitaciones</h2>
             <p>Crea y ajusta horarios de trabajo en minutos. Publica anuncios de capacitaciones para todo el equipo o por áreas específicas, y mantén a tu personal siempre informado y alineado.</p>
+            <img src="/peoplepro/public/img/time.gif" alt="">
         </div>
     </section>
 
@@ -151,22 +150,22 @@
         </div>
     </section>
     <section class="contacto">
-        <img src="" alt="">
-        <form action="">
-            <div class="input-contacto">
+        <form action="" method="post" class="formulario-contacto">
+            <div class="input-contacto" id="contacto">
                 <label for="nombre" class="form-label">Nombre:</label>
                 <input type="text" class="form-control" id="nombre" placeholder="Tu nombre completo">
             </div>
             <div class="input-contacto">
                 <label for="correo" class="form-label">Correo:</label>
-                <input type="email" class="form-control" id="correo" placeholder="">
+                <input type="email" class="form-control" id="correo" placeholder="Tu correo electrónico">
             </div>
             <div class="input-contacto">
                 <label for="mensaje" class="form-label">Mensaje:</label>
-                <textarea class="form-control" id="mensaje" rows="4" placeholder=""></textarea>
+                <textarea class="form-control" id="mensaje" rows="4" placeholder="Tu mensaje..."></textarea>
             </div>
             <button type="submit" class="boton-contacto">Enviar</button>
         </form>
+        <img src="/peoplepro/public/img/contacto.gif" class="contacto-imagen" alt="Contacto">
     </section>
     <script src="/peoplepro/public/js/landing.js"></script> 
 </body>
