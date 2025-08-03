@@ -7,7 +7,7 @@
     <title>Editar Beneficio</title>
     <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
 </head>
-<body>
+4er5<body>
 <?php include __DIR__ . '/../menu/menu.php'; ?><br>
 
 <h2 class="titulo-principal">Editar Beneficio</h2>
