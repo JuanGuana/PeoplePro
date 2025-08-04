@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/../core/Controller.php';
+require_once __DIR__ . '/../models/Capacitacion.php';
+
 
 class DashboardController extends Controller {
     public function __construct() {
@@ -8,9 +10,17 @@ class DashboardController extends Controller {
     }
 
     public function index() {
-        $nombre = $_SESSION['usuario_nombre'] ?? 'Invitado';
-        $rol = $_SESSION['usuario_rol'] ?? 'desconocido';
+    $nombre = $_SESSION['usuario_nombre'] ?? 'Invitado';
+    $rol = $_SESSION['usuario_rol'] ?? 'desconocido';
 
-        $this->view('dashboard/index', ['nombre' => $nombre, 'rol' => $rol]);
-    }
+    $capacitacionModel = new Capacitacion();
+    $capacitaciones = $capacitacionModel->obtenerTodos(); // o una versión limitada
+
+    $this->view('dashboard/index', [
+        'nombre' => $nombre,
+        'rol' => $rol,
+        'capacitaciones' => $capacitaciones
+    ]);
+}
+
 }

@@ -4,11 +4,11 @@
         --fondo-header:#2B3035;
         --texto-primario: #ffffff;
         --texto-secundario: #bdc2c4;
-        --color-logo:#b895e6;
-        --color-icono-menu: #b895e6;
+        --color-logo:#673AB7;
+        --color-icono-menu: #673AB7;
         --box-shadow:trasparent;
         --color-buscador:#bdc2c4;
-        --primario:#b895e6;
+        --primario:#673AB7;
         --color-menu-izquierdo: rgba(0, 0, 0, 0.6);
     }
 }
@@ -19,10 +19,10 @@
         --texto-primario: #2D3436;
         --texto-secundario: #636E72;
         --color-logo: #2D3436;
-        --color-icono-menu: #b895e6;
+        --color-icono-menu: #673AB7;
         --box-shadow: #bdc2c4 0px 0px 2.5px;
         --color-buscador:#C6C6C6;
-        --primario:#b895e6;
+        --primario:#673AB7;
         --color-menu-izquierdo: rgba(255, 255, 255, 0.8);
     }
     
