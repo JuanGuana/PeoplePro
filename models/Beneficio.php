@@ -16,28 +16,52 @@ class Beneficio extends Model {
     }
 
     public function crear($data) {
-        $stmt = $this->conn->prepare("INSERT INTO beneficios (nombre, descripcion, fecha_inicio, fecha_fin) VALUES (?, ?, ?, ?)");
-        return $stmt->execute([
-            $data['nombre'],
-            $data['descripcion'],
-            $data['fecha_inicio'],
-            $data['fecha_fin']
-        ]);
-    }
-
-    public function actualizar($id, $data) {
-        $stmt = $this->conn->prepare("UPDATE beneficios SET nombre = ?, descripcion = ?, fecha_inicio = ?, fecha_fin = ? WHERE id = ?");
+        $stmt = $this->conn->prepare("INSERT INTO beneficios (nombre, descripcion, fecha_inicio, fecha_fin, imagen) VALUES (?, ?, ?, ?, ?)");
         return $stmt->execute([
             $data['nombre'],
             $data['descripcion'],
             $data['fecha_inicio'],
             $data['fecha_fin'],
-            $id
+            $data['imagen']
         ]);
     }
 
+    public function actualizar($id, $data) {
+        // Construir la consulta dinámicamente (en caso de que no haya nueva imagen)
+        $sql = "UPDATE beneficios SET nombre = ?, descripcion = ?, fecha_inicio = ?, fecha_fin = ?";
+        $params = [
+            $data['nombre'],
+            $data['descripcion'],
+            $data['fecha_inicio'],
+            $data['fecha_fin']
+        ];
+
+        if (!empty($data['imagen'])) {
+            $sql .= ", imagen = ?";
+            $params[] = $data['imagen'];
+        }
+
+        $sql .= " WHERE id = ?";
+        $params[] = $id;
+
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute($params);
+    }
+
     public function eliminar($id) {
+        // Primero obtener la imagen
+        $stmt = $this->conn->prepare("SELECT imagen FROM beneficios WHERE id = ?");
+        $stmt->execute([$id]);
+        $beneficio = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Eliminar imagen del servidor si existe
+        if ($beneficio && $beneficio['imagen'] && file_exists(__DIR__ . '/../' . $beneficio['imagen'])) {
+            unlink(__DIR__ . '/../' . $beneficio['imagen']);
+        }
+
+        // Eliminar el registro de la base de datos
         $stmt = $this->conn->prepare("DELETE FROM beneficios WHERE id = ?");
         return $stmt->execute([$id]);
     }
 }
+

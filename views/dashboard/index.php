@@ -1,7 +1,7 @@
 <?php 
 // Verificar que existen los datos esperados
 $nombre = $data['nombre'] ?? 'Invitado';
-?>capacitaciones
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -21,6 +21,15 @@ $nombre = $data['nombre'] ?? 'Invitado';
         <h1 class="tituloBienvenida">¡Bienvenido, <?= htmlspecialchars($nombre) ?>! 👋</h1>
     
         <?php if ($rol === 'usuario'): ?>
+            <div class="beneficios">
+                <?php foreach ($beneficios as $b): ?>
+                    <div class="beneficio-card">
+                        <img src="/peoplepro/<?= htmlspecialchars($b['imagen']) ?>" alt="Imagen de beneficio" width="200">
+                        <h3><?= htmlspecialchars($b['nombre']) ?></h3>
+                        <p><?= htmlspecialchars($b['descripcion']) ?></p>
+                        <small>Desde: <?= $b['fecha_inicio'] ?> Hasta: <?= $b['fecha_fin'] ?></small>
+                    </div>
+                <?php endforeach; ?>
         <?php if (!empty($capacitaciones)): ?>
             <h2>Capacitaciones Recientes</h2>
                 <div class="capacitaciones">

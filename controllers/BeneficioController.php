@@ -21,26 +21,30 @@ class BeneficioController extends Controller {
             $this->redirect('/peoplepro/public/index.php?action=beneficio');
             return;
         }
-
-        $this->view('beneficios/crear');
-    }
-
-    public function guardar() {
-        if ($_SESSION['usuario_rol'] !== 'admin') {
-            $this->redirect('/peoplepro/public/index.php?action=beneficio');
-            return;
-        }
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $imagen = null;
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $nombreArchivo = uniqid() . '_' . basename($_FILES['imagen']['name']);
+                $rutaDestino = 'public/img/beneficios/' . $nombreArchivo;
+                move_uploaded_file($_FILES['imagen']['tmp_name'], __DIR__ . '/../' . $rutaDestino);
+                $imagen = $rutaDestino;
+            }
+
             $data = [
                 'nombre' => $_POST['nombre'],
                 'descripcion' => $_POST['descripcion'],
                 'fecha_inicio' => $_POST['fecha_inicio'],
-                'fecha_fin' => $_POST['fecha_fin']
+                'fecha_fin' => $_POST['fecha_fin'],
+                'imagen' => $imagen
             ];
 
-            $this->model->crear($data);
-            $this->redirect('/peoplepro/public/index.php?action=beneficio');
+            if ($this->model->crear($data)) {
+                $this->redirect('/peoplepro/public/index.php?action=beneficio');
+            } else {
+                echo "Error al crear la beneficio.";
+            }
+        } else {
+            $this->view('beneficios/crear');
         }
     }
 
@@ -49,27 +53,40 @@ class BeneficioController extends Controller {
             $this->redirect('/peoplepro/public/index.php?action=beneficio');
             return;
         }
-
-        $beneficio = $this->model->obtenerPorId($id);
-        $this->view('beneficios/editar', ['beneficio' => $beneficio]);
-    }
-
-    public function actualizar($id) {
-        if ($_SESSION['usuario_rol'] !== 'admin') {
+        if ($id === null) {
             $this->redirect('/peoplepro/public/index.php?action=beneficio');
-            return;
         }
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $beneficio = $this->model->obtenerPorId($id);
+            if (!$beneficio) {
+                $this->redirect('/peoplepro/public/index.php?action=beneficio');
+            }
+
+            $imagen = $beneficio['imagen']; // Imagen anterior por defecto
+
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $nombreArchivo = uniqid() . '_' . basename($_FILES['imagen']['name']);
+                $rutaDestino = 'public/img/beneficios/' . $nombreArchivo;
+                move_uploaded_file($_FILES['imagen']['tmp_name'], __DIR__ . '/../' . $rutaDestino);
+                $imagen = $rutaDestino;
+            }
+
             $data = [
                 'nombre' => $_POST['nombre'],
                 'descripcion' => $_POST['descripcion'],
                 'fecha_inicio' => $_POST['fecha_inicio'],
-                'fecha_fin' => $_POST['fecha_fin']
+                'fecha_fin' => $_POST['fecha_fin'],
+                'imagen' => $imagen
             ];
 
-            $this->model->actualizar($id, $data);
-            $this->redirect('/peoplepro/public/index.php?action=beneficio');
+            if ($this->model->actualizar($id, $data)) {
+                $this->redirect('/peoplepro/public/index.php?action=beneficio');
+            } else {
+                echo "Error al actualizar beneficio.";
+            }
+        } else {
+        $beneficio = $this->model->obtenerPorId($id);
+        $this->view('beneficios/editar', ['beneficio' => $beneficio]);
         }
     }
 

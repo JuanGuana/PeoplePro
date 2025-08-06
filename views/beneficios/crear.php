@@ -30,6 +30,9 @@
         <label for="fecha_fin">Fecha de fin:</label><br>
         <input type="date" name="fecha_fin" required><br><br>
 
+        <label for="imagen">Imagen de beneficio:</label>
+        <input type="file" name="imagen" accept="image/*"><br><br>
+
         <a href="/peoplepro/public/index.php?action=beneficio" class="btn-volver">Cancelar</a>
         <button type="submit">Guardar</button>
     </form>

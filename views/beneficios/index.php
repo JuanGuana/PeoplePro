@@ -28,6 +28,7 @@ $rol = $_SESSION['usuario_rol'] ?? '';
         <table class="tablas">
             <thead>
                 <tr>
+                    <th>Imagen</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Inicio</th>
@@ -40,6 +41,12 @@ $rol = $_SESSION['usuario_rol'] ?? '';
             <tbody>
             <?php foreach ($beneficios as $b): ?>
                 <tr>
+                    <td> <?php if (!empty($b['imagen'])): ?>
+                        <img src="/peoplepro/<?= htmlspecialchars($b['imagen']) ?>" style="max-width: 100px;">
+                    <?php else: ?>
+                        <span>Sin imagen</span>
+                    <?php endif; ?>
+                    </td>
                     <td><?= htmlspecialchars($b['nombre']) ?></td>
                     <td><?= htmlspecialchars($b['descripcion']) ?></td>
                     <td><?= $b['fecha_inicio'] ?></td>
