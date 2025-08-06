@@ -16,20 +16,24 @@ $nombre = $data['nombre'] ?? 'Invitado';
 </head>
 <body>
     <?php include __DIR__ . '/../menu/menu.php'; ?>
-
+    <h1 class="tituloBienvenida">¡Bienvenido, <?= htmlspecialchars($nombre) ?>! 👋</h1>
     <main class="main">
-        <h1 class="tituloBienvenida">¡Bienvenido, <?= htmlspecialchars($nombre) ?>! 👋</h1>
     
         <?php if ($rol === 'usuario'): ?>
-            <div class="beneficios">
-                <?php foreach ($beneficios as $b): ?>
-                    <div class="beneficio-card">
-                        <img src="/peoplepro/<?= htmlspecialchars($b['imagen']) ?>" alt="Imagen de beneficio" width="200">
-                        <h3><?= htmlspecialchars($b['nombre']) ?></h3>
-                        <p><?= htmlspecialchars($b['descripcion']) ?></p>
-                        <small>Desde: <?= $b['fecha_inicio'] ?> Hasta: <?= $b['fecha_fin'] ?></small>
-                    </div>
-                <?php endforeach; ?>
+            <?php if (!empty($beneficios)): ?>
+                <h2>Beneficios Disponibles</h2>
+                <div class="beneficios">
+                    <?php foreach ($beneficios as $b): ?>
+                        <div class="beneficio-card">
+                            <img src="/peoplepro/<?= htmlspecialchars($b['imagen']) ?>" alt="Imagen de beneficio" width="200">
+                            <p><?= htmlspecialchars($b['descripcion']) ?></p>
+                            <small>Desde: <?= $b['fecha_inicio'] ?> Hasta: <?= $b['fecha_fin'] ?></small>
+                            <a href="/peoplepro/public/index.php?action=beneficio">Ver más</a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
         <?php if (!empty($capacitaciones)): ?>
             <h2>Capacitaciones Recientes</h2>
                 <div class="capacitaciones">

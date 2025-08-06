@@ -1,3 +1,24 @@
 .main{
     background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.beneficios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.beneficio-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
