@@ -21,11 +21,11 @@ $nombre = $data['nombre'] ?? 'Invitado';
     
         <?php if ($rol === 'usuario'): ?>
             <?php if (!empty($beneficios)): ?>
-                <h2 class="beficio-titulo">Beneficios Disponibles</h2>
+                <h2 class="beficio-titulo">Tus Beneficios Disponibles</h2>
                 <div class="beneficios">
                     <?php foreach ($beneficios as $b): ?>
                         <div class="beneficio-card">
-                            <img src="/peoplepro/<?= htmlspecialchars($b['imagen']) ?>" alt="Imagen de beneficio" width="200">
+                            <img src="/peoplepro/<?= htmlspecialchars($b['imagen']) ?>" alt="Imagen de beneficio" >
                             <small>Desde: <?= $b['fecha_inicio'] ?> Hasta: <?= $b['fecha_fin'] ?></small>
                             <p><?= htmlspecialchars($b['descripcion']) ?></p>
                             <a href="/peoplepro/public/index.php?action=beneficio">Ver más</a>
