@@ -21,33 +21,17 @@ $nombre = $data['nombre'] ?? 'Invitado';
     
         <?php if ($rol === 'usuario'): ?>
             <?php if (!empty($beneficios)): ?>
-                <h2>Beneficios Disponibles</h2>
+                <h2 class="beficio-titulo">Beneficios Disponibles</h2>
                 <div class="beneficios">
                     <?php foreach ($beneficios as $b): ?>
                         <div class="beneficio-card">
                             <img src="/peoplepro/<?= htmlspecialchars($b['imagen']) ?>" alt="Imagen de beneficio" width="200">
-                            <p><?= htmlspecialchars($b['descripcion']) ?></p>
                             <small>Desde: <?= $b['fecha_inicio'] ?> Hasta: <?= $b['fecha_fin'] ?></small>
+                            <p><?= htmlspecialchars($b['descripcion']) ?></p>
                             <a href="/peoplepro/public/index.php?action=beneficio">Ver más</a>
                         </div>
                     <?php endforeach; ?>
                 </div>
-            <?php endif; ?>
-
-        <?php if (!empty($capacitaciones)): ?>
-            <h2>Capacitaciones Recientes</h2>
-                <div class="capacitaciones">
-                    <?php foreach ($capacitaciones as $cap): ?>
-                        <div class="cap-card">
-                            <img src="/peoplepro/<?= htmlspecialchars($cap['imagen_capacitacion']) ?>" alt="Imagen de capacitación" width="200">
-                            <h3><?= htmlspecialchars($cap['nombre']) ?></h3>
-                            <p><?= htmlspecialchars($cap['descripcion']) ?></p>
-                            <small><?= htmlspecialchars($cap['fecha']) ?></small>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            <?php else: ?>
-                <p>No hay capacitaciones registradas.</p>
             <?php endif; ?>
         <?php endif; ?>
     </main>

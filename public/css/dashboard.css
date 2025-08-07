@@ -1,5 +1,4 @@
 .main{
-    background-color: aqua;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -14,6 +13,7 @@
 
 .beneficio-card {
     background-color: #fff;
+    box-shadow: var(--box-shadow);
     border-radius: 10px;
     padding: 1rem;
     width: auto;
@@ -21,4 +21,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: end;
+}
+.beneficio-card img {
+    max-width: 300px;
+    justify-self: center !important;
+}
+.beficio-titulo {
+    margin: 10px 0 20px 0;
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--texto-primario);
+}
+.beneficio-card a{
+    background-color: var(--primario);
+    text-decoration: none;
+    margin-top: 10px;
+    color: white;
+    padding: 7px; 
+    border-radius: 5px;
+}
+.beneficio-card a:hover{
+    scale: 1.05;
+}
+.beneficio-card p{
+    font-weight: 700;
+}
+.beneficio-card small{
+    margin: 10px 0;
+    font-weight: 400;
+    color: gray;
 }
