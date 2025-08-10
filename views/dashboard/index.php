@@ -1,7 +1,3 @@
-<?php 
-// Verificar que existen los datos esperados
-$nombre = $data['nombre'] ?? 'Invitado';
-?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -16,7 +12,6 @@ $nombre = $data['nombre'] ?? 'Invitado';
 </head>
 <body>
     <?php include __DIR__ . '/../menu/menu.php'; ?>
-    <h1 class="tituloBienvenida">¡Bienvenido, <?= htmlspecialchars($nombre) ?>! 👋</h1>
     <main class="main">
     
         <?php if ($rol === 'usuario'): ?>

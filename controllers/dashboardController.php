@@ -13,6 +13,7 @@ class DashboardController extends Controller {
     public function index() {
     $nombre = $_SESSION['usuario_nombre'] ?? 'Invitado';
     $rol = $_SESSION['usuario_rol'] ?? 'desconocido';
+    $foto_perfil = $_SESSION['usuario_foto_perfil'] ?? 'img/foto_perfil/default.png';
 
 
     $capacitacionModel = new Capacitacion();
@@ -25,7 +26,8 @@ class DashboardController extends Controller {
         'nombre' => $nombre,
         'rol' => $rol,
         'capacitaciones' => $capacitaciones,
-        'beneficios' => $beneficios
+        'beneficios' => $beneficios,
+        'foto_perfil' => $foto_perfil
     ]);
 }
 

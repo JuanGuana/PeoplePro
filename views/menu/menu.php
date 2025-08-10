@@ -1,6 +1,18 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) session_start();
 $rol = $_SESSION['usuario_rol'] ?? '';
+$nombre = $_SESSION['usuario_nombre'] ?? 'Invitado';
+$foto_perfil = $_SESSION['usuario_foto_perfil'] ?? 'img/foto_perfil/default.png';
+
+function nombreCorto($nombreCompleto) {
+   $partes = explode(" ", trim($nombreCompleto));
+
+    if (count($partes) >= 2) {
+        return $partes[0] . ' ' . $partes[ count($partes) - 2 ];
+    }
+
+    return $nombreCompleto;
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +45,8 @@ $rol = $_SESSION['usuario_rol'] ?? '';
 
     <!-- Cerrar sesión -->
     <div class="derecha">
+        <p><?= htmlspecialchars(nombreCorto($nombre)) ?></p>
+        <img src="/peoplepro/public/<?= htmlspecialchars($foto_perfil) ?>" alt="Foto de <?= htmlspecialchars($nombre) ?>" width="120">
     </div>
 </header>
 

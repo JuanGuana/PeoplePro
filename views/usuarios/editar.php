@@ -41,6 +41,9 @@
                 </option>
             <?php endforeach; ?>
         </select>
+        <label for="foto_perfil">Foto de perfil:</label>
+        <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*">
+        
         <a href="/peoplepro/public/index.php?action=usuario" class="btn-volver">Cancelar</a>
         <button type="submit">Guardar cambios</button>
     </form>

@@ -23,11 +23,18 @@ class UsuarioController extends Controller {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nombre = $_POST['nombre'] ?? '';
             $email = $_POST['email'] ?? '';
-            $password = $_POST['password'] ?? ''; // ✅ No se hashea aquí
+            $password = $_POST['password'] ?? '';
             $rol = $_POST['rol'] ?? 'usuario';
             $area_id = $_POST['area_id'] ?? null;
 
-            $this->userModel->crear($nombre, $email, $password, $rol, $area_id);
+            // Verificar si se subió imagen
+            if (!empty($_FILES['foto_perfil']['name'])) {
+                $foto_perfil = $_FILES['foto_perfil'];
+            } else {
+                $foto_perfil = null; // El modelo o la BD pondrán el default
+            }
+
+            $this->userModel->crear($nombre, $email, $password, $rol, $area_id, $foto_perfil);
 
             header('Location: /peoplepro/public/index.php?action=usuario');
             exit;
@@ -36,6 +43,7 @@ class UsuarioController extends Controller {
             $this->view('usuarios/crear', ['areas' => $areas]);
         }
     }
+
 
     public function editar($id) {
         $usuario = $this->userModel->obtenerPorId($id);
@@ -55,8 +63,9 @@ class UsuarioController extends Controller {
             $email = $_POST['email'] ?? '';
             $rol = $_POST['rol'] ?? 'usuario';
             $area_id = $_POST['area_id'] ?? null;
+            $foto_perfil = $_FILES['foto_perfil'] ?? null;
 
-            $this->userModel->actualizar($id, $nombre, $email, $rol, $area_id);
+            $this->userModel->actualizar($id, $nombre, $email, $rol, $area_id, $foto_perfil);
 
             header('Location: /peoplepro/public/index.php?action=usuario');
             exit;
