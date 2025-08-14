@@ -1,0 +1,57 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.beneficios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.beneficio-card, .capacitacion-card{
+    background-color: var(--fondo-header);
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    padding: 10px;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+.beneficio-card img , .capacitacion-card img{
+    max-width: 280px;
+    justify-self: center !important;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+.beficio-titulo {
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--texto-primario);
+}
+.ver-mas{
+    background-color: var(--primario);
+    text-decoration: none;
+    margin: 10px 0 10px auto;
+    color: white;
+    padding: 10px; 
+    border-radius: 5px;
+}
+.ver-mas:hover{
+    scale: 1.05;
+}
+.beneficio-card p, .capacitacion-card p{
+    font-weight: 700;
+}
+.beneficio-card small, .capacitacion-card small{
+    margin: 10px 0;
+    font-weight: 400;
+    color: gray;
+}

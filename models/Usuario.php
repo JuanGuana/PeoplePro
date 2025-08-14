@@ -23,14 +23,25 @@ class Usuario {
     }
 
     // ➕ Crear usuario
-    public function crear($nombre, $email, $password, $rol, $area_id) {
+        public function crear($nombre, $email, $password, $rol, $area_id, $foto_perfil = null) {
         try {
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+            // Si no hay imagen subida, usamos default
+            $ruta_foto = 'public/img/foto_perfil/default.png';
+
+            if ($foto_perfil && $foto_perfil['error'] === UPLOAD_ERR_OK) {
+                $nombreArchivo = uniqid() . "_" . basename($foto_perfil['name']);
+                $ruta_foto = 'uploads/' . $nombreArchivo;
+                move_uploaded_file($foto_perfil['tmp_name'], __DIR__ . '/../public/' . $ruta_foto);
+            }
+
             $stmt = $this->conn->prepare("
-                INSERT INTO users (nombre, email, password, rol, area_id)
-                VALUES (?, ?, ?, ?, ?)
+                INSERT INTO users (nombre, email, password, rol, area_id, foto_perfil)
+                VALUES (?, ?, ?, ?, ?, ?)
             ");
-            return $stmt->execute([$nombre, $email, $passwordHash, $rol, $area_id]);
+            return $stmt->execute([$nombre, $email, $passwordHash, $rol, $area_id, $ruta_foto]);
+
         } catch (PDOException $e) {
             error_log('Error al crear usuario: ' . $e->getMessage());
             return false;
@@ -54,12 +65,24 @@ class Usuario {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function actualizar($id, $nombre, $email, $rol, $area_id) {
+    public function actualizar($id, $nombre, $email, $rol, $area_id, $foto_perfil = null) {
+        $usuario = $this->obtenerPorId($id);
+        $ruta_foto = $usuario['foto_perfil']; // conservar la actual por defecto
+
+        if ($foto_perfil && $foto_perfil['error'] === UPLOAD_ERR_OK) {
+            $nombreArchivo = uniqid() . "_" . basename($foto_perfil['name']);
+            $ruta_foto = 'uploads/' . $nombreArchivo;
+            move_uploaded_file($foto_perfil['tmp_name'], __DIR__ . '/../public/' . $ruta_foto);
+        }
+
         $stmt = $this->conn->prepare("
-            UPDATE users SET nombre = ?, email = ?, rol = ?, area_id = ? WHERE id = ?
+            UPDATE users 
+            SET nombre = ?, email = ?, rol = ?, area_id = ?, foto_perfil = ?
+            WHERE id = ?
         ");
-        return $stmt->execute([$nombre, $email, $rol, $area_id, $id]);
+        return $stmt->execute([$nombre, $email, $rol, $area_id, $ruta_foto, $id]);
     }
+
 
     public function eliminar($id) {
         $stmt = $this->conn->prepare("DELETE FROM users WHERE id = ?");

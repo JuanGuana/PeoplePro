@@ -23,11 +23,21 @@ class CapacitacionController extends Controller {
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $imagen = null;
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $nombreArchivo = uniqid() . '_' . basename($_FILES['imagen']['name']);
+                $rutaDestino = 'public/img/capacitaciones/' . $nombreArchivo;
+                move_uploaded_file($_FILES['imagen']['tmp_name'], __DIR__ . '/../' . $rutaDestino);
+                $imagen = $rutaDestino;
+            }
+
             $data = [
                 'nombre' => $_POST['nombre'],
                 'descripcion' => $_POST['descripcion'],
-                'fecha' => $_POST['fecha']
+                'fecha' => $_POST['fecha'],
+                'imagen_capacitacion' => $imagen
             ];
+
             if ($this->model->crear($data)) {
                 $this->redirect('/peoplepro/public/index.php?action=capacitacion');
             } else {
@@ -49,11 +59,27 @@ class CapacitacionController extends Controller {
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $capacitacion = $this->model->obtenerPorId($id);
+            if (!$capacitacion) {
+                $this->redirect('/peoplepro/public/index.php?action=capacitacion');
+            }
+
+            $imagen = $capacitacion['imagen_capacitacion']; // Imagen anterior por defecto
+
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $nombreArchivo = uniqid() . '_' . basename($_FILES['imagen']['name']);
+                $rutaDestino = 'public/img/capacitaciones/' . $nombreArchivo;
+                move_uploaded_file($_FILES['imagen']['tmp_name'], __DIR__ . '/../' . $rutaDestino);
+                $imagen = $rutaDestino;
+            }
+
             $data = [
                 'nombre' => $_POST['nombre'],
                 'descripcion' => $_POST['descripcion'],
-                'fecha' => $_POST['fecha']
+                'fecha' => $_POST['fecha'],
+                'imagen_capacitacion' => $imagen
             ];
+
             if ($this->model->actualizar($id, $data)) {
                 $this->redirect('/peoplepro/public/index.php?action=capacitacion');
             } else {

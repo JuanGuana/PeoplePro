@@ -1,5 +1,7 @@
     body {
-        background: #f0f2f5;
+        background-image: url('/peoplepro/public/img/fondo11.jpg');
+        background-size: cover;
+        background-position: center;
         font-family: Arial, sans-serif;
         display: flex;
         justify-content: center;
@@ -12,8 +14,8 @@
         border-radius: 12px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         width: 100%;
-        padding: 20px;
-        max-width: 400px;
+        padding: 50px 30px;
+        max-width: 430px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -40,7 +42,7 @@
     button {
         width: 100%;
         padding: 12px;
-        background-color: var(--primario);
+        background-color: #5433EB;
         color: white;
         border: none;
         border-radius: 8px;
@@ -49,7 +51,7 @@
     }
 
     button:hover {
-        background-color: rgb(125, 100, 148);
+        background-color: #371fa0;
     }
 
     .mensaje-error {

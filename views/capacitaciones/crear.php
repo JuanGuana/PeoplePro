@@ -18,21 +18,25 @@
 <body>
     <h2>Crear Nueva Capacitación</h2>
 
-    <form method="POST" action="/peoplepro/public/index.php?action=capacitacion&method=crear">
+    <form method="POST" action="/peoplepro/public/index.php?action=capacitacion&method=crear" enctype="multipart/form-data">
 
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" name="nombre" id="nombre" required><br><br>
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" name="nombre" id="nombre" required><br><br>
 
-        <label for="descripcion">Descripción:</label><br>
-        <textarea name="descripcion" id="descripcion" rows="4" required></textarea><br><br>
+    <label for="descripcion">Descripción:</label><br>
+    <textarea name="descripcion" id="descripcion" rows="4" required></textarea><br><br>
 
-        <label for="fecha">Fecha:</label><br>
-        <input type="date" name="fecha" id="fecha" required><br><br>
+    <label for="fecha">Fecha:</label><br>
+    <input type="date" name="fecha" id="fecha" required><br><br>
+    
+    <label for="imagen">Imagen de capacitación:</label>
+    <input type="file" name="imagen" accept="image/*"><br><br>
 
-        <a href="/peoplepro/public/index.php?action=capacitacion"class="btn-volver">Cancelar</a>
-        <button type="submit">Guardar</button>
+    <a href="/peoplepro/public/index.php?action=capacitacion" class="btn-volver">Cancelar</a>
+    <button type="submit">Guardar</button>
 
-    </form>
+</form>
+
 
 </body>
 </html>

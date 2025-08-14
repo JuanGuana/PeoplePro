@@ -16,20 +16,22 @@ class Capacitacion extends Model {
     }
 
     public function crear($data) {
-        $stmt = $this->conn->prepare("INSERT INTO capacitaciones (nombre, descripcion, fecha) VALUES (?, ?, ?)");
-        return $stmt->execute([
-            $data['nombre'],
-            $data['descripcion'],
-            $data['fecha']
-        ]);
-    }
-
-    public function actualizar($id, $data) {
-        $stmt = $this->conn->prepare("UPDATE capacitaciones SET nombre = ?, descripcion = ?, fecha = ? WHERE id = ?");
+        $stmt = $this->conn->prepare("INSERT INTO capacitaciones (nombre, descripcion, fecha, imagen_capacitacion) VALUES (?, ?, ?, ?)");
         return $stmt->execute([
             $data['nombre'],
             $data['descripcion'],
             $data['fecha'],
+            $data['imagen_capacitacion']
+        ]);
+    }
+
+    public function actualizar($id, $data) {
+        $stmt = $this->conn->prepare("UPDATE capacitaciones SET nombre = ?, descripcion = ?, fecha = ?, imagen_capacitacion = ? WHERE id = ?");
+        return $stmt->execute([
+            $data['nombre'],
+            $data['descripcion'],
+            $data['fecha'],
+            $data['imagen_capacitacion'],
             $id
         ]);
     }

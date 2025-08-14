@@ -126,3 +126,52 @@ table.dataTable > tbody > tr {
 table.dataTable > tbody > tr:last-child > * {
     border-bottom: 1px solid var(--primario)!important;
 }
+/* botones de exportar informacion */
+/* Estilos generales para todos los botones de DataTables */
+.btn {
+    border: none;
+    padding: 8px 16px;
+    margin-right: 5px;
+    border-radius: 6px !important;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+/* Botón Copiar */
+.btn-copy {
+    background-color: lightblue;
+}
+.btn-copy:hover {
+    background-color: rgb(116, 179, 201);
+}
+
+/* Botón Excel */
+.btn-excel {
+    background-color: lightgreen;
+}
+.btn-excel:hover {
+    background-color: rgb(90, 189, 90);
+}
+
+/* Botón PDF */
+.btn-pdf {
+    background-color: lightcoral;
+}
+.btn-pdf:hover {
+    background-color: rgb(201, 79, 79);
+}
+
+/* Botón Columnas */
+.btn-colvis {
+    background-color: rgb(206, 206, 109);
+}
+.btn-colvis:hover {
+    background-color: rgb(165, 165, 49);
+}
+.derecha p{
+    margin-top: 15px;
+}

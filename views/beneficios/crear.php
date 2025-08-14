@@ -17,7 +17,7 @@
 <body>
     <h2 class="titulo-principal">Crear Nuevo Beneficio</h2>
 
-    <form action="/peoplepro/public/index.php?action=beneficio&method=guardar" method="POST">
+    <form action="/peoplepro/public/index.php?action=beneficio&method=crear" method="POST" enctype="multipart/form-data">
         <label for="nombre">Nombre:</label><br>
         <input type="text" name="nombre" required><br><br>
 
@@ -29,6 +29,9 @@
 
         <label for="fecha_fin">Fecha de fin:</label><br>
         <input type="date" name="fecha_fin" required><br><br>
+
+        <label for="imagen">Imagen de beneficio:</label>
+        <input type="file" name="imagen" accept="image/*"><br><br>
 
         <a href="/peoplepro/public/index.php?action=beneficio" class="btn-volver">Cancelar</a>
         <button type="submit">Guardar</button>

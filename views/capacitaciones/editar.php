@@ -18,19 +18,27 @@
 <body>
     <h2>Editar Capacitación</h2>
 
-    <form method="POST" action="/peoplepro/public/index.php?action=capacitacion&method=editar&id=<?= $data['capacitacion']['id'] ?>">
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" name="nombre" id="nombre" value="<?php echo htmlspecialchars($data['capacitacion']['nombre']); ?>" required><br><br>
+    <form method="POST" action="/peoplepro/public/index.php?action=capacitacion&method=editar&id=<?= $data['capacitacion']['id'] ?>" enctype="multipart/form-data">
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" name="nombre" id="nombre" value="<?= htmlspecialchars($data['capacitacion']['nombre']) ?>" required><br><br>
 
-        <label for="descripcion">Descripción:</label><br>
-        <textarea name="descripcion" id="descripcion" rows="4" required><?php echo htmlspecialchars($data['capacitacion']['descripcion']); ?></textarea><br><br>
+    <label for="descripcion">Descripción:</label><br>
+    <textarea name="descripcion" id="descripcion" rows="4" required><?= htmlspecialchars($data['capacitacion']['descripcion']) ?></textarea><br><br>
 
-        <label for="fecha">Fecha:</label><br>
-        <input type="date" name="fecha" id="fecha" value="<?php echo htmlspecialchars($data['capacitacion']['fecha']); ?>" required><br><br>
+    <label for="fecha">Fecha:</label><br>
+    <input type="date" name="fecha" id="fecha" value="<?= htmlspecialchars($data['capacitacion']['fecha']) ?>" required><br><br>
 
-        <a href="/peoplepro/public/index.php?action=capacitacion" class="btn-volver">Cancelar</a>
-        <button type="submit">Actualizar</button>
+    <?php if (!empty($data['capacitacion']['imagen'])): ?>
+        <label>Imagen actual:</label><br>
+        <img src="/peoplepro/public/img/capacitaciones/<?= htmlspecialchars($data['capacitacion']['imagen']) ?>" alt="Imagen actual" style="max-width: 200px;"><br><br>
+    <?php endif; ?>
 
-    </form>
+    <label for="imagen">Cambiar imagen (opcional):</label><br>
+    <input type="file" name="imagen" accept="image/*"><br><br>
+
+    <a href="/peoplepro/public/index.php?action=capacitacion" class="btn-volver">Cancelar</a>
+    <button type="submit">Actualizar</button>
+</form>
+
 </body>
 </html>

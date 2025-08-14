@@ -11,6 +11,7 @@
 </head>
 <body>
     <div class="login-container">
+        <img src="/peoplepro/public/img/logo.png" alt="Logo PeoplePro" class="logo" width="100" height="100">
         <h2>Iniciar sesión</h2>
 
         <?php if (isset($error)): ?>

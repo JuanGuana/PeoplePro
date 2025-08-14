@@ -25,7 +25,7 @@
 
     <h2 class="titulo-principal">Editar Beneficio</h2>
 
-    <form action="/peoplepro/public/index.php?action=beneficio&method=actualizar&id=<?= $b['id'] ?>" method="POST">
+    <form action="/peoplepro/public/index.php?action=beneficio&method=editar&id=<?= $b['id'] ?>" method="POST" enctype="multipart/form-data">
         <label for="nombre">Nombre:</label><br>
         <input type="text" name="nombre" value="<?= htmlspecialchars($b['nombre']) ?>" required><br><br>
 
@@ -37,6 +37,14 @@
 
         <label for="fecha_fin">Fecha de fin:</label><br>
         <input type="date" name="fecha_fin" value="<?= $b['fecha_fin'] ?>" required><br><br>
+
+        <?php if (!empty($data['beneficios']['imagen'])): ?>
+            <label>Imagen actual:</label><br>
+            <img src="/peoplepro/public/img/beneficios/<?= htmlspecialchars($b['imagen']) ?>" alt="Imagen actual" style="max-width: 200px;"><br><br>
+        <?php endif; ?>
+
+        <label for="imagen">Cambiar imagen (opcional):</label><br>
+        <input type="file" name="imagen" accept="image/*"><br><br>
 
         <a href="/peoplepro/public/index.php?action=beneficio" class="btn-volver">Cancelar</a>
         <button type="submit">Actualizar</button>
