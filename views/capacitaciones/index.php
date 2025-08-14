@@ -30,6 +30,7 @@ $rol = $_SESSION['usuario_rol'] ?? '';
     <table class="tablas">
       <thead>
         <tr>
+          <th>Imagen</th>
           <th>Nombre</th>
           <th>Descripción</th>
           <th>Fecha</th>
@@ -41,6 +42,7 @@ $rol = $_SESSION['usuario_rol'] ?? '';
       <tbody>
         <?php foreach ($capacitaciones as $cap): ?>
         <tr>
+          <td><img src="/peoplepro/<?= htmlspecialchars($cap['imagen_capacitacion']) ?>" style="max-width: 100px;"></td>
           <td><?= htmlspecialchars($cap['nombre']) ?></td>
           <td><?= htmlspecialchars($cap['descripcion']) ?></td>
           <td><?= htmlspecialchars($cap['fecha']) ?></td>

@@ -12,6 +12,7 @@ CREATE TABLE `users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL UNIQUE,
+  `foto_perfil` varchar(255) DEFAULT 'public/img/foto_perfil/default.png',
   `password` VARCHAR(255) NOT NULL,
   `rol` ENUM('usuario', 'admin') NOT NULL DEFAULT 'usuario',
   `area_id` INT DEFAULT NULL,
@@ -25,6 +26,7 @@ CREATE TABLE `beneficios` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(100) NOT NULL,
   `descripcion` TEXT DEFAULT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
   `fecha_inicio` DATE DEFAULT NULL,
   `fecha_fin` DATE DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -34,19 +36,20 @@ CREATE TABLE `capacitaciones` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(100) NOT NULL,
   `descripcion` TEXT DEFAULT NULL,
+  `imagen_capacitacion` varchar(255) DEFAULT NULL,
   `fecha` DATE NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `evaluaciones` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(100) NOT NULL,
-  `descripcion` TEXT DEFAULT NULL,
-  `fecha` DATE NOT NULL,
-  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-);
+-- CREATE TABLE `evaluaciones` (
+--   `id` INT NOT NULL AUTO_INCREMENT,
+--   `nombre` VARCHAR(100) NOT NULL,
+--   `descripcion` TEXT DEFAULT NULL,
+--   `fecha` DATE NOT NULL,
+--   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--   PRIMARY KEY (`id`)
+-- );
 
 CREATE TABLE `visitantes` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -54,6 +57,7 @@ CREATE TABLE `visitantes` (
   `documento` VARCHAR(20) DEFAULT NULL,
   `empresa` VARCHAR(100) DEFAULT NULL,
   `fecha_ingreso` DATETIME DEFAULT NULL,
+  `fecha_salida` DATETIME DEFAULT NULL,
   `motivo` TEXT DEFAULT NULL,
   PRIMARY KEY (`id`)
 );

@@ -17,7 +17,7 @@
 <body>
     <h2 class="titulo-principal">Crear Nuevo Beneficio</h2>
 
-    <form action="/peoplepro/public/index.php?action=beneficio&method=guardar" method="POST">
+    <form action="/peoplepro/public/index.php?action=beneficio&method=crear" method="POST">
         <label for="nombre">Nombre:</label><br>
         <input type="text" name="nombre" required><br><br>
 
