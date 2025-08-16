@@ -23,6 +23,12 @@
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" value="<?= htmlspecialchars($usuario['nombre']) ?>" required>
 
+        <label for="telefono">Numero de telefono:</label>
+        <input type="tel" id="telefono" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>" >
+
+        <label for="Direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" value="<?= htmlspecialchars($usuario['direccion']) ?>">
+
         <label for="email">Correo electrónico:</label>
         <input type="email" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" required>
 

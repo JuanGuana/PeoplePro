@@ -66,7 +66,7 @@ function nombreCorto($nombreCompleto) {
             <hr>
             <div class="contenedor-acciones-rapidas">
                 <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesión</a>
-                <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-gear-fill"></i>  Configuración</a>
+                <a href="/peoplepro/public/index.php?action=usuario&method=perfil" class="cerrar-sesion"> <i class="bi bi-gear-fill"></i>  Configuración</a>
             </div>
             <hr>
         <?php elseif ($rol === 'usuario'): ?>
@@ -79,7 +79,7 @@ function nombreCorto($nombreCompleto) {
             <hr>
             <div class="contenedor-acciones-rapidas">
                 <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesión</a>
-                <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-gear-fill"></i>  Configuración</a>
+                <a href="/peoplepro/public/index.php?action=usuario&method=perfil" class="cerrar-sesion"> <i class="bi bi-gear-fill"></i>  Configuración</a>
             </div>
             <hr>
         <?php endif; ?>

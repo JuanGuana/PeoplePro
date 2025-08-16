@@ -23,7 +23,7 @@ class Usuario {
     }
 
     // ➕ Crear usuario
-        public function crear($nombre, $email, $password, $rol, $area_id, $foto_perfil = null) {
+        public function crear($nombre, $email, $password, $rol, $area_id, $foto_perfil = null, $direccion = '', $telefono = '') {
         try {
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -37,10 +37,10 @@ class Usuario {
             }
 
             $stmt = $this->conn->prepare("
-                INSERT INTO users (nombre, email, password, rol, area_id, foto_perfil)
-                VALUES (?, ?, ?, ?, ?, ?)
+                INSERT INTO users (nombre, email, password, rol, area_id, foto_perfil, direccion, telefono)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             ");
-            return $stmt->execute([$nombre, $email, $passwordHash, $rol, $area_id, $ruta_foto]);
+            return $stmt->execute([$nombre, $email, $passwordHash, $rol, $area_id, $ruta_foto, $direccion, $telefono]);
 
         } catch (PDOException $e) {
             error_log('Error al crear usuario: ' . $e->getMessage());
@@ -65,7 +65,7 @@ class Usuario {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function actualizar($id, $nombre, $email, $rol, $area_id, $foto_perfil = null) {
+    public function actualizar($id, $nombre, $email, $rol, $area_id, $foto_perfil = null, $direccion = '', $telefono = '') {
         $usuario = $this->obtenerPorId($id);
         $ruta_foto = $usuario['foto_perfil']; // conservar la actual por defecto
 
@@ -75,12 +75,13 @@ class Usuario {
             move_uploaded_file($foto_perfil['tmp_name'], __DIR__ . '/../public/' . $ruta_foto);
         }
 
-        $stmt = $this->conn->prepare("
+       $stmt = $this->conn->prepare("
             UPDATE users 
-            SET nombre = ?, email = ?, rol = ?, area_id = ?, foto_perfil = ?
+            SET nombre = ?, email = ?, rol = ?, area_id = ?, foto_perfil = ?, direccion = ?, telefono = ?
             WHERE id = ?
         ");
-        return $stmt->execute([$nombre, $email, $rol, $area_id, $ruta_foto, $id]);
+        return $stmt->execute([$nombre, $email, $rol, $area_id, $ruta_foto, $direccion, $telefono, $id]);
+
     }
 
 

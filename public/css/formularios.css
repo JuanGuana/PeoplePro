@@ -40,6 +40,11 @@ input[type="password"],
 input[type="date"],
 input[type="time"],
 input[type="file"],
+input[type="tel"],
+input[type="number"],
+input[type="url"],
+input[type="search"],
+input[type="color"],
 select,
 textarea {
   width: 100%;
