@@ -3,6 +3,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 $rol = $_SESSION['usuario_rol'] ?? '';
 $nombre = $_SESSION['usuario_nombre'] ?? 'Invitado';
 $foto_perfil = $_SESSION['usuario_foto_perfil'] ?? 'img/foto_perfil/default.png';
+$id = $_SESSION['usuario_id'] ?? '';
 
 function nombreCorto($nombreCompleto) {
    $partes = explode(" ", trim($nombreCompleto));
@@ -66,7 +67,7 @@ function nombreCorto($nombreCompleto) {
             <hr>
             <div class="contenedor-acciones-rapidas">
                 <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesión</a>
-                <a href="/peoplepro/public/index.php?action=usuario&method=perfil" class="cerrar-sesion"> <i class="bi bi-gear-fill"></i>  Configuración</a>
+                <a href="/peoplepro/public/index.php?action=usuario&method=editar&id=<?= $_SESSION['usuario_id'] ?? '' ?>" class="cerrar-sesion"><i class="bi bi-gear-fill"></i> Configuración</a>
             </div>
             <hr>
         <?php elseif ($rol === 'usuario'): ?>
@@ -79,7 +80,7 @@ function nombreCorto($nombreCompleto) {
             <hr>
             <div class="contenedor-acciones-rapidas">
                 <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesión</a>
-                <a href="/peoplepro/public/index.php?action=usuario&method=perfil" class="cerrar-sesion"> <i class="bi bi-gear-fill"></i>  Configuración</a>
+               <a href="/peoplepro/public/index.php?action=usuario&method=editar&id=<?= $_SESSION['usuario_id'] ?? '' ?>" class="cerrar-sesion"><i class="bi bi-gear-fill"></i> Configuración</a>
             </div>
             <hr>
         <?php endif; ?>

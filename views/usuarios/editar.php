@@ -1,3 +1,7 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) session_start();
+$rol = $rol ?? ($_SESSION['usuario_rol'] ?? 'usuario'); // 👈 evita el "Undefined variable $rol"
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +24,12 @@
     <form method="post" action="/peoplepro/public/index.php?action=usuario&method=actualizar&id=<?= htmlspecialchars($usuario['id']) ?>" class="formulario-usuario">
         <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['id']) ?>">
 
+        <?php if ($rol === 'admin'): ?>
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" value="<?= htmlspecialchars($usuario['nombre']) ?>" required>
+        <?php endif; ?>
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" required>
 
         <label for="telefono">Numero de telefono:</label>
         <input type="tel" id="telefono" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>" >
@@ -29,9 +37,11 @@
         <label for="Direccion">Dirección:</label>
         <input type="text" id="direccion" name="direccion" value="<?= htmlspecialchars($usuario['direccion']) ?>">
 
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" required>
-
+        <label for="foto_perfil">Foto de perfil:</label>
+        <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*">
+            
+        <?php if ($rol === 'admin'): ?>
+            
         <label for="rol">Rol:</label>
         <select id="rol" name="rol" required class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
             <option value="usuario" <?= $usuario['rol'] === 'usuario' ? 'selected' : '' ?>>Usuario</option>
@@ -47,9 +57,7 @@
                 </option>
             <?php endforeach; ?>
         </select>
-        <label for="foto_perfil">Foto de perfil:</label>
-        <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*">
-        
+        <?php endif; ?>
         <a href="/peoplepro/public/index.php?action=usuario" class="btn-volver">Cancelar</a>
         <button type="submit">Guardar cambios</button>
     </form>

@@ -60,7 +60,33 @@ class UsuarioController extends Controller {
     }
 
     public function actualizar($id) {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Id del usuario en sesión
+        $idSesion = $_SESSION['usuario']['id'];
+
+        // Si el id que se edita es el mismo de la sesión -> edición de perfil propio
+        if ($id == $idSesion) {
+            // Solo puede modificar estos campos
+            $email = $_POST['email'] ?? '';
+            $direccion = $_POST['direccion'] ?? '';
+            $telefono = $_POST['telefono'] ?? '';
+            $foto_perfil = $_FILES['foto_perfil'] ?? null;
+
+            // Mantener lo demás como está
+            $usuarioActual = $this->userModel->obtenerPorId($id);
+            $nombre = $usuarioActual['nombre'];
+            $rol = $usuarioActual['rol'];
+            $area_id = $usuarioActual['area_id'];
+
+            $this->userModel->actualizar($id, $nombre, $email, $rol, $area_id, $foto_perfil, $direccion, $telefono);
+
+            // Refrescar datos de sesión
+            $_SESSION['usuario'] = $this->userModel->obtenerPorId($id);
+
+            header('Location: /peoplepro/public/index.php?action=usuario&method=perfil');
+            exit;
+        } else {
+            // Admin editando otro usuario
             $nombre = $_POST['nombre'] ?? '';
             $email = $_POST['email'] ?? '';
             $direccion = $_POST['direccion'] ?? '';
@@ -75,52 +101,14 @@ class UsuarioController extends Controller {
             exit;
         }
     }
+}
+
 
     public function eliminar($id) {
         $this->userModel->eliminar($id);
         header('Location: /peoplepro/public/index.php?action=usuario');
         exit;
     }
-
-    // Para que cada usuario edite SOLO su propio perfil
-    public function perfil() {
-        $id = $_SESSION['usuario']['id'];
-        $usuario = $this->userModel->obtenerPorId($id);
-
-        if (!$usuario) {
-            header('Location: /peoplepro/public/index.php?action=logout');
-            exit;
-        }
-
-        $this->view('usuarios/perfil', ['usuario' => $usuario]);
-    }
-
-    public function actualizarPerfil() {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $id = $_SESSION['usuario']['id'];
-
-        // Solo lo que el usuario puede cambiar
-        $email = $_POST['email'] ?? '';
-        $direccion = $_POST['direccion'] ?? '';
-        $telefono = $_POST['telefono'] ?? '';
-        $foto_perfil = $_FILES['foto_perfil'] ?? null;
-
-        // Mantener valores que no debe editar
-        $usuarioActual = $this->userModel->obtenerPorId($id);
-        $nombre = $usuarioActual['nombre'];
-        $rol = $usuarioActual['rol'];
-        $area_id = $usuarioActual['area_id'];
-
-        $this->userModel->actualizar($id, $nombre, $email, $rol, $area_id, $foto_perfil, $direccion, $telefono);
-
-        // refrescar sesión
-        $_SESSION['usuario'] = $this->userModel->obtenerPorId($id);
-
-        header('Location: /peoplepro/public/index.php?action=usuario&method=perfil');
-        exit;
-    }
-}
-
 
 }
 
