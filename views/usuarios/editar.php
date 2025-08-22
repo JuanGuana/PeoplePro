@@ -36,10 +36,7 @@ $rol = $rol ?? ($_SESSION['usuario_rol'] ?? 'usuario'); // 👈 evita el "Undefi
 
         <label for="Direccion">Dirección:</label>
         <input type="text" id="direccion" name="direccion" value="<?= htmlspecialchars($usuario['direccion']) ?>">
-
-        <label for="foto_perfil">Foto de perfil:</label>
-        <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*">
-            
+        
         <label for="rol">Rol:</label>
         <select id="rol" name="rol" required class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
             <option value="usuario" <?= $usuario['rol'] === 'usuario' ? 'selected' : '' ?>>Usuario</option>
@@ -76,10 +73,6 @@ $rol = $rol ?? ($_SESSION['usuario_rol'] ?? 'usuario'); // 👈 evita el "Undefi
 
         <label for="Direccion">Dirección:</label>
         <input type="text" id="direccion" name="direccion" value="<?= htmlspecialchars($usuario['direccion']) ?>">
-
-        <label for="foto_perfil">Foto de perfil:</label>
-        <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*">
-            
             
         <label for="rol">Rol:</label>
         <select id="rol" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" disabled>
