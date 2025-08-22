@@ -75,8 +75,9 @@ class UsuarioController extends Controller {
                 // Refrescar datos de sesión
                 $_SESSION['usuario'] = $this->userModel->obtenerPorId($id);
 
-                header('Location: /peoplepro/public/index.php?action=usuario&method=perfil');
+                    header('Location: /peoplepro/public/index.php?action=dashboard');
                 exit;
+
             } else {
                 // Admin editando otro usuario
                 $nombre = $_POST['nombre'] ?? '';
@@ -90,14 +91,12 @@ class UsuarioController extends Controller {
                     $id, $nombre, $email, $rol, $area_id, $direccion, $telefono
                 );
 
-                header('Location: /peoplepro/public/index.php?action=usuario');
+                    header('Location: /peoplepro/public/index.php?action=dashboard');
+
                 exit;
             }
         }
 }
-
-
-
 
     public function eliminar($id) {
         $this->userModel->eliminar($id);

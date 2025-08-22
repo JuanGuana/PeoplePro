@@ -93,7 +93,7 @@ $rol = $rol ?? ($_SESSION['usuario_rol'] ?? 'usuario'); // 👈 evita el "Undefi
         </select>
 <input type="hidden" name="area_id" value="<?= htmlspecialchars($usuario['area_id']) ?>">
 
-        <a href="/peoplepro/public/index.php?action=usuario" class="btn-volver">Cancelar</a>
+        <a href="/peoplepro/public/index.php?action=dashboard" class="btn-volver">Cancelar</a>
         <button type="submit">Guardar cambios</button>
     </form>
     <?php endif; ?>
