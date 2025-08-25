@@ -14,3 +14,12 @@ document.addEventListener('click', (e) => {
         menuHamburguesa.classList.remove('activo');
     }
 });
+
+// Funcionalidad para copiar al portapapeles
+function copiarTexto(texto) {
+    navigator.clipboard.writeText(texto).then(function() {
+        alert('Texto copiado al portapapeles: ' + texto);
+    }, function(err) {
+        console.error('Error al copiar el texto: ', err);
+    });
+}

@@ -75,8 +75,17 @@
             <img src="" alt="">
         </div>
     </section>
-    <section class="contacto">
-        <h2 id="contacto">Contáctanos</h2>
+    <section class="contacto" id="contacto">
+        <div class="informacion-contacto">
+            <h2 class="contacto-titulo">¿No estás registardo?</h2>
+            <p class="contacto-subtitulo">Contáctanos y te ayudaremos a crear tu cuenta</p>
+            <p class="label-contacto">correo de contacto:</p>
+            <p class="contenido-contacto">peoplepro_info@gmail.com</p>
+            <button onclick="copiarTexto('peoplepro_info@gmail.com')" id="copiar_correo" class="copiar-btn">copiar</button>
+            <p class="label-contacto">numero de contacto:</p>
+            <p class="contenido-contacto" >+57 3594465289</p>
+            <button onclick="copiarTexto('3594465289')" id="copiar_numero" class="copiar-btn">copiar</button>
+        </div>
         <img src="/peoplepro/public/img/contacto.gif" class="contacto-img" alt="Contacto">
     </section>
     <script src="/peoplepro/public/js/landing.js"></script> 

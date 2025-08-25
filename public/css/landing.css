@@ -129,38 +129,55 @@ body{
     padding: 20px;
     border-radius: 20px;
 }
-.input-contacto{
-    width: 80%;
-    margin-bottom: 20px;
-}
-.formulario-contacto label{
-    font-size: 1.2rem;
-    color: var(--texto-primario);
-}
-.formulario-contacto input, .formulario-contacto textarea{
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid var(--texto-primario);
-    font-size: 1rem;
-    margin-top: 5px;
-}
-.boton-contacto{
-    width: 50%;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    background-color: var(--primario);
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-.boton-contacto:hover{
-    scale: 1.05;
-}
 .input-contacto input:focus, .input-contacto textarea:focus{
     outline: none;
     border-color: #5433eb;
     background-color: #f0f8ff;
     box-shadow: 0 0 5px #5433eb;
+}
+.informacion-contacto{
+    width: 35%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e1e;
+    border-radius: 10%;
+}
+.contacto-titulo{
+    text-align: center;
+    font-size: 3rem;
+    color: #7359e7;
+    margin: 10px 0;
+}
+.label-contacto{
+    font-size: 1rem;
+    color:#7359e7;
+    font-weight: bold;
+    text-align: center;
+    margin: 30px 0 0 0 ;
+}
+.contenido-contacto{
+
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin:0 0 20px 0;
+}
+.copiar-btn{
+    background-color: var(--primario);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.copiar-btn:hover{
+    scale: 1.05;
+}
+.contacto-subtitulo{
+    color: rgb(199, 199, 199);
 }
