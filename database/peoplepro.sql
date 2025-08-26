@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-07-2025 a las 06:49:59
+-- Tiempo de generación: 26-08-2025 a las 22:26:04
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -38,7 +38,7 @@ CREATE TABLE `areas` (
 --
 
 INSERT INTO `areas` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'cajas', 'dsadsadsa');
+(1, 'cajas', 'bodega');
 
 -- --------------------------------------------------------
 
@@ -50,16 +50,10 @@ CREATE TABLE `beneficios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `descripcion` text DEFAULT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
   `fecha_inicio` date DEFAULT NULL,
   `fecha_fin` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `beneficios`
---
-
-INSERT INTO `beneficios` (`id`, `nombre`, `descripcion`, `fecha_inicio`, `fecha_fin`) VALUES
-(1, 'aaa', 'aaa', '2025-07-09', '2025-07-24');
 
 -- --------------------------------------------------------
 
@@ -71,16 +65,10 @@ CREATE TABLE `capacitaciones` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `descripcion` text DEFAULT NULL,
+  `imagen_capacitacion` varchar(255) DEFAULT NULL,
   `fecha` date NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `capacitaciones`
---
-
-INSERT INTO `capacitaciones` (`id`, `nombre`, `descripcion`, `fecha`, `created_at`) VALUES
-(1, 'aaa', 'aaaaaa', '2025-07-24', '2025-07-02 03:03:41');
 
 -- --------------------------------------------------------
 
@@ -94,20 +82,6 @@ CREATE TABLE `documentos` (
   `archivo` varchar(255) NOT NULL,
   `usuario_id` int(11) NOT NULL,
   `fecha_subida` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `evaluaciones`
---
-
-CREATE TABLE `evaluaciones` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `descripcion` text DEFAULT NULL,
-  `fecha` date NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -127,13 +101,6 @@ CREATE TABLE `horarios` (
   `observaciones` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `horarios`
---
-
-INSERT INTO `horarios` (`id`, `usuario_id`, `fecha`, `fecha_fin`, `hora_inicio`, `hora_fin`, `estado`, `observaciones`) VALUES
-(1, 3, '2025-07-04', '2025-07-10', '22:07:00', '16:10:00', 'Activo', 'aAaSSAS');
-
 -- --------------------------------------------------------
 
 --
@@ -149,15 +116,6 @@ CREATE TABLE `permisos` (
   `fecha_fin` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `permisos`
---
-
-INSERT INTO `permisos` (`id`, `tipo`, `usuario_id`, `estado`, `fecha_inicio`, `fecha_fin`) VALUES
-(1, 'Permiso por luto', 3, 'aprobado', '2025-07-02', '2025-07-03'),
-(3, 'Permiso por enfermedad', 3, 'pendiente', '2025-07-03', '2025-07-18'),
-(4, 'Permiso para citas médicas', 3, 'rechazado', '2025-07-24', '2025-07-23');
-
 -- --------------------------------------------------------
 
 --
@@ -168,6 +126,8 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `telefono` int(10) NOT NULL,
+  `direccion` text NOT NULL,
   `password` varchar(255) NOT NULL,
   `rol` enum('usuario','admin') NOT NULL DEFAULT 'usuario',
   `area_id` int(11) DEFAULT NULL,
@@ -179,10 +139,9 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `nombre`, `email`, `password`, `rol`, `area_id`, `created_at`, `updated_at`) VALUES
-(1, 'laura', 'laura@gmail.com', '$2y$10$D9m0H7146rUgAdYZFqGgtOlHUVMNC00HO4x0NMW5Mf0Dy31ddkgPy', 'admin', 1, '2025-07-02 02:49:47', '2025-07-02 02:51:13'),
-(3, 'daniela', 'daniela@gmail.com', '$2y$10$fSMUwPb6m6SQbXnjPWNUvue8X28UoDAMbl5cN34pMqRrj2WfBr.YC', 'usuario', 1, '2025-07-02 03:00:37', '2025-07-02 03:00:37'),
-(4, 'saul', 'saul@gmail.com', '$2y$10$rNIRJlFHrcTnl0aJTU1rfuAJ3rFBbBkaHLDmdtMf/4Tt.nRjrxtAG', 'usuario', 1, '2025-07-02 21:12:43', '2025-07-02 21:12:43');
+INSERT INTO `users` (`id`, `nombre`, `email`, `telefono`, `direccion`, `password`, `rol`, `area_id`, `created_at`, `updated_at`) VALUES
+(1, 'laura', 'laura@gmail.com', 0, '', '$2y$10$ZXBSzMa1BC66TPeJow6R7OVvj8hFgOmmL4/jiVSWSCaIw2N.lylxu', 'admin', 1, '2025-08-12 18:12:46', '2025-08-30 18:12:46'),
+(4, 'daniela', 'daniela@gmail.com', 2147483647, 'ddjhshdushdus', '$2y$10$bwDpMomBmmWgwHxeENUSseTK8v/zpo.oCOnfe5v5mCQ5FuM8M2brW', 'usuario', 1, '2025-08-26 18:44:00', '2025-08-26 18:44:00');
 
 -- --------------------------------------------------------
 
@@ -196,6 +155,7 @@ CREATE TABLE `visitantes` (
   `documento` varchar(20) DEFAULT NULL,
   `empresa` varchar(100) DEFAULT NULL,
   `fecha_ingreso` datetime DEFAULT NULL,
+  `fecha_salida` datetime DEFAULT NULL,
   `motivo` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -203,8 +163,8 @@ CREATE TABLE `visitantes` (
 -- Volcado de datos para la tabla `visitantes`
 --
 
-INSERT INTO `visitantes` (`id`, `nombre`, `documento`, `empresa`, `fecha_ingreso`, `motivo`) VALUES
-(1, 'saul', '45465456', 'oiooiooio', '2025-07-10 22:03:00', '4453544554');
+INSERT INTO `visitantes` (`id`, `nombre`, `documento`, `empresa`, `fecha_ingreso`, `fecha_salida`, `motivo`) VALUES
+(2, 'saul', '123456789', 'claro', '2025-08-23 15:20:00', '2025-08-29 15:20:00', 'dasdsadsad');
 
 --
 -- Índices para tablas volcadas
@@ -234,12 +194,6 @@ ALTER TABLE `capacitaciones`
 ALTER TABLE `documentos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuario_id` (`usuario_id`);
-
---
--- Indices de la tabla `evaluaciones`
---
-ALTER TABLE `evaluaciones`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `horarios`
@@ -283,13 +237,13 @@ ALTER TABLE `areas`
 -- AUTO_INCREMENT de la tabla `beneficios`
 --
 ALTER TABLE `beneficios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `capacitaciones`
 --
 ALTER TABLE `capacitaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `documentos`
@@ -298,22 +252,16 @@ ALTER TABLE `documentos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `evaluaciones`
---
-ALTER TABLE `evaluaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `horarios`
 --
 ALTER TABLE `horarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -325,7 +273,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `visitantes`
 --
 ALTER TABLE `visitantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
