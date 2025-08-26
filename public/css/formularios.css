@@ -91,7 +91,7 @@ input[type="submit"]:hover {
   font-weight: bold;
   text-decoration: none;
   transition: background-color 0.3s ease;
-  margin-right: 25%;
+  margin-right: 10px;
 }
 .btn-volver:hover {
   background-color: rgb(184, 99, 99);

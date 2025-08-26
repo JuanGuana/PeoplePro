@@ -37,6 +37,7 @@
                             <th>Documento</th>
                             <th>Empresa</th>
                             <th>Fecha Ingreso</th>
+                            <th>Fecha salida</th>
                             <th>Motivo</th>
                             <th>Acciones</th>
                         </tr>
@@ -49,6 +50,7 @@
                                 <td><?= htmlspecialchars($v['documento']) ?></td>
                                 <td><?= htmlspecialchars($v['empresa']) ?></td>
                                 <td><?= htmlspecialchars($v['fecha_ingreso']) ?></td>
+                                <td><?= htmlspecialchars($v['fecha_salida']) ?></td>
                                 <td><?= htmlspecialchars($v['motivo']) ?></td>
                                 <td>
                                     <a class="bt-editar" href="/peoplepro/public/index.php?action=visitante&method=editar&id=<?= $v['id'] ?>"><i class="bi bi-pencil-fill"></i> Editar</a>

@@ -11,16 +11,17 @@ class Visitante extends Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function insertar($nombre, $documento, $empresa, $fecha_ingreso, $motivo)
+    public function insertar($nombre, $documento, $empresa, $fecha_ingreso, $fecha_salida, $motivo)
     {
-        $sql = "INSERT INTO visitantes (nombre, documento, empresa, fecha_ingreso, motivo) 
-                VALUES (:nombre, :documento, :empresa, :fecha_ingreso, :motivo)";
+        $sql = "INSERT INTO visitantes (nombre, documento, empresa, fecha_ingreso, fecha_salida, motivo) 
+                VALUES (:nombre, :documento, :empresa, :fecha_ingreso, :fecha_salida, :motivo)";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([
             'nombre'        => $nombre,
             'documento'     => $documento,
             'empresa'       => $empresa,
             'fecha_ingreso' => $fecha_ingreso,
+            'fecha_salida'  => $fecha_salida,
             'motivo'        => $motivo
         ]);
     }
@@ -33,11 +34,11 @@ class Visitante extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function actualizar($id, $nombre, $documento, $empresa, $fecha_ingreso, $motivo)
+    public function actualizar($id, $nombre, $documento, $empresa, $fecha_ingreso, $fecha_salida, $motivo)
     {
         $sql = "UPDATE visitantes 
                 SET nombre = :nombre, documento = :documento, empresa = :empresa, 
-                    fecha_ingreso = :fecha_ingreso, motivo = :motivo 
+                    fecha_ingreso = :fecha_ingreso, fecha_salida = :fecha_salida, motivo = :motivo 
                 WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([
@@ -45,6 +46,7 @@ class Visitante extends Model
             'documento'     => $documento,
             'empresa'       => $empresa,
             'fecha_ingreso' => $fecha_ingreso,
+            'fecha_salida' => $fecha_salida,
             'motivo'        => $motivo,
             'id'            => $id
         ]);
