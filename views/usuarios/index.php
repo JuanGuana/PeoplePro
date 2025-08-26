@@ -35,6 +35,10 @@
 
         <input type="password" id="password" name="password" placeholder="Contraseña segura" required minlength="6">
 
+        <input type="tel" id="telefono" name="telefono" placeholder="Numero de Telefono" require minlength="10">
+
+        <input type="text" id="direccion" name="direccion" placeholder="Direccion" require>
+
         <select id="rol" name="rol" required>
             <option value="">Selecciona un rol</option>
             <option value="usuario">Usuario</option>
