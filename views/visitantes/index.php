@@ -42,7 +42,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if (!empty($data['visitantes'])): ?>
                         <?php foreach ($data['visitantes'] as $v): ?>
                             <tr>
                                 <td><?= htmlspecialchars($v['id']) ?></td>
@@ -57,9 +56,6 @@
                                 </td>
                             </tr>
                         <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr><td colspan="7">No hay visitantes registrados.</td></tr>
-                    <?php endif; ?>
                     </tbody>
                 </table>
         </main>

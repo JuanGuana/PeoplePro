@@ -18,7 +18,7 @@ $rol = $_SESSION['usuario_rol'] ?? '';
 <body>
 <?php include __DIR__ . '/../menu/menu.php'; ?><br>
 
-<h2 class="titulo-principal">Gestión de Áreas</h2>
+<h2 class="titulo-principal">Áreas de trabajo</h2>
 
 <main class="main-tabla">
 
