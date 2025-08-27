@@ -23,6 +23,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: end;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .beneficio-card img , .capacitacion-card img{
     max-width: 280px;
@@ -49,6 +51,7 @@
 }
 .beneficio-card p, .capacitacion-card p{
     font-weight: 700;
+    
 }
 .beneficio-card small, .capacitacion-card small{
     margin: 10px 0;

@@ -47,5 +47,12 @@ body{
     font-weight: 600;
     font-size: 3rem;
     color: var(--texto-primario);
-    margin-bottom: 20px;
+    margin: 20px 0;
+}
+.subtitulo-principal{
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--texto-secundario);
+    margin-bottom: 40px;
 }

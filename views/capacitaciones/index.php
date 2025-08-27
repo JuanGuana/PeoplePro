@@ -1,23 +1,5 @@
-<?php
-if (session_status() === PHP_SESSION_NONE) session_start();
-$rol = $_SESSION['usuario_rol'] ?? '';
-?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Capacitaciones</title>
-  <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
-  <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
-  <link rel="stylesheet" href="/peoplepro/public/css/tablas.css">
-  <!-- botstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-  <!-- icono de la pestaña -->
-  <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
-</head>
-<body>
-  <?php include __DIR__ . '/../menu/menu.php'; ?><br>
+<?php $titulo = "Capacitaciones"; ?>
+<?php include __DIR__ . '/../layout/header.php'; ?>
   <h2 class="titulo-principal">Capacitaciones</h2>
 
   <main class="main-tabla"> 
@@ -61,6 +43,4 @@ $rol = $_SESSION['usuario_rol'] ?? '';
       </tbody>
     </table>
   </main>
-  <script src="/peoplepro/public/js/nav.js"></script>
-</body>
-</html>
+<?php include __DIR__ . '/../layout/footer.php'; ?>

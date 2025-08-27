@@ -40,6 +40,11 @@ input[type="password"],
 input[type="date"],
 input[type="time"],
 input[type="file"],
+input[type="tel"],
+input[type="number"],
+input[type="url"],
+input[type="search"],
+input[type="color"],
 select,
 textarea {
   width: 100%;
@@ -86,7 +91,7 @@ input[type="submit"]:hover {
   font-weight: bold;
   text-decoration: none;
   transition: background-color 0.3s ease;
-  margin-right: 25%;
+  margin-right: 10px;
 }
 .btn-volver:hover {
   background-color: rgb(184, 99, 99);

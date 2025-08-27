@@ -1,3 +1,7 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) session_start();
+$rol = $rol ?? ($_SESSION['usuario_rol'] ?? 'usuario'); // 👈 evita el "Undefined variable $rol"
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,15 +21,22 @@
 </head>
 <body>
     <h2>Editar Usuario</h2>
-    <form method="post" action="/peoplepro/public/index.php?action=usuario&method=actualizar&id=<?= htmlspecialchars($usuario['id']) ?>" class="formulario-usuario">
+    <?php if ($rol === 'admin'): ?>
+    <form method="post" action="/peoplepro/public/index.php?action=usuario&method=actualizar&id=<?= htmlspecialchars($usuario['id']) ?>" class="formulario-usuario" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['id']) ?>">
 
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" value="<?= htmlspecialchars($usuario['nombre']) ?>" required>
-
+        
         <label for="email">Correo electrónico:</label>
         <input type="email" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" required>
 
+        <label for="telefono">Numero de telefono:</label>
+        <input type="tel" id="telefono" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>" >
+
+        <label for="Direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" value="<?= htmlspecialchars($usuario['direccion']) ?>">
+        
         <label for="rol">Rol:</label>
         <select id="rol" name="rol" required class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
             <option value="usuario" <?= $usuario['rol'] === 'usuario' ? 'selected' : '' ?>>Usuario</option>
@@ -41,12 +52,50 @@
                 </option>
             <?php endforeach; ?>
         </select>
-        <label for="foto_perfil">Foto de perfil:</label>
-        <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*">
-        
+
         <a href="/peoplepro/public/index.php?action=usuario" class="btn-volver">Cancelar</a>
         <button type="submit">Guardar cambios</button>
     </form>
+    <?php endif; ?>
 
+    <?php if ($rol === 'usuario'): ?>
+    <form method="post" action="/peoplepro/public/index.php?action=usuario&method=actualizar&id=<?= htmlspecialchars($usuario['id']) ?>" class="formulario-usuario" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['id']) ?>">
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="<?= htmlspecialchars($usuario['nombre']) ?>" readonly>
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" required>
+
+        <label for="telefono">Numero de telefono:</label>
+        <input type="tel" id="telefono" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>" >
+
+        <label for="Direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" value="<?= htmlspecialchars($usuario['direccion']) ?>">
+            
+        <label for="rol">Rol:</label>
+        <select id="rol" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" disabled>
+            <option value="usuario" <?= $usuario['rol'] === 'usuario' ? 'selected' : '' ?>>Usuario</option>
+            <option value="admin" <?= $usuario['rol'] === 'admin' ? 'selected' : '' ?>>Admin</option>
+        </select>
+        <input type="hidden" name="rol" value="<?= htmlspecialchars($usuario['rol']) ?>">
+
+
+        <label for="area_id">Área:</label>
+        <select id="area_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" disabled>
+            <option value="">-- Sin área --</option>
+            <?php foreach ($areas as $area): ?>
+                <option value="<?= htmlspecialchars($area['id']) ?>" <?= $usuario['area_id'] == $area['id'] ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($area['nombre']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+<input type="hidden" name="area_id" value="<?= htmlspecialchars($usuario['area_id']) ?>">
+
+        <a href="/peoplepro/public/index.php?action=dashboard" class="btn-volver">Cancelar</a>
+        <button type="submit">Guardar cambios</button>
+    </form>
+    <?php endif; ?>
 </body>
 </html>

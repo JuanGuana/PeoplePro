@@ -31,9 +31,10 @@ class VisitanteController extends Controller
             $documento = trim($_POST['documento'] ?? '');
             $empresa = trim($_POST['empresa'] ?? '');
             $fecha_ingreso = $_POST['fecha_ingreso'] ?? '';
+            $fecha_salida = $_POST['fecha_salida'] ?? '';
             $motivo = trim($_POST['motivo'] ?? '');
 
-            $this->visitanteModel->insertar($nombre, $documento, $empresa, $fecha_ingreso, $motivo);
+            $this->visitanteModel->insertar($nombre, $documento, $empresa, $fecha_ingreso, $fecha_salida, $motivo);
         }
 
         // Redirección corregida
@@ -67,9 +68,10 @@ class VisitanteController extends Controller
             $documento = trim($_POST['documento'] ?? '');
             $empresa = trim($_POST['empresa'] ?? '');
             $fecha_ingreso = $_POST['fecha_ingreso'] ?? '';
+            $fecha_salida = $_POST['fecha_salida'] ?? '';
             $motivo = trim($_POST['motivo'] ?? '');
 
-            $this->visitanteModel->actualizar($id, $nombre, $documento, $empresa, $fecha_ingreso, $motivo);
+            $this->visitanteModel->actualizar($id, $nombre, $documento, $empresa, $fecha_ingreso, $fecha_salida, $motivo);
         }
 
         $this->redirect('index.php?action=visitante&method=index');

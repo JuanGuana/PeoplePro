@@ -23,18 +23,15 @@ class UsuarioController extends Controller {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nombre = $_POST['nombre'] ?? '';
             $email = $_POST['email'] ?? '';
+            $direccion = $_POST['direccion'] ?? '';
+            $telefono = $_POST['telefono'] ?? '';
             $password = $_POST['password'] ?? '';
             $rol = $_POST['rol'] ?? 'usuario';
             $area_id = $_POST['area_id'] ?? null;
 
-            // Verificar si se subió imagen
-            if (!empty($_FILES['foto_perfil']['name'])) {
-                $foto_perfil = $_FILES['foto_perfil'];
-            } else {
-                $foto_perfil = null; // El modelo o la BD pondrán el default
-            }
-
-            $this->userModel->crear($nombre, $email, $password, $rol, $area_id, $foto_perfil);
+            $this->userModel->crear(
+                $nombre, $email, $password, $rol, $area_id, $direccion, $telefono
+            );
 
             header('Location: /peoplepro/public/index.php?action=usuario');
             exit;
@@ -43,7 +40,6 @@ class UsuarioController extends Controller {
             $this->view('usuarios/crear', ['areas' => $areas]);
         }
     }
-
 
     public function editar($id) {
         $usuario = $this->userModel->obtenerPorId($id);
@@ -59,22 +55,54 @@ class UsuarioController extends Controller {
 
     public function actualizar($id) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $nombre = $_POST['nombre'] ?? '';
-            $email = $_POST['email'] ?? '';
-            $rol = $_POST['rol'] ?? 'usuario';
-            $area_id = $_POST['area_id'] ?? null;
-            $foto_perfil = $_FILES['foto_perfil'] ?? null;
+            $idSesion = $_SESSION['usuario']['id'];
 
-            $this->userModel->actualizar($id, $nombre, $email, $rol, $area_id, $foto_perfil);
+            if ($id == $idSesion) {
+                // Edición de perfil propio
+                $email = $_POST['email'] ?? '';
+                $direccion = $_POST['direccion'] ?? '';
+                $telefono = $_POST['telefono'] ?? '';
 
-            header('Location: /peoplepro/public/index.php?action=usuario');
-            exit;
+                $usuarioActual = $this->userModel->obtenerPorId($id);
+                $nombre = $usuarioActual['nombre'];
+                $rol = $usuarioActual['rol'];
+                $area_id = $usuarioActual['area_id'];
+
+                $this->userModel->actualizar(
+                    $id, $nombre, $email, $rol, $area_id, $direccion, $telefono
+                );
+
+                // Refrescar datos de sesión
+                $_SESSION['usuario'] = $this->userModel->obtenerPorId($id);
+
+                    header('Location: /peoplepro/public/index.php?action=dashboard');
+                exit;
+
+            } else {
+                // Admin editando otro usuario
+                $nombre = $_POST['nombre'] ?? '';
+                $email = $_POST['email'] ?? '';
+                $direccion = $_POST['direccion'] ?? '';
+                $telefono = $_POST['telefono'] ?? '';
+                $rol = $_POST['rol'] ?? 'usuario';
+                $area_id = $_POST['area_id'] ?? null;
+
+                $this->userModel->actualizar(
+                    $id, $nombre, $email, $rol, $area_id, $direccion, $telefono
+                );
+
+                    header('Location: /peoplepro/public/index.php?action=dashboard');
+
+                exit;
+            }
         }
-    }
+}
 
     public function eliminar($id) {
         $this->userModel->eliminar($id);
         header('Location: /peoplepro/public/index.php?action=usuario');
         exit;
     }
+
 }
+

@@ -29,81 +29,7 @@
         </nav>
         <a href="/peoplepro/views/login/index.php" class="login">iniciar sesión</a>
     </header>
-    <!--<main>
-        <section id="home" class="contenedor">
-            <div class="contenedor-texto">
-                <h1 class="titulo-landing">Centraliza tu gestión humana con <span>PeoplePro</span></h1>
-                <p class="parrafo-landing">
-                La solución web pensada para empresas con grandes equipos. Administra beneficios, áreas de trabajo, capacitaciones, documentación de empleados y permisos desde un solo lugar.
-                </p>
-                 <button class="boton-home"><a href="#contacto">Conoce Más</a></button>
-            </div>
-            <img src="/peoplepro/public/img/perro-home.gif" alt="">
-        </section>
-        <section id="sobre-nosotros" class="contenedor">
-            <img src="/peoplepro/public/img/nosotros.gif" alt=""> 
-            <div class="contenedor-texto">
-                <h2 class="titulo-landing titulo-nosotros">Sobre Nosotros</h2>
-                <div class="contenedor-tarjetas">
-                    <p class="parrafo-landing tarjeta">En PeoplePro desarrollamos soluciones tecnológicas para facilitar la gestión del talento humano en empresas con grandes equipos de trabajo.</p>
-                    <p class="parrafo-landing tarjeta">Nuestro objetivo es simplificar procesos, optimizar la administración del personal y mejorar la experiencia de recursos humanos.</p>
-                </div>
-            </div>
-        </section>
-        <section id="servicios" class="contenedor">
-            <div class="contenedor-servicios">
-                <h2 class="titulo-landing">Nuestros Servicios</h2>
-                <div class="contenedor-tarjetas-servicios"> 
-                    
-                    <div class="tarjeta1">
-                            <h5 class="card-title mt-3">Gestión Documental</h5>
-                            <p class="card-text">Organiza y accede fácilmente a la documentación de tus empleados desde cualquier lugar.</p>
-                            <img src="/peoplepro/public/img/carpeta.png" alt="carpeta">
-                    </div>
 
-                    <div class="tarjeta1">
-                            <h5 class="card-title mt-3">Permisos y Vacaciones</h5>
-                            <p class="card-text">Administra las ausencias, vacaciones y permisos de tu personal de forma clara y controlada.</p>
-                            <img src="/peoplepro/public/img/isla.png" alt="isla">
-                    </div>
-
-                    <div class="tarjeta1">
-                            <h5 class="card-title mt-3">Anuncios de Capacitación</h5>
-                            <p class="card-text">Informa fácilmente sobre nuevas capacitaciones y actualizaciones internas importantes.</p>
-                            <img src="/peoplepro/public/img/megafono.png" alt="megafono">
-                    </div>
-
-                    <div class="tarjeta1">
-                            <h5 class="card-title mt-3">Estructura Organizacional</h5>
-                            <p class="card-text">Visualiza las áreas de trabajo y la estructura interna de tu empresa de forma ordenada.</p>
-                            <img src="/peoplepro/public/img/grafico.png" alt="grafico">
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <h2 class="titulo-landing">Contáctanos</h2>
-        <section id="contacto" class="contenedor-contacto">
-                    <div class="fondo-formulario">
-                        <img class="img-formulario" src="/peoplepro/public/img/formularioLanding.gif" alt="">
-                        <form action="#" method="post" class="formulario-contacto">
-                        <div class="input-contacto">
-                            <label for="nombre" class="form-label">Nombre:</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Tu nombre completo">
-                        </div>
-                        <div class="input-contacto">
-                            <label for="correo" class="form-label">Correo:</label>
-                            <input type="email" class="form-control" id="correo" placeholder="tunombre@email.com">
-                        </div>
-                        <div class="input-contacto">
-                            <label for="mensaje" class="form-label">Mensaje:</label>
-                            <textarea class="form-control" id="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..."></textarea>
-                        </div>
-                        <button type="submit" class="boton-contacto">Enviar</button>
-                        </form>
-                    </div>
-        </section>
-    </main>--> 
     <section class="home" id="home">
         <h2 class="home-titulo">Gestionar personas no debería ser complicado</h2>
         <img src="/peoplepro/public/img/perro-home.gif" class="home-imagen" alt="Perro animado">
@@ -149,22 +75,17 @@
             <img src="" alt="">
         </div>
     </section>
-    <section class="contacto">
-        <form action="" method="post" class="formulario-contacto">
-            <div class="input-contacto" id="contacto">
-                <label for="nombre" class="form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Tu nombre completo">
-            </div>
-            <div class="input-contacto">
-                <label for="correo" class="form-label">Correo:</label>
-                <input type="email" class="form-control" id="correo" placeholder="Tu correo electrónico">
-            </div>
-            <div class="input-contacto">
-                <label for="mensaje" class="form-label">Mensaje:</label>
-                <textarea class="form-control" id="mensaje" rows="4" placeholder="Tu mensaje..."></textarea>
-            </div>
-            <button type="submit" class="boton-contacto">Enviar</button>
-        </form>
+    <section class="contacto" id="contacto">
+        <div class="informacion-contacto">
+            <h2 class="contacto-titulo">¿No estás registardo?</h2>
+            <p class="contacto-subtitulo">Contáctanos y te ayudaremos a crear tu cuenta</p>
+            <p class="label-contacto">correo de contacto:</p>
+            <p class="contenido-contacto">peoplepro_info@gmail.com</p>
+            <button onclick="copiarTexto('peoplepro_info@gmail.com')" id="copiar_correo" class="copiar-btn">copiar</button>
+            <p class="label-contacto">numero de contacto:</p>
+            <p class="contenido-contacto" >+57 3594465289</p>
+            <button onclick="copiarTexto('3594465289')" id="copiar_numero" class="copiar-btn">copiar</button>
+        </div>
         <img src="/peoplepro/public/img/contacto.gif" class="contacto-img" alt="Contacto">
     </section>
     <script src="/peoplepro/public/js/landing.js"></script> 

@@ -23,30 +23,24 @@ class Usuario {
     }
 
     // ➕ Crear usuario
-        public function crear($nombre, $email, $password, $rol, $area_id, $foto_perfil = null) {
+    public function crear($nombre, $email, $password, $rol, $area_id, $direccion = '', $telefono = '') {
         try {
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-            // Si no hay imagen subida, usamos default
-            $ruta_foto = 'public/img/foto_perfil/default.png';
-
-            if ($foto_perfil && $foto_perfil['error'] === UPLOAD_ERR_OK) {
-                $nombreArchivo = uniqid() . "_" . basename($foto_perfil['name']);
-                $ruta_foto = 'uploads/' . $nombreArchivo;
-                move_uploaded_file($foto_perfil['tmp_name'], __DIR__ . '/../public/' . $ruta_foto);
-            }
 
             $stmt = $this->conn->prepare("
-                INSERT INTO users (nombre, email, password, rol, area_id, foto_perfil)
-                VALUES (?, ?, ?, ?, ?, ?)
+                INSERT INTO users (nombre, email, password, rol, area_id, direccion, telefono)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
             ");
-            return $stmt->execute([$nombre, $email, $passwordHash, $rol, $area_id, $ruta_foto]);
+
+            return $stmt->execute([ $nombre, $email, $passwordHash, $rol, $area_id, $direccion, $telefono ]);
 
         } catch (PDOException $e) {
             error_log('Error al crear usuario: ' . $e->getMessage());
             return false;
         }
     }
+
 
     // 🔍 Obtener todos con área
     public function obtenerTodosConArea() {
@@ -65,23 +59,20 @@ class Usuario {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function actualizar($id, $nombre, $email, $rol, $area_id, $foto_perfil = null) {
+    public function actualizar($id, $nombre, $email, $rol, $area_id, $direccion = '', $telefono = '') {
+        // Obtener usuario actual
         $usuario = $this->obtenerPorId($id);
-        $ruta_foto = $usuario['foto_perfil']; // conservar la actual por defecto
 
-        if ($foto_perfil && $foto_perfil['error'] === UPLOAD_ERR_OK) {
-            $nombreArchivo = uniqid() . "_" . basename($foto_perfil['name']);
-            $ruta_foto = 'uploads/' . $nombreArchivo;
-            move_uploaded_file($foto_perfil['tmp_name'], __DIR__ . '/../public/' . $ruta_foto);
-        }
 
         $stmt = $this->conn->prepare("
             UPDATE users 
-            SET nombre = ?, email = ?, rol = ?, area_id = ?, foto_perfil = ?
+            SET nombre = ?, email = ?, rol = ?, area_id = ?, direccion = ?, telefono = ?
             WHERE id = ?
         ");
-        return $stmt->execute([$nombre, $email, $rol, $area_id, $ruta_foto, $id]);
+        
+        return $stmt->execute([ $nombre, $email, $rol, $area_id, $direccion, $telefono, $id ]);
     }
+
 
 
     public function eliminar($id) {
@@ -128,4 +119,16 @@ class Usuario {
         ");
         return $stmt->execute([$hash, $id]);
     }
-}
+        // 👥 Obtener todos los usuarios que pertenecen a un área específica
+    public function obtenerUsuariosPorArea($area_id) {
+        $stmt = $this->conn->prepare("
+            SELECT u.*, a.nombre AS nombre_area
+            FROM users u
+            LEFT JOIN areas a ON u.area_id = a.id
+            WHERE u.area_id = ?
+        ");
+        $stmt->execute([$area_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+}   

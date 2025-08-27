@@ -1,20 +1,35 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) session_start();
+
 $rol = $_SESSION['usuario_rol'] ?? '';
 $nombre = $_SESSION['usuario_nombre'] ?? 'Invitado';
-$foto_perfil = $_SESSION['usuario_foto_perfil'] ?? 'img/foto_perfil/default.png';
+$id = $_SESSION['usuario_id'] ?? '';
 
 function nombreCorto($nombreCompleto) {
-   $partes = explode(" ", trim($nombreCompleto));
-
+    $partes = explode(" ", trim($nombreCompleto));
     if (count($partes) >= 2) {
-        return $partes[0] . ' ' . $partes[ count($partes) - 2 ];
+        return $partes[0] . ' ' . $partes[1]; // Nombre + Primer apellido
     }
-
     return $nombreCompleto;
 }
-?>
+function iniciales($nombreCompleto) {
+    $partes = explode(" ", trim($nombreCompleto));
+    if (count($partes) >= 2) {
+        return strtoupper($partes[0][0] . $partes[1][0]);
+    }
+    return strtoupper($nombreCompleto[0]);
+}
 
+function colorAleatorio() {
+    return sprintf("#%06X", mt_rand(0, 0xFFFFFF));
+}
+$color = colorAleatorio();
+// Redirigir si no hay sesión iniciada
+if (!$rol) {
+    header("Location: /peoplepro/public/index.php?action=login");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -46,7 +61,10 @@ function nombreCorto($nombreCompleto) {
     <!-- Cerrar sesión -->
     <div class="derecha">
         <p><?= htmlspecialchars(nombreCorto($nombre)) ?></p>
-        <img src="/peoplepro/public/<?= htmlspecialchars($foto_perfil) ?>" alt="Foto de <?= htmlspecialchars($nombre) ?>" width="120">
+        <div class="iniciales-contenedor" style="background-color:<?= $color ?>">
+            <p class="iniciales"><?= htmlspecialchars(iniciales($nombre)) ?></p>
+        </div>
+
     </div>
 </header>
 
@@ -66,7 +84,7 @@ function nombreCorto($nombreCompleto) {
             <hr>
             <div class="contenedor-acciones-rapidas">
                 <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesión</a>
-                <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-gear-fill"></i>  Configuración</a>
+                <a href="/peoplepro/public/index.php?action=usuario&method=editar&id=<?= $_SESSION['usuario_id'] ?? '' ?>" class="cerrar-sesion"><i class="bi bi-gear-fill"></i> Configuración</a>
             </div>
             <hr>
         <?php elseif ($rol === 'usuario'): ?>
@@ -79,7 +97,7 @@ function nombreCorto($nombreCompleto) {
             <hr>
             <div class="contenedor-acciones-rapidas">
                 <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesión</a>
-                <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-gear-fill"></i>  Configuración</a>
+               <a href="/peoplepro/public/index.php?action=usuario&method=editar&id=<?= $_SESSION['usuario_id'] ?? '' ?>" class="cerrar-sesion"><i class="bi bi-gear-fill"></i> Configuración</a>
             </div>
             <hr>
         <?php endif; ?>

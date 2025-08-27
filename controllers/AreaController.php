@@ -60,4 +60,24 @@ class AreaController extends Controller {
         }
         $this->redirect('/peoplepro/public/index.php?action=area');
     }
+
+    public function detalle($id) {
+        $area = $this->area->obtenerPorId($id);
+
+        if (!$area) {
+            echo "Área no encontrada";
+            return;
+        }
+
+        require_once __DIR__ . '/../models/Usuario.php';
+        $usuarioModel = new Usuario();
+        $usuarios = $usuarioModel->obtenerUsuariosPorArea($id);
+
+        $this->view('areas/detalle', [
+            'area' => $area,
+            'usuarios' => $usuarios
+        ]);
+    }
+
+
 }
