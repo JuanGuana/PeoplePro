@@ -1,21 +1,5 @@
-<?php
-if (session_status() === PHP_SESSION_NONE) session_start();
-$rol = $_SESSION['usuario_rol'] ?? '';
-?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Beneficios</title>
-    <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
-    <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
-    <link rel="stylesheet" href="/peoplepro/public/css/tablas.css">
-  <!-- icono de la pestaña -->
-    <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
-</head>
-<body>
-    <?php include __DIR__ . '/../menu/menu.php'; ?><br>
+<?php $titulo = "Beneficios"; ?>
+<?php include __DIR__ . '/../layout/header.php'; ?>
     <h2 class="titulo-principal">Beneficios</h2>
 
     <main class="main-tabla">
@@ -25,7 +9,7 @@ $rol = $_SESSION['usuario_rol'] ?? '';
             </a>
         <?php endif; ?>
 
-        <table class="tablas">
+        <table id="myTable" class="table table-striped nowrap responsive">
             <thead>
                 <tr>
                     <th>Imagen</th>
@@ -62,6 +46,4 @@ $rol = $_SESSION['usuario_rol'] ?? '';
             </tbody>
         </table>
     </main>
-    <script src="/peoplepro/public/js/nav.js"></script>
-</body>
-</html>
+<?php include __DIR__ . '/../layout/footer.php'; ?>

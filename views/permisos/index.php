@@ -1,24 +1,5 @@
-<?php
-if (session_status() === PHP_SESSION_NONE) session_start();
-$rol = $_SESSION['usuario_rol'] ?? '';
-$usuario_id = $_SESSION['usuario_id'] ?? null;
-?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Gestión de Permisos</title>
-  <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
-  <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
-  <link rel="stylesheet" href="/peoplepro/public/css/tablas.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-  <!-- icono de la pestaña -->
-  <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
-</head>
-<body>
-  <?php include __DIR__ . '/../menu/menu.php'; ?><br>
-  <!-- titulo principal -->
+<?php $titulo = "Gestión de Permisos"; ?>
+<?php include __DIR__ . '/../layout/header.php'; ?>
   <h2 class="titulo-principal">Gestión de Permisos</h2>
 
   <main class="main-tabla">
@@ -29,7 +10,7 @@ $usuario_id = $_SESSION['usuario_id'] ?? null;
       </a>
     <?php endif; ?>
     <!-- tabla de permisos -->
-    <table class="tablas">
+    <table id="myTable" class="table table-striped nowrap responsive">
       <thead>
         <tr>
           <th>ID</th>
@@ -87,6 +68,4 @@ $usuario_id = $_SESSION['usuario_id'] ?? null;
 
     </table>
   </main>
-  <script src="/peoplepro/public/js/nav.js"></script>
-</body>
-</html>
+<?php include __DIR__ . '/../layout/footer.php'; ?>
