@@ -8,13 +8,27 @@
     background-color: var(--fondo-header);
     overflow: hidden;
 }
+.card-tabla {
+    background: #23272b;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-tabla h3 {
+    color: #fff;
+}
 .tablas {
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 16px;
     overflow: hidden;
     font-size: 14px;
     border: none;
-    border-collapse: separate;
-    border-spacing: 0;
     background-color: white;
     border-radius: 12px;
 }
@@ -26,12 +40,31 @@
     padding: 12px;
     border: none;
 }
+.tablas thead tr {
+    background: #7c3aed;
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.tablas th, .tablas td {
+    padding: 14px 18px;
+    text-align: left;
+}
 
 .tablas tbody td {
     text-align: center;
     padding: 15px;
     background-color:white;
     border-bottom: 2px solid var(--primario);
+}
+.tablas tbody tr {
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    transition: background 0.2s;
+}
+
+.tablas tbody tr:hover {
+    background: #f3f0ff;
 }
 /* botones de acciones */
 .bt-eliminar, .bt-editar, .bt-rechazar{
@@ -92,4 +125,17 @@
 .btn-tabla:hover {
     background-color: lightblue;
     color: white;
+}
+
+.usuario-link {
+    color: #7c3aed;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.2s;
+}
+
+.usuario-link:hover {
+    color: #23272b;
+    text-decoration: underline;
 }
