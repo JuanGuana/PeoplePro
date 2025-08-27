@@ -119,4 +119,16 @@ class Usuario {
         ");
         return $stmt->execute([$hash, $id]);
     }
-}
+        // 👥 Obtener todos los usuarios que pertenecen a un área específica
+    public function obtenerUsuariosPorArea($area_id) {
+        $stmt = $this->conn->prepare("
+            SELECT u.*, a.nombre AS nombre_area
+            FROM users u
+            LEFT JOIN areas a ON u.area_id = a.id
+            WHERE u.area_id = ?
+        ");
+        $stmt->execute([$area_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+}   

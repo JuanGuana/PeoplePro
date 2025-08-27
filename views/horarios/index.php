@@ -2,28 +2,8 @@
 if (session_status() === PHP_SESSION_NONE) session_start();
 $rol = $_SESSION['usuario_rol'] ?? '';
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Horarios</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Estilos -->
-  <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
-  <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
-  <link rel="stylesheet" href="/peoplepro/public/css/tablas.css">
-  <link rel="stylesheet" href="/peoplepro/public/css/horario.css">
-
-  <!-- Íconos Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-  <!-- icono de la pestaña -->
-  <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
-</head>
-<body>
-
-  <?php include __DIR__ . '/../menu/menu.php'; ?><br>
+<?php $titulo = "Horarios"; ?>
+<?php include __DIR__ . '/../layout/header.php'; ?>
 
   <h2 class="titulo-principal">Lista de Horarios</h2>
 
@@ -34,7 +14,7 @@ $rol = $_SESSION['usuario_rol'] ?? '';
       </a>
     <?php endif; ?>
 
-    <table class="tablas">
+    <table id="myTable" class="table table-striped nowrap responsive">
       <thead>
         <tr>
           <th>ID</th>
@@ -82,9 +62,5 @@ $rol = $_SESSION['usuario_rol'] ?? '';
       </tbody>
     </table>
   </main>
+<?php include __DIR__ . '/../layout/footer.php'; ?>
 
-  <!-- Scripts -->
-  <script src="/peoplepro/public/js/nav.js"></script>
-
-</body>
-</html>
