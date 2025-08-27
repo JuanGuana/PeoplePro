@@ -13,7 +13,7 @@ class HorarioController extends Controller {
 
     public function index() {
         // Si es usuario, solo ve sus propios horarios
-        if ($_SESSION['usuario_rol'] === 'usuario') {
+        if ($_SESSION['usuario_rol'] === 'Empleado') {
             $horarios = $this->model->obtenerPorUsuario($_SESSION['usuario_id']);
         } else {
             $horarios = $this->model->obtenerTodos();
@@ -23,7 +23,7 @@ class HorarioController extends Controller {
     }
 
     public function crear() {
-        if ($_SESSION['usuario_rol'] !== 'admin') {
+        if ($_SESSION['usuario_rol'] !== 'Admin') {
             $this->redirect('/peoplepro/public/index.php?action=horario');
             return;
         }
@@ -51,7 +51,7 @@ class HorarioController extends Controller {
     }
 
     public function editar($id) {
-        if ($_SESSION['usuario_rol'] !== 'admin') {
+        if ($_SESSION['usuario_rol'] !== 'Admin') {
             $this->redirect('/peoplepro/public/index.php?action=horario');
             return;
         }
@@ -87,7 +87,7 @@ class HorarioController extends Controller {
     }
 
     public function eliminar($id) {
-        if ($_SESSION['usuario_rol'] === 'admin') {
+        if ($_SESSION['usuario_rol'] === 'Admin') {
             $this->model->eliminar($id);
         }
         $this->redirect('/peoplepro/public/index.php?action=horario');

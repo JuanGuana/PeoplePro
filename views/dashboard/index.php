@@ -14,7 +14,7 @@
     <?php include __DIR__ . '/../menu/menu.php'; ?>
     <main class="main">
     
-        <?php if ($rol === 'usuario'): ?>
+        <?php if ($rol === 'Empleado'): ?>
             <?php if (!empty($beneficios)): ?>
                 <h2 class="beficio-titulo">Tus Beneficios Disponibles</h2>
                 <a href="/peoplepro/public/index.php?action=beneficio" class="ver-mas">Ver más</a>

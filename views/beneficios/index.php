@@ -3,7 +3,7 @@
     <h2 class="titulo-principal">Beneficios</h2>
 
     <main class="main-tabla">
-        <?php if ($rol === 'admin'): ?>
+        <?php if ($rol === 'Admin'): ?>
             <a class="btn-tabla" href="/peoplepro/public/index.php?action=beneficio&method=crear">
                 <i class="bi bi-gift-fill"></i> Nuevo Beneficio
             </a>
@@ -17,7 +17,7 @@
                     <th>Descripción</th>
                     <th>Inicio</th>
                     <th>Fin</th>
-                    <?php if ($rol === 'admin'): ?>
+                    <?php if ($rol === 'Admin'): ?>
                         <th>Acciones</th>
                     <?php endif; ?>
                 </tr>
@@ -35,7 +35,7 @@
                     <td><?= htmlspecialchars($b['descripcion']) ?></td>
                     <td><?= $b['fecha_inicio'] ?></td>
                     <td><?= $b['fecha_fin'] ?></td>
-                    <?php if ($rol === 'admin'): ?>
+                    <?php if ($rol === 'Admin'): ?>
                     <td>
                         <a class="bt-editar" href="/peoplepro/public/index.php?action=beneficio&method=editar&id=<?= $b['id'] ?>"><i class="bi bi-pencil-fill"></i> Editar</a>
                         <a class="bt-eliminar" href="/peoplepro/public/index.php?action=beneficio&method=eliminar&id=<?= $b['id'] ?>" onclick="return confirm('¿Eliminar beneficio?')"><i class="bi bi-trash3-fill"></i> Eliminar</a>

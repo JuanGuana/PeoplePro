@@ -17,7 +17,7 @@ class BeneficioController extends Controller {
     }
 
     public function crear() {
-        if ($_SESSION['usuario_rol'] !== 'admin') {
+        if ($_SESSION['usuario_rol'] !== 'Admin') {
             $this->redirect('/peoplepro/public/index.php?action=beneficio');
             return;
         }
@@ -49,7 +49,7 @@ class BeneficioController extends Controller {
     }
 
     public function editar($id) {
-        if ($_SESSION['usuario_rol'] !== 'admin') {
+        if ($_SESSION['usuario_rol'] !== 'Admin') {
             $this->redirect('/peoplepro/public/index.php?action=beneficio');
             return;
         }
@@ -91,7 +91,7 @@ class BeneficioController extends Controller {
     }
 
     public function eliminar($id) {
-        if ($_SESSION['usuario_rol'] === 'admin') {
+        if ($_SESSION['usuario_rol'] === 'Admin') {
             $this->model->eliminar($id);
         }
         $this->redirect('/peoplepro/public/index.php?action=beneficio');

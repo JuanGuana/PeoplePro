@@ -72,7 +72,7 @@ if (!$rol) {
 <nav class="nav-desplegable" id="nav-desplegable">
     <ul class="nav-lista">
         <li class="first-li"><a href="/peoplepro/public/index.php?action=dashboard">Inicio</a></li>
-        <?php if ($rol === 'admin'): ?>
+        <?php if ($rol === 'Admin'): ?>
             <li><a href="/peoplepro/public/index.php?action=usuario">Empleados</a></li>
             <li><a href="/peoplepro/public/index.php?action=permiso">Permisos</a></li>
             <li><a href="/peoplepro/public/index.php?action=beneficio">Beneficios</a></li>
@@ -87,10 +87,23 @@ if (!$rol) {
                 <a href="/peoplepro/public/index.php?action=usuario&method=editar&id=<?= $_SESSION['usuario_id'] ?? '' ?>" class="cerrar-sesion"><i class="bi bi-gear-fill"></i> Configuración</a>
             </div>
             <hr>
-        <?php elseif ($rol === 'usuario'): ?>
+        <?php elseif ($rol === 'Empleado'): ?>
             <li><a href="/peoplepro/public/index.php?action=horario">Mis Horarios</a></li>
             <li><a href="/peoplepro/public/index.php?action=permiso">Mis Permisos</a></li>
             <li><a href="/peoplepro/public/index.php?action=capacitacion">Capacitaciones</a></li>
+            <li><a href="/peoplepro/public/index.php?action=documento">Documentos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=beneficio">Beneficios</a></li>
+            <li><a href="/peoplepro/public/index.php?action=area">Áreas</a></li>
+            <hr>
+            <div class="contenedor-acciones-rapidas">
+                <a href="/peoplepro/public/index.php?action=logout" class="cerrar-sesion"> <i class="bi bi-box-arrow-left"></i>  Cerrar sesión</a>
+               <a href="/peoplepro/public/index.php?action=usuario&method=editar&id=<?= $_SESSION['usuario_id'] ?? '' ?>" class="cerrar-sesion"><i class="bi bi-gear-fill"></i> Configuración</a>
+            </div>
+            <hr>
+        <?php elseif ($rol === 'Seguridad'): ?>
+            <li><a href="/peoplepro/public/index.php?action=visitante">Visitantes Externos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=horario">Mis Horarios</a></li>
+            <li><a href="/peoplepro/public/index.php?action=permiso">Mis Permisos</a></li>
             <li><a href="/peoplepro/public/index.php?action=documento">Documentos</a></li>
             <li><a href="/peoplepro/public/index.php?action=beneficio">Beneficios</a></li>
             <li><a href="/peoplepro/public/index.php?action=area">Áreas</a></li>

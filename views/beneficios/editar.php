@@ -16,12 +16,7 @@
     <!-- icono de la pestaña -->
     <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
 </head>
-<<<<<<< HEAD
 <body>
-=======
-<body>
-<?php include __DIR__ . '/../menu/menu.php'; ?><br>
->>>>>>> cristian
 
     <h2 class="titulo-principal">Editar Beneficio</h2>
 

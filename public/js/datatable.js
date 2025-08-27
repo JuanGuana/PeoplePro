@@ -2,7 +2,7 @@ $(document).ready(function () {
     let botones = [];
     let opcionesExtra = {};
 
-    if (window.userRole === 'admin') {
+    if (window.userRole === 'Admin') {
         // Botones solo para admin
         botones = [
             {

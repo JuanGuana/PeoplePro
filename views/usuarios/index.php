@@ -16,9 +16,11 @@
 
         <select id="rol" name="rol" required>
             <option value="">Selecciona un rol</option>
-            <option value="usuario">Usuario</option>
-            <option value="admin">Admin</option>
+            <option value="Admin">Admin</option>
+            <option value="Empleado" selected>Empleado</option>
+            <option value="Seguridad">Seguridad</option>
         </select>
+
 
         <select id="area_id" name="area_id" required>
             <option value="">Selecciona un área</option>

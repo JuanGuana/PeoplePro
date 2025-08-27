@@ -25,7 +25,7 @@ class DocumentoController extends Controller {
     }
 
     public function crear() {
-        if ($_SESSION['usuario_rol'] !== 'usuario') {
+        if ($_SESSION['usuario_rol'] !== 'Empleado') {
             $this->redirect('/peoplepro/public/index.php?action=documento');
             return;
         }
@@ -34,7 +34,7 @@ class DocumentoController extends Controller {
     }
 
     public function guardar() {
-        if ($_SESSION['usuario_rol'] !== 'usuario') {
+        if ($_SESSION['usuario_rol'] !== 'Empleado') {
             $this->redirect('/peoplepro/public/index.php?action=documento');
             return;
         }
@@ -54,7 +54,7 @@ class DocumentoController extends Controller {
     }
 
     public function eliminar($id) {
-        if ($_SESSION['usuario_rol'] === 'admin') {
+        if ($_SESSION['usuario_rol'] === 'Admin') {
             $this->documento->eliminar($id);
         }
         $this->redirect('/peoplepro/public/index.php?action=documento');

@@ -1,14 +1,10 @@
-<?php
-if (session_status() === PHP_SESSION_NONE) session_start();
-$rol = $_SESSION['usuario_rol'] ?? '';
-?>
 <?php $titulo = "Horarios"; ?>
 <?php include __DIR__ . '/../layout/header.php'; ?>
 
   <h2 class="titulo-principal">Lista de Horarios</h2>
 
   <main class="main-tabla"> 
-    <?php if ($rol === 'admin'): ?>
+    <?php if ($rol === 'Admin'): ?>
       <a class="btn-tabla" href="/peoplepro/public/index.php?action=horario&method=crear">
         <i class="bi bi-calendar-plus"></i> Nuevo Horario
       </a>
@@ -25,7 +21,7 @@ $rol = $_SESSION['usuario_rol'] ?? '';
           <th>Hora Fin</th>
           <th>Estado</th>
           <th>Observaciones</th>
-          <?php if ($rol === 'admin'): ?>
+          <?php if ($rol === 'Admin'): ?>
             <th>Acciones</th>
           <?php endif; ?>
         </tr>
@@ -42,7 +38,7 @@ $rol = $_SESSION['usuario_rol'] ?? '';
               <td><?= $horario['hora_fin'] ?></td>
               <td><?= $horario['estado'] ?></td>
               <td><?= htmlspecialchars($horario['observaciones']) ?></td>
-              <?php if ($rol === 'admin'): ?>
+              <?php if ($rol === 'Admin'): ?>
                 <td>
                   <a class="bt-editar" href="/peoplepro/public/index.php?action=horario&method=editar&id=<?= $horario['id'] ?>">
                     <i class="bi bi-pencil-fill"></i> Editar
@@ -56,7 +52,7 @@ $rol = $_SESSION['usuario_rol'] ?? '';
           <?php endforeach; ?>
         <?php else : ?>
           <tr>
-            <td colspan="<?= $rol === 'admin' ? 9 : 8 ?>">No hay horarios registrados.</td>
+            <td colspan="<?= $rol === 'Admin' ? 9 : 8 ?>">No hay horarios registrados.</td>
           </tr>
         <?php endif; ?>
       </tbody>

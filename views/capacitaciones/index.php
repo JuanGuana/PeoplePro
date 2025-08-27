@@ -16,7 +16,7 @@
           <th>Nombre</th>
           <th>Descripción</th>
           <th>Fecha</th>
-          <?php if ($rol === 'admin'): ?>
+          <?php if ($rol === 'Admin'): ?>
             <th>Acciones</th>
           <?php endif; ?>
         </tr>
@@ -28,7 +28,7 @@
           <td><?= htmlspecialchars($cap['nombre']) ?></td>
           <td><?= htmlspecialchars($cap['descripcion']) ?></td>
           <td><?= htmlspecialchars($cap['fecha']) ?></td>
-          <?php if ($rol === 'admin'): ?>
+          <?php if ($rol === 'Admin'): ?>
           <td>
             <a class="bt-editar" href="/peoplepro/public/index.php?action=capacitacion&method=editar&id=<?= $cap['id'] ?>">
               <i class="bi bi-pencil-fill"></i> Editar

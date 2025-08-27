@@ -1,29 +1,22 @@
-<?php
-if (session_status() === PHP_SESSION_NONE) session_start();
-$rol = $_SESSION['usuario_rol'] ?? '';
-?>
 <?php $titulo = "Áreas de trabajo"; ?>
 <?php include __DIR__ . '/../layout/header.php'; ?>
 
-    <h2 class="titulo-principal">Áreas de trabajo</h2>
+<h2 class="titulo-principal">Áreas de trabajo</h2>
 
-    <main class="main-tabla">
+<main class="main-tabla">
 
-        <?php if ($rol === 'admin'): ?>
-            <a class="btn-tabla" href="/peoplepro/public/index.php?action=area&method=crear" title="Crear nueva área">
-                <i class="bi bi-bookmark-plus-fill"></i> Nueva Área
-            </a>
-        <?php endif; ?>
+    <?php if ($rol === 'Admin'): ?>
+        <a class="btn-tabla" href="/peoplepro/public/index.php?action=area&method=crear" title="Crear nueva área">
+            <i class="bi bi-bookmark-plus-fill"></i> Nueva Área
+        </a>
 
-        <table id="myTable" class="table table-striped nowrap responsive"">
+        <table id="myTable" class="table table-striped nowrap responsive">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
-                    <?php if ($rol === 'admin'): ?>
-                        <th>Acciones</th>
-                    <?php endif; ?>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,22 +25,20 @@ $rol = $_SESSION['usuario_rol'] ?? '';
                     <td><?= htmlspecialchars($area['id']) ?></td>
                     <td><?= htmlspecialchars($area['nombre']) ?></td>
                     <td><?= htmlspecialchars($area['descripcion']) ?></td>
-                    <?php if ($rol === 'admin'): ?>
-                        <td>
-                            <a class="bt-editar" href="/peoplepro/public/index.php?action=area&method=editar&id=<?= $area['id'] ?>">
-                                <i class="bi bi-pencil-fill"></i> Editar
-                            </a>
-                            <a class="bt-eliminar" href="/peoplepro/public/index.php?action=area&method=eliminar&id=<?= $area['id'] ?>" onclick="return confirm('¿Eliminar esta área?')">
-                                <i class="bi bi-trash3-fill"></i> Eliminar
-                            </a>
-                            <a class="bt-ver" href="/peoplepro/public/index.php?action=area&method=detalle&id=<?= $area['id'] ?>">
-                                <i class="bi bi-eye-fill"></i> Ver más
-                            </a>
-                        </td>
-                    <?php endif; ?>
+                    <td>
+                        <a class="bt-editar" href="/peoplepro/public/index.php?action=area&method=editar&id=<?= $area['id'] ?>">
+                            <i class="bi bi-pencil-fill"></i> Editar
+                        </a>
+                        <a class="bt-eliminar" href="/peoplepro/public/index.php?action=area&method=eliminar&id=<?= $area['id'] ?>" onclick="return confirm('¿Eliminar esta área?')">
+                            <i class="bi bi-trash3-fill"></i> Eliminar
+                        </a>
+                        <a class="bt-ver" href="/peoplepro/public/index.php?action=area&method=detalle&id=<?= $area['id'] ?>">
+                            <i class="bi bi-eye-fill"></i> Ver más
+                        </a>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </main>
+    <?php endif; ?>
 <?php include __DIR__ . '/../layout/footer.php'; ?>

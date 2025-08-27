@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
     <h2 class="titulo-principal">Gestión de Documentos</h2>
 
     <main class="main-tabla">
-        <?php if ($rol === 'usuario'): ?>
+        <?php if ($rol === 'Empleado'): ?>
             <a class="btn-tabla" href="/peoplepro/public/index.php?action=documento&method=crear">
                 <i class="bi bi-upload"></i> Subir Documento
             </a>
@@ -18,7 +18,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
                     <th>Nombre</th>
                     <th>Archivo</th>
                     <th>Fecha</th>
-                    <?php if ($rol === 'admin'): ?>
+                    <?php if ($rol === 'Admin'): ?>
                         <th>Usuario</th>
                         <th>Acciones</th>
                     <?php endif; ?>
@@ -29,14 +29,14 @@ if (session_status() === PHP_SESSION_NONE) session_start();
                 <tr>
                     <td><?= htmlspecialchars($doc['nombre']) ?></td>
                     <td>
-                        <?php if ($rol === 'admin'): ?>
+                        <?php if ($rol === 'Admin'): ?>
                             <a href="/peoplepro/<?= $doc['archivo'] ?>" download>Descargar</a>
                         <?php else: ?>
                             <?= basename($doc['archivo']) ?>
                         <?php endif; ?>
                     </td>
                     <td><?= $doc['fecha_subida'] ?></td>
-                    <?php if ($rol === 'admin'): ?>
+                    <?php if ($rol === 'Admin'): ?>
                         <td><?= htmlspecialchars($doc['usuario']) ?></td>
                         <td>
                             <a class="bt-eliminar" href="/peoplepro/public/index.php?action=documento&method=eliminar&id=<?= $doc['id'] ?>" onclick="return confirm('¿Eliminar documento?');">

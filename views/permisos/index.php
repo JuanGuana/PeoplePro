@@ -4,7 +4,7 @@
 
   <main class="main-tabla">
     <!-- boton para solicitar permiso -->
-    <?php if ($rol === 'usuario'): ?>
+    <?php if ($rol === 'Empleado'): ?>
       <a class="btn-tabla" href="/peoplepro/public/index.php?action=permiso&method=solicitud">
         <i class="bi bi-envelope-plus"></i> Solicitar Permiso
       </a>
@@ -43,7 +43,7 @@
                   <span class="<?= $clase ?>"><?= htmlspecialchars($permiso['estado']) ?></span>
                 </td>
                 <td>
-                  <?php if ($rol === 'admin'): ?>
+                  <?php if ($rol === 'Admin'): ?>
                     <a href="/peoplepro/public/index.php?action=permiso&method=actualizarEstado&id=<?= $permiso['id'] ?>&estado=Aprobado" class="bt-editar">
                       <i class="bi bi-check-circle-fill"></i> Aprobar
                     </a>
@@ -53,7 +53,7 @@
                     <a href="/peoplepro/public/index.php?action=permiso&method=eliminar&id=<?= $permiso['id'] ?>" class="bt-eliminar" onclick="return confirm('¿Eliminar este permiso?')">
                       <i class="bi bi-trash3-fill"></i> Eliminar
                     </a>
-                  <?php elseif ($rol === 'usuario' && $esPropietario && $estado === 'pendiente'): ?>
+                  <?php elseif ($rol === 'Empleado' && $esPropietario && $estado === 'pendiente'): ?>
                     <a href="/peoplepro/public/index.php?action=permiso&method=eliminar&id=<?= $permiso['id'] ?>" class="bt-eliminar" onclick="return confirm('¿Eliminar este permiso?')">
                       <i class="bi bi-trash3-fill"></i> Eliminar
                     </a>
@@ -62,7 +62,7 @@
               </tr>
             <?php endforeach; ?>
           <?php else: ?>
-            <tr><td colspan="<?= $rol === 'admin' ? 6 : 6 ?>">No hay permisos registrados.</td></tr>
+            <tr><td colspan="<?= $rol === 'Admin' ? 6 : 6 ?>">No hay permisos registrados.</td></tr>
           <?php endif; ?>
         </tbody>
 

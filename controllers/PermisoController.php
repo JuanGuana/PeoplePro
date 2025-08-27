@@ -10,7 +10,7 @@ class PermisoController extends Controller {
     public function index() {
         $permiso = $this->model('Permiso');
 
-        if ($_SESSION['usuario_rol'] === 'usuario') {
+        if ($_SESSION['usuario_rol'] === 'Empleado') {
             $data = $permiso->obtenerPorUsuario($_SESSION['usuario_id']);
         } else {
             $data = $permiso->obtenerTodos();
@@ -20,7 +20,7 @@ class PermisoController extends Controller {
     }
 
     public function solicitud() {
-        if ($_SESSION['usuario_rol'] !== 'usuario') {
+        if ($_SESSION['usuario_rol'] !== 'Empleado') {
             $this->redirect('/peoplepro/public/index.php?action=permiso');
             return;
         }
@@ -29,7 +29,7 @@ class PermisoController extends Controller {
     }
 
     public function guardarSolicitud() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['usuario_rol'] === 'usuario') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['usuario_rol'] === 'Empleado') {
             $tipo = $_POST['tipo'];
             $fecha_inicio = $_POST['fecha_inicio'] ?? null;
             $fecha_fin = $_POST['fecha_fin'] ?? null;
@@ -43,7 +43,7 @@ class PermisoController extends Controller {
     }
 
     public function actualizarEstado($id, $estado) {
-        if ($_SESSION['usuario_rol'] === 'admin') {
+        if ($_SESSION['usuario_rol'] === 'Admin') {
             $permiso = $this->model('Permiso');
             $permiso->actualizarEstado($id, $estado);
         }
@@ -52,7 +52,7 @@ class PermisoController extends Controller {
     }
 
     public function eliminar($id) {
-        if ($_SESSION['usuario_rol'] === 'admin') {
+        if ($_SESSION['usuario_rol'] === 'Admin') {
             $permiso = $this->model('Permiso');
             $permiso->eliminar($id);
         }

@@ -26,7 +26,7 @@ class UsuarioController extends Controller {
             $direccion = $_POST['direccion'] ?? '';
             $telefono = $_POST['telefono'] ?? '';
             $password = $_POST['password'] ?? '';
-            $rol = $_POST['rol'] ?? 'usuario';
+            $rol = $_POST['rol'] ?? 'Empleado';
             $area_id = $_POST['area_id'] ?? null;
 
             $this->userModel->crear(
@@ -84,7 +84,7 @@ class UsuarioController extends Controller {
                 $email = $_POST['email'] ?? '';
                 $direccion = $_POST['direccion'] ?? '';
                 $telefono = $_POST['telefono'] ?? '';
-                $rol = $_POST['rol'] ?? 'usuario';
+                $rol = $_POST['rol'] ?? 'Empleado';
                 $area_id = $_POST['area_id'] ?? null;
 
                 $this->userModel->actualizar(
