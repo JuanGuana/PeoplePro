@@ -1,11 +1,10 @@
-<?php $titulo = "Mi Área de trabajo"; ?>
-<?php include __DIR__ . '/../layout/header.php'; ?>
+<?php
+$titulo = "Mi Área de Trabajo";
+include __DIR__ . '/../layout/header.php';
+?>
 
-    <h2 class="titulo-principal">Área: <?= htmlspecialchars($area['nombre']) ?></h2>
+    <h2 class="titulo-principal">Mi Área: <?= htmlspecialchars($area['nombre']) ?></h2>
     <p class="subtitulo-principal"><?= htmlspecialchars($area['descripcion']) ?></p>
-
-    <a href="/peoplepro/public/index.php?action=dashboard" class="bt-volver">Volver</a>
-
     <main class="main-tabla">
         <?php if (!empty($usuarios)): ?>
             <table id="myTable" class="table table-striped nowrap responsive">

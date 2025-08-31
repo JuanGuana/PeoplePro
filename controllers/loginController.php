@@ -27,13 +27,14 @@ class LoginController extends Controller {
 
             $resultado = $this->usuario->autenticar($email, $password);
 
-            if (isset($resultado['usuario'])) {
-                $_SESSION['usuario_id'] = $resultado['usuario']['id'];
-                $_SESSION['usuario_nombre'] = $resultado['usuario']['nombre'];
-                $_SESSION['usuario_rol'] = $resultado['usuario']['rol'];
-                
-                $this->redirect('/peoplepro/public/index.php?action=dashboard');
-            } else {
+        if (isset($resultado['usuario'])) {
+            $_SESSION['usuario_id'] = $resultado['usuario']['id'];
+            $_SESSION['usuario_nombre'] = $resultado['usuario']['nombre'];
+            $_SESSION['usuario_rol'] = $resultado['usuario']['rol'];
+            $_SESSION['usuario_area_id'] = $resultado['usuario']['area_id'];
+            
+            $this->redirect('/peoplepro/public/index.php?action=dashboard');
+        }else {
                 $this->view('login/index', ['error' => $resultado['error']]);
             }
         } else {

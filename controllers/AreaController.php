@@ -14,12 +14,18 @@ class AreaController extends Controller {
     }
 
     public function index() {
-        $data['areas'] = $this->area->getAll();
-        $this->view('areas/index', $data);
+        // Si el usuario es admin, ve todas las áreas
+        if ($_SESSION['usuario_rol'] === 'Admin') {
+            $data['areas'] = $this->area->getAll();
+            $this->view('areas/index', $data);
+        } else {
+            // Si es empleado, lo mandamos a su vista específica
+            $this->redirect('/peoplepro/public/index.php?action=area&method=miArea');
+        }
     }
 
     public function crear() {
-        if ($_SESSION['usuario_rol'] !== 'admin') {
+        if ($_SESSION['usuario_rol'] !== 'Admin') {
             $this->redirect('/peoplepro/public/index.php?action=area');
             return;
         }
@@ -27,14 +33,14 @@ class AreaController extends Controller {
     }
 
     public function guardar() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['usuario_rol'] === 'admin') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['usuario_rol'] === 'Admin') {
             $this->area->guardar($_POST);
         }
         $this->redirect('/peoplepro/public/index.php?action=area');
     }
 
     public function editar($id) {
-        if ($_SESSION['usuario_rol'] !== 'admin') {
+        if ($_SESSION['usuario_rol'] !== 'Admin') {
             $this->redirect('/peoplepro/public/index.php?action=area');
             return;
         }
@@ -48,7 +54,7 @@ class AreaController extends Controller {
     }
 
     public function actualizar() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['usuario_rol'] === 'admin') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['usuario_rol'] === 'Admin') {
             $this->area->actualizar($_POST);
         }
         $this->redirect('/peoplepro/public/index.php?action=area');
@@ -78,6 +84,34 @@ class AreaController extends Controller {
             'usuarios' => $usuarios
         ]);
     }
+    public function miArea() {
+        $areaId = $_SESSION['usuario_area_id'] ?? null;
+
+        if (!$areaId) {
+            echo "⚠️ No tienes un área asignada en la sesión.";
+            return;
+        }
+
+        $area = $this->area->obtenerPorId($areaId);
+
+        if (!$area) {
+            echo "⚠️ Área no encontrada.";
+            return;
+        }
+
+        require_once __DIR__ . '/../models/Usuario.php';
+        $usuarioModel = new Usuario();
+        $usuarios = $usuarioModel->obtenerUsuariosPorArea($areaId);
+
+        $this->view('areas/mi_area', [
+            'area' => $area,
+            'usuarios' => $usuarios
+        ]);
+    }
+
+
+
+
 
 
 }
