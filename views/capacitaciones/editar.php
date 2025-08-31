@@ -30,7 +30,7 @@
 
     <?php if (!empty($data['capacitacion']['imagen'])): ?>
         <label>Imagen actual:</label><br>
-        <img src="/peoplepro/public/img/capacitaciones/<?= htmlspecialchars($data['capacitacion']['imagen']) ?>" alt="Imagen actual" style="max-width: 200px;"><br><br>
+        <img src="<?= htmlspecialchars($data['capacitacion']['imagen']) ?>" alt="Imagen actual" style="max-width: 200px;"><br><br>
     <?php endif; ?>
 
     <label for="imagen">Cambiar imagen (opcional):</label><br>

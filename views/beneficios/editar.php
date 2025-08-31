@@ -35,7 +35,7 @@
 
         <?php if (!empty($data['beneficios']['imagen'])): ?>
             <label>Imagen actual:</label><br>
-            <img src="/peoplepro/public/img/beneficios/<?= htmlspecialchars($b['imagen']) ?>" alt="Imagen actual" style="max-width: 200px;"><br><br>
+            <img src="<?= htmlspecialchars($b['imagen']) ?>" alt="Imagen actual" style="max-width: 200px;"><br><br>
         <?php endif; ?>
 
         <label for="imagen">Cambiar imagen (opcional):</label><br>

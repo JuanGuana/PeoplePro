@@ -49,19 +49,9 @@ class Beneficio extends Model {
     }
 
     public function eliminar($id) {
-        // Primero obtener la imagen
-        $stmt = $this->conn->prepare("SELECT imagen FROM beneficios WHERE id = ?");
-        $stmt->execute([$id]);
-        $beneficio = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // Eliminar imagen del servidor si existe
-        if ($beneficio && $beneficio['imagen'] && file_exists(__DIR__ . '/../' . $beneficio['imagen'])) {
-            unlink(__DIR__ . '/../' . $beneficio['imagen']);
-        }
-
-        // Eliminar el registro de la base de datos
         $stmt = $this->conn->prepare("DELETE FROM beneficios WHERE id = ?");
         return $stmt->execute([$id]);
     }
+
 }
 

@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . '/../core/Controller.php';
 require_once __DIR__ . '/../models/Beneficio.php';
+require_once __DIR__ . '/../config/cloudinary.php';
+use Cloudinary\Api\Upload\UploadApi;
+
 
 class BeneficioController extends Controller {
     private $model;
@@ -24,11 +27,14 @@ class BeneficioController extends Controller {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $imagen = null;
             if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-                $nombreArchivo = uniqid() . '_' . basename($_FILES['imagen']['name']);
-                $rutaDestino = 'public/img/beneficios/' . $nombreArchivo;
-                move_uploaded_file($_FILES['imagen']['tmp_name'], __DIR__ . '/../' . $rutaDestino);
-                $imagen = $rutaDestino;
+                $tmpFilePath = $_FILES['imagen']['tmp_name'];
+
+                $upload = new UploadApi();
+                $result = $upload->upload($tmpFilePath);
+
+                $imagen = $result['secure_url']; // guardamos la URL de Cloudinary
             }
+
 
             $data = [
                 'nombre' => $_POST['nombre'],
@@ -65,11 +71,14 @@ class BeneficioController extends Controller {
             $imagen = $beneficio['imagen']; // Imagen anterior por defecto
 
             if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-                $nombreArchivo = uniqid() . '_' . basename($_FILES['imagen']['name']);
-                $rutaDestino = 'public/img/beneficios/' . $nombreArchivo;
-                move_uploaded_file($_FILES['imagen']['tmp_name'], __DIR__ . '/../' . $rutaDestino);
-                $imagen = $rutaDestino;
+                $tmpFilePath = $_FILES['imagen']['tmp_name'];
+
+                $upload = new UploadApi();
+                $result = $upload->upload($tmpFilePath);
+
+                $imagen = $result['secure_url']; // nueva URL en Cloudinary
             }
+
 
             $data = [
                 'nombre' => $_POST['nombre'],

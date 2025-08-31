@@ -21,7 +21,7 @@
                 <div class="beneficios">
                     <?php foreach ($beneficios as $b): ?>
                         <div class="beneficio-card">
-                            <img src="/peoplepro/<?= htmlspecialchars($b['imagen']) ?>" alt="Imagen de beneficio" >
+                            <img src="<?= htmlspecialchars($b['imagen']) ?>" alt="Imagen de beneficio" >
                             <small>Desde: <?= $b['fecha_inicio'] ?> Hasta: <?= $b['fecha_fin'] ?></small>
                             <p><?= htmlspecialchars($b['descripcion']) ?></p>
                         </div>

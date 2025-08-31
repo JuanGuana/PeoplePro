@@ -26,7 +26,7 @@
             <?php foreach ($beneficios as $b): ?>
                 <tr>
                     <td> <?php if (!empty($b['imagen'])): ?>
-                        <img src="/peoplepro/<?= htmlspecialchars($b['imagen']) ?>" style="max-width: 100px;">
+                        <img src="<?= htmlspecialchars($b['imagen']) ?>" style="max-width: 100px;">
                     <?php else: ?>
                         <span>Sin imagen</span>
                     <?php endif; ?>
