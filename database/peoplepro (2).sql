@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-08-2025 a las 22:26:04
+-- Tiempo de generación: 31-08-2025 a las 20:05:35
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -38,7 +38,9 @@ CREATE TABLE `areas` (
 --
 
 INSERT INTO `areas` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'cajas', 'bodega');
+(1, 'cajas', 'bodega'),
+(2, 'torres', 'fdadsfd'),
+(3, 'seguridad', 'hrtyutyhth');
 
 -- --------------------------------------------------------
 
@@ -116,6 +118,13 @@ CREATE TABLE `permisos` (
   `fecha_fin` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `permisos`
+--
+
+INSERT INTO `permisos` (`id`, `tipo`, `usuario_id`, `estado`, `fecha_inicio`, `fecha_fin`) VALUES
+(1, 'Permiso por calamidad doméstica', 4, 'pendiente', '2025-08-14', '2025-08-30');
+
 -- --------------------------------------------------------
 
 --
@@ -129,7 +138,7 @@ CREATE TABLE `users` (
   `telefono` int(10) NOT NULL,
   `direccion` text NOT NULL,
   `password` varchar(255) NOT NULL,
-  `rol` enum('usuario','admin') NOT NULL DEFAULT 'usuario',
+  `rol` enum('Admin','Empleado','Seguridad') NOT NULL DEFAULT 'Empleado',
   `area_id` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -140,8 +149,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nombre`, `email`, `telefono`, `direccion`, `password`, `rol`, `area_id`, `created_at`, `updated_at`) VALUES
-(1, 'laura', 'laura@gmail.com', 0, '', '$2y$10$ZXBSzMa1BC66TPeJow6R7OVvj8hFgOmmL4/jiVSWSCaIw2N.lylxu', 'admin', 1, '2025-08-12 18:12:46', '2025-08-30 18:12:46'),
-(4, 'daniela', 'daniela@gmail.com', 2147483647, 'ddjhshdushdus', '$2y$10$bwDpMomBmmWgwHxeENUSseTK8v/zpo.oCOnfe5v5mCQ5FuM8M2brW', 'usuario', 1, '2025-08-26 18:44:00', '2025-08-26 18:44:00');
+(1, 'laura', 'laura@gmail.com', 0, '', '$2y$10$ZXBSzMa1BC66TPeJow6R7OVvj8hFgOmmL4/jiVSWSCaIw2N.lylxu', 'Admin', 1, '2025-08-12 18:12:46', '2025-08-30 18:12:46'),
+(4, 'daniela', 'daniela@gmail.com', 2147483647, 'ddjhshdushdus', '$2y$10$bwDpMomBmmWgwHxeENUSseTK8v/zpo.oCOnfe5v5mCQ5FuM8M2brW', 'Empleado', 2, '2025-08-26 18:44:00', '2025-08-31 18:02:28'),
+(5, 'rodrigo', 'rodrigo@gmail.com', 2147483647, 'tu maldito amor', '$2y$10$d6ZI2HMRc0PWzVHhM94Ccemh3LFnClBF0zN68jrOfx1a6Y.mgmm8K', 'Seguridad', 1, '2025-08-27 21:52:08', '2025-08-27 21:52:08');
 
 -- --------------------------------------------------------
 
@@ -231,7 +241,7 @@ ALTER TABLE `visitantes`
 -- AUTO_INCREMENT de la tabla `areas`
 --
 ALTER TABLE `areas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `beneficios`
@@ -261,13 +271,13 @@ ALTER TABLE `horarios`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `visitantes`
