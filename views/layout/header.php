@@ -24,6 +24,7 @@ $rol = $_SESSION['usuario_rol'] ?? '';
     <link rel="stylesheet" href="/peoplepro/public/css/usuario.css">
     <link rel="stylesheet" href="/peoplepro/public/css/tablas.css">
     <link rel="stylesheet" href="/peoplepro/public/css/horario.css">
+    <link rel="stylesheet" href="/peoplepro/public/css/dashboard.css">
     <!-- icono de la pestaña -->
     <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
 </head>

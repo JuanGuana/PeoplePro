@@ -1,7 +1,7 @@
 <?php $titulo = "Dashboard"; ?>
 <?php include __DIR__ . '/../layout/header.php'; ?>
     <main class="main">
-        <?php if ($rol === 'Empleado'): ?>
+        <?php if ($rol === 'Empleado' || $rol === 'Seguridad'): ?>
             <?php if (!empty($beneficios)): ?>
                 <h2 class="beficio-titulo">Tus Beneficios Disponibles</h2>
                 <a href="/peoplepro/public/index.php?action=beneficio" class="ver-mas">Ver más</a>
@@ -22,7 +22,7 @@
                 <div class="beneficios">
                     <?php foreach ($capacitaciones as $c): ?>
                         <div class="capacitacion-card">
-                            <img src="/peoplepro/<?= htmlspecialchars($c['imagen_capacitacion']) ?>" alt="Imagen de capacitación">
+                            <img src="<?= htmlspecialchars($c['imagen_capacitacion']) ?>" alt="Imagen de capacitación">
                             <small>Fecha: <?= $c['fecha'] ?></small>
                             <p><?= htmlspecialchars($c['descripcion']) ?></p>
                         </div>
@@ -75,6 +75,7 @@
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <div class="card shadow p-3">
+                            <h5>🧑‍🎓 capacitaciones</h5>
                             <?php if (!empty($capacitaciones)): ?>
                                 <ul>
                                     <?php foreach ($capacitaciones as $c): ?>
