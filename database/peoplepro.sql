@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-08-2025 a las 20:05:35
+-- Tiempo de generación: 02-09-2025 a las 05:05:13
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -56,6 +56,13 @@ CREATE TABLE `beneficios` (
   `fecha_inicio` date DEFAULT NULL,
   `fecha_fin` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `beneficios`
+--
+
+INSERT INTO `beneficios` (`id`, `nombre`, `descripcion`, `imagen`, `fecha_inicio`, `fecha_fin`) VALUES
+(1, '30% en opticas', 'gafas', 'https://res.cloudinary.com/dacuzzwlc/image/upload/v1756678701/tzk2nismwlgyoadgxbu7.png', '2025-08-29', '2025-09-03');
 
 -- --------------------------------------------------------
 
@@ -141,17 +148,20 @@ CREATE TABLE `users` (
   `rol` enum('Admin','Empleado','Seguridad') NOT NULL DEFAULT 'Empleado',
   `area_id` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `token` varchar(255) DEFAULT NULL,
+  `token_expiracion` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `nombre`, `email`, `telefono`, `direccion`, `password`, `rol`, `area_id`, `created_at`, `updated_at`) VALUES
-(1, 'laura', 'laura@gmail.com', 0, '', '$2y$10$ZXBSzMa1BC66TPeJow6R7OVvj8hFgOmmL4/jiVSWSCaIw2N.lylxu', 'Admin', 1, '2025-08-12 18:12:46', '2025-08-30 18:12:46'),
-(4, 'daniela', 'daniela@gmail.com', 2147483647, 'ddjhshdushdus', '$2y$10$bwDpMomBmmWgwHxeENUSseTK8v/zpo.oCOnfe5v5mCQ5FuM8M2brW', 'Empleado', 2, '2025-08-26 18:44:00', '2025-08-31 18:02:28'),
-(5, 'rodrigo', 'rodrigo@gmail.com', 2147483647, 'tu maldito amor', '$2y$10$d6ZI2HMRc0PWzVHhM94Ccemh3LFnClBF0zN68jrOfx1a6Y.mgmm8K', 'Seguridad', 1, '2025-08-27 21:52:08', '2025-08-27 21:52:08');
+INSERT INTO `users` (`id`, `nombre`, `email`, `telefono`, `direccion`, `password`, `rol`, `area_id`, `created_at`, `updated_at`, `token`, `token_expiracion`) VALUES
+(1, 'laura', 'laura@gmail.com', 0, '', '$2y$10$ZXBSzMa1BC66TPeJow6R7OVvj8hFgOmmL4/jiVSWSCaIw2N.lylxu', 'Admin', 1, '2025-08-12 18:12:46', '2025-09-02 01:45:06', 'fd3b9661fd59182725690bd0bfcc8c57690b7be3aa5c1369f3d1f5ad4058e71e', '2025-09-02 04:45:06'),
+(4, 'daniela', 'daniela@gmail.com', 2147483647, 'ddjhshdushdus', '$2y$10$bwDpMomBmmWgwHxeENUSseTK8v/zpo.oCOnfe5v5mCQ5FuM8M2brW', 'Empleado', 2, '2025-08-26 18:44:00', '2025-08-31 18:02:28', NULL, NULL),
+(5, 'rodrigo', 'rodrigo@gmail.com', 2147483647, 'tu maldito amor', '$2y$10$d6ZI2HMRc0PWzVHhM94Ccemh3LFnClBF0zN68jrOfx1a6Y.mgmm8K', 'Seguridad', 1, '2025-08-27 21:52:08', '2025-08-27 21:52:08', NULL, NULL),
+(6, 'santiago', 'walterossanti35@gmail.com', 2147483647, 'tu maldito amor', '$2y$10$tSp7J9PiKUSDGbDmXooZVeGxF7qUMDUPKmxjj4skDmTM0dciUeaoK', 'Empleado', 3, '2025-09-02 01:49:18', '2025-09-02 02:03:10', 'f2e2314ad6f1c882e9bd8950b2796dcc7215dfa25cc913646ae4c6a60cc6a5e2', '2025-09-02 05:03:10');
 
 -- --------------------------------------------------------
 
@@ -247,7 +257,7 @@ ALTER TABLE `areas`
 -- AUTO_INCREMENT de la tabla `beneficios`
 --
 ALTER TABLE `beneficios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `capacitaciones`
@@ -277,7 +287,7 @@ ALTER TABLE `permisos`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `visitantes`
