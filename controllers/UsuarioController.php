@@ -27,11 +27,13 @@ class UsuarioController extends Controller {
             $telefono = $_POST['telefono'] ?? '';
             $password = $_POST['password'] ?? '';
             $rol = $_POST['rol'] ?? 'Empleado';
+            $estado = $_POST['estado'] ?? 'activo';
             $area_id = $_POST['area_id'] ?? null;
 
-            $this->userModel->crear(
-                $nombre, $email, $password, $rol, $area_id, $direccion, $telefono
+           $this->userModel->crear(
+                $nombre, $email, $password, $rol, $area_id, $direccion, $telefono, $estado
             );
+
 
             header('Location: /peoplepro/public/index.php?action=usuario');
             exit;
@@ -86,10 +88,12 @@ class UsuarioController extends Controller {
                 $telefono = $_POST['telefono'] ?? '';
                 $rol = $_POST['rol'] ?? 'Empleado';
                 $area_id = $_POST['area_id'] ?? null;
+                $estado = $_POST['estado'] ?? 'activo';
 
                 $this->userModel->actualizar(
-                    $id, $nombre, $email, $rol, $area_id, $direccion, $telefono
+                    $id, $nombre, $email, $rol, $area_id, $direccion, $telefono, $estado
                 );
+
 
                     header('Location: /peoplepro/public/index.php?action=dashboard');
 

@@ -52,12 +52,6 @@ if (!$rol) {
         <div id="logo"></div> 
     </div>
 
-    <!-- Buscador -->
-    <form action="#" class="buscador">  
-        <input type="text" placeholder="Buscar..." class="input-buscador">
-        <button type="submit" class="buscador-icono"><i class="bi bi-search"></i></button>
-    </form>
-
     <!-- Cerrar sesión -->
     <div class="derecha">
         <p><?= htmlspecialchars(nombreCorto($nombre)) ?></p>

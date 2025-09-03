@@ -43,7 +43,15 @@ $rol = $rol ?? ($_SESSION['usuario_rol'] ?? 'usuario'); // 👈 evita el "Undefi
             <option value="Empleado" <?= $usuario['rol'] === 'Empleado' ? 'selected' : '' ?>>Empleado</option>
             <option value="Seguridad" <?= $usuario['rol'] === 'Seguridad' ? 'selected' : '' ?>>Seguridad</option>
         </select>
-
+        
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required class="form-select form-select-lg
+            mb-3" aria-label=".form-select-lg example">
+                <option value="activo" <?= $usuario['estado'] === 'activo' ? 'selected' : '' ?>>Activo</option>
+                <option value="vacaciones" <?= $usuario['estado'] === 'vacaciones' ? 'selected' : '' ?>>Vacaciones</option>
+                <option value="incapacitado" <?= $usuario['estado'] === 'incapacitado' ? 'selected' : '' ?>>Incapacitado</option>
+                <option value="suspendido" <?= $usuario['estado'] === 'suspendido' ? 'selected' : '' ?>>Suspendido</option>
+        </select>
 
         <label for="area_id">Área:</label>
         <select id="area_id" name="area_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">

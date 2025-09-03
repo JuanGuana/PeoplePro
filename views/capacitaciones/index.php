@@ -9,7 +9,7 @@
       </a>
     <?php endif; ?>
 
-    <table class="tablas">
+    <table id="myTable" class="table table-striped nowrap responsive">
       <thead>
         <tr>
           <th>Imagen</th>

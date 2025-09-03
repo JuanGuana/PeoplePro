@@ -23,17 +23,17 @@ class Usuario {
     }
 
     // ➕ Crear usuario
-    public function crear($nombre, $email, $password, $rol, $area_id, $direccion = '', $telefono = '') {
+    public function crear($nombre, $email, $password, $rol, $area_id, $direccion = '', $telefono = '', $estado = 'activo') {
         try {
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
 
             $stmt = $this->conn->prepare("
-                INSERT INTO users (nombre, email, password, rol, area_id, direccion, telefono)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO users (nombre, email, password, rol, area_id, direccion, telefono, estado)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             ");
 
-            return $stmt->execute([ $nombre, $email, $passwordHash, $rol, $area_id, $direccion, $telefono ]);
+            return $stmt->execute([ $nombre, $email, $passwordHash, $rol, $area_id, $direccion, $telefono, $estado ]);
 
         } catch (PDOException $e) {
             error_log('Error al crear usuario: ' . $e->getMessage());
@@ -59,18 +59,18 @@ class Usuario {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function actualizar($id, $nombre, $email, $rol, $area_id, $direccion = '', $telefono = '') {
+    public function actualizar($id, $nombre, $email, $rol , $area_id, $direccion = '', $telefono = '' , $estado = 'activo') {
         // Obtener usuario actual
         $usuario = $this->obtenerPorId($id);
 
 
         $stmt = $this->conn->prepare("
             UPDATE users 
-            SET nombre = ?, email = ?, rol = ?, area_id = ?, direccion = ?, telefono = ?
+            SET nombre = ?, email = ?, rol = ?, area_id = ?, direccion = ?, telefono = ? , estado = ?
             WHERE id = ?
         ");
         
-        return $stmt->execute([ $nombre, $email, $rol, $area_id, $direccion, $telefono, $id ]);
+        return $stmt->execute([ $nombre, $email, $rol, $area_id, $direccion, $telefono, $estado, $id ]);
     }
 
 

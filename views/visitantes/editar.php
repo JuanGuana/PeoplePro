@@ -35,7 +35,7 @@
         <input type="datetime-local" name="fecha_ingreso" value="<?= date('Y-m-d\TH:i', strtotime($data['visitante']['fecha_ingreso'])) ?>" required><br><br>
 
         <label>Fecha y hora de salida:</label><br>
-        <input type="datetime-local" name="fecha_salida" value="<?= date('Y-m-d\TH:i', strtotime($data['visitante']['fecha_salida'])) ?>" required><br><br>
+        <input type="datetime-local" name="fecha_salida" value="<?= date('Y-m-d\TH:i', strtotime($data['visitante']['fecha_salida'])) ?>"><br><br>
 
         <label>Motivo:</label><br>
         <textarea name="motivo" rows="3" cols="40"><?= $data['visitante']['motivo'] ?></textarea><br><br>

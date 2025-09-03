@@ -30,8 +30,13 @@
                 </option>
             <?php endforeach; ?>
         </select>
-        
-        <button type="submit">Crear usuario <i class="bi bi-person-plus-fill"></i></button>
+        <select id="estado" name="estado" required>
+            <option value="activo" selected>Activo</option>
+            <option value="vacaciones">Vacaciones</option>
+            <option value="incapacitado">Incapacitado</option>
+            <option value="suspendido">Suspendido</option>
+        </select>
+        <button type="submit" class="btn-tabla">Crear usuario <i class="bi bi-person-plus-fill"></i></button>
     </form>
 
 <br>
@@ -45,6 +50,7 @@
                     <th>Email</th>
                     <th>Rol</th>
                     <th>Área</th>
+                    <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -57,6 +63,7 @@
                             <td><?= htmlspecialchars($usuario['email']) ?></td>
                             <td><?= htmlspecialchars($usuario['rol']) ?></td>
                             <td><?= htmlspecialchars($usuario['nombre_area'] ?? 'Sin asignar') ?></td>
+                            <td><?= htmlspecialchars(ucfirst($usuario['estado'])) ?></td>
                             <td>
                                 <a class="bt-editar" title="Editar" href="/peoplepro/public/index.php?action=usuario&method=editar&id=<?= $usuario['id'] ?>">
                                     <i class="bi bi-pencil-fill"></i> Editar

@@ -29,12 +29,22 @@ class DashboardController extends Controller {
         $dashboardModel = new Dashboard();
         $stats = [
             'visitantes_hoy'     => $dashboardModel->visitantesHoy(),
-            'visitantes_semana'  => $dashboardModel->visitantesSemana(),
-            'visitantes_mes'     => $dashboardModel->visitantesMes(),
             'usuarios_activos'   => $dashboardModel->usuariosActivos(),
+            'usuarios_inactivos'  => $dashboardModel->usuariosInactivos(),
             'empleados_por_area' => $dashboardModel->empleadosPorArea(),
             'permisos_pendientes'=> $dashboardModel->permisosPendientes()
         ];
+
+        //visitantes externo aun dentro de la empresa
+        $visitantesDentro = $dashboardModel->visitantesDentro();
+
+        $this->view('dashboard/index', [
+            'stats'          => $stats,
+            'capacitaciones' => $capacitaciones,
+            'beneficios'     => $beneficios,
+            'visitantes_dentro' => $visitantesDentro
+        ]);
+
 
         // Pasar todo a la vista
         $this->view('dashboard/index', [

@@ -1,7 +1,54 @@
 <?php $titulo = "Dashboard"; ?>
 <?php include __DIR__ . '/../layout/header.php'; ?>
     <main class="main">
-        <?php if ($rol === 'Empleado' || $rol === 'Seguridad'): ?>
+            <?php if ($rol === 'Seguridad'): ?>
+            <div class="container mt-4">
+
+                <!-- Métricas rápidas -->
+                <div class="row text-center mb-4">
+                    <div class="col-md-3">
+                        <div class="card shadow p-3">
+                            <h6 class="text-muted">Visitantes Hoy</h6>
+                            <p class="h3 mb-0"><?= $stats['visitantes_hoy'] ?></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla de visitantes dentro -->
+                <div class="card shadow p-3 mb-4">
+                    <h5 class="mb-3">👀 Visitantes dentro de la empresa</h5>
+                    <?php if (!empty($visitantes_dentro)): ?>
+                        <div class="table-responsive">
+                            <table class="table table-striped align-middle">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Documento</th>
+                                        <th>Empresa</th>
+                                        <th>Hora de ingreso</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($visitantes_dentro as $v): ?>
+                                        <tr>
+                                            <td><?= htmlspecialchars($v['nombre']) ?></td>
+                                            <td><?= htmlspecialchars($v['documento']) ?></td>
+                                            <td><?= htmlspecialchars($v['empresa']) ?></td>
+                                            <td><?= htmlspecialchars($v['fecha_ingreso']) ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php else: ?>
+                        <p class="text-muted mb-0">✅ Todos los visitantes ya registraron salida.</p>
+                    <?php endif; ?>
+                </div>
+
+            </div>
+        <?php endif; ?>
+
+        <?php if ($rol === 'Empleado'): ?>
             <?php if (!empty($beneficios)): ?>
                 <h2 class="beficio-titulo">Tus Beneficios Disponibles</h2>
                 <a href="/peoplepro/public/index.php?action=beneficio" class="ver-mas">Ver más</a>
@@ -40,24 +87,20 @@
                             <p class="h3"><?= $stats['visitantes_hoy'] ?></p>
                         </div>
                     </div>
+                    
                     <div class="col-md-2">
-                        <div class="card shadow p-3">
-                            <h6>Semana</h6>
-                            <p class="h3"><?= $stats['visitantes_semana'] ?></p>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="card shadow p-3">
-                            <h6>Mes</h6>
-                            <p class="h3"><?= $stats['visitantes_mes'] ?></p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
                         <div class="card shadow p-3">
                             <h6>Usuarios Activos</h6>
                             <p class="h3"><?= $stats['usuarios_activos'] ?></p>
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <div class="card shadow p-3">
+                                <h6 class="text-muted">Usuarios Inactivos</h6>
+                                <p class="h3 text-danger"><?= $stats['usuarios_inactivos'] ?></p>
+                        </div>
+                    </div>
+
                     <div class="col-md-3">
                         <div class="card shadow p-3">
                             <h6>Permisos Pendientes</h6>
@@ -75,7 +118,7 @@
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <div class="card shadow p-3">
-                            <h5>🧑‍🎓 capacitaciones</h5>
+                            <h5>🧑‍🎓 Capacitaciones</h5>
                             <?php if (!empty($capacitaciones)): ?>
                                 <ul>
                                     <?php foreach ($capacitaciones as $c): ?>

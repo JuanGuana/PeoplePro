@@ -30,19 +30,7 @@
 .formulario-usuario input:focus, .formulario-usuario select:focus{
     outline: lightblue solid 2px;
 }
-.formulario-usuario button{
-    border: 1px solid lightblue;
-    background-color: transparent;
-    color: lightblue;
-    border-radius: 8px;
-    padding: 10px;
-    transition: all 0.3s;
-}
-.formulario-usuario button:hover{
-    background-color: lightblue;
-    color: white;
-    transition: all 0.8s;
-}
+
 .formulario-usuario select{
     background-color: var(--fondo);
     border: none;
@@ -105,6 +93,7 @@ div.dt-buttons > .dt-button:hover, div.dt-buttons > div.dt-button-split .dt-butt
 }
 .dt-input{
     border-radius: 8px !important;
+    border: 2px solid var(--texto-primario) !important;
     color: var(--texto-primario) !important;
 } 
 .dt-input:focus{
@@ -143,34 +132,42 @@ table.dataTable > tbody > tr:last-child > * {
 }
 /* Botón Copiar */
 .btn-copy {
-    background-color: lightblue;
+    background-color: rgb(100, 187, 216);
+    border: 2px solid rgb(55, 164, 201);
 }
 .btn-copy:hover {
-    background-color: rgb(116, 179, 201);
+    background-color: rgb(61, 124, 145);
+    border: 2px solid white;
 }
 
 /* Botón Excel */
 .btn-excel {
-    background-color: lightgreen;
+    background-color: rgb(76, 185, 76);
+    border: 2px solid rgb(57, 139, 57);
 }
 .btn-excel:hover {
-    background-color: rgb(90, 189, 90);
+    border: 2px solid white;
+    background-color: rgb(50, 117, 50);
 }
 
 /* Botón PDF */
 .btn-pdf {
-    background-color: lightcoral;
+    background-color: rgb(235, 85, 85);
+    border: 2px solid rgb(199, 52, 52);
 }
 .btn-pdf:hover {
-    background-color: rgb(201, 79, 79);
+    background-color: rgb(155, 41, 41);
+    border: 2px solid white;
 }
 
 /* Botón Columnas */
 .btn-colvis {
-    background-color: rgb(206, 206, 109);
+    background-color: rgb(231, 125, 64);
+    border: 2px solid rgb(223, 106, 39);
 }
 .btn-colvis:hover {
-    background-color: rgb(165, 165, 49);
+    background-color: rgb(151, 81, 40);
+    border: 2px solid white;
 }
 .derecha p{
     margin-top: 15px;

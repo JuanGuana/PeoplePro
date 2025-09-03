@@ -9,27 +9,38 @@ class Dashboard {
         $this->conn = $db->connect();
     }
 
-    // Visitantes hoy, semana, mes
+    // Visitantes hoy
     public function visitantesHoy() {
         $stmt = $this->conn->query("SELECT COUNT(*) AS total FROM visitantes WHERE DATE(fecha_ingreso) = CURDATE()");
         return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
     }
 
-    public function visitantesSemana() {
-        $stmt = $this->conn->query("SELECT COUNT(*) AS total FROM visitantes WHERE YEARWEEK(fecha_ingreso, 1) = YEARWEEK(CURDATE(), 1)");
-        return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
-    }
-
-    public function visitantesMes() {
-        $stmt = $this->conn->query("SELECT COUNT(*) AS total FROM visitantes WHERE YEAR(fecha_ingreso) = YEAR(CURDATE()) AND MONTH(fecha_ingreso) = MONTH(CURDATE())");
-        return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    // Visitantes sin salida registrada
+    public function visitantesDentro() {
+        $stmt = $this->conn->query("
+            SELECT id, nombre, documento, empresa, fecha_ingreso
+            FROM visitantes
+            WHERE fecha_salida IS NULL OR fecha_salida = '0000-00-00 00:00:00'
+        ");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     // Usuarios activos
     public function usuariosActivos() {
-        $stmt = $this->conn->query("SELECT COUNT(*) AS total FROM users");
+        $stmt = $this->conn->query("SELECT COUNT(*) AS total FROM users WHERE estado = 'activo'");
         return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
     }
+
+    // Usuarios inactivos (vacaciones, incapacitado, suspendido)
+    public function usuariosInactivos() {
+        $stmt = $this->conn->query("
+            SELECT COUNT(*) AS total 
+            FROM users 
+            WHERE estado <> 'activo'
+        ");
+        return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
+
 
     // Empleados por área
     public function empleadosPorArea() {

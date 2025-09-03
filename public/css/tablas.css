@@ -16,6 +16,7 @@
     border-spacing: 0;
     background-color: white;
     border-radius: 12px;
+    margin-top: 20px;
 }
 .tablas thead th {
     background-color: var(--primario);
@@ -40,27 +41,27 @@
     border-radius: 8px;
 }
 .bt-editar{
-    background-color: lightgreen;
+    background-color: rgb(102, 235, 102);
     margin: 5px;
 }
 .bt-eliminar{
-    background-color: lightcoral;
+    background-color: rgb(235, 93, 93);
     margin: 5px;
 }
 .bt-rechazar{
-    background-color: lightsalmon;
+    background-color: rgb(247, 130, 85);
 }
 .bt-editar:hover{
-    background-color: rgb(93, 175, 93);
+    background-color: rgb(72, 172, 72);
 }
 .bt-eliminar:hover{
     background-color: rgb(168, 77, 77);
 }
 .bt-rechazar:hover{
-    background-color: rgb(177, 101, 71);
+    background-color: rgb(170, 86, 53);
 }
 .bt-ver{
-    background-color: lightblue;
+    background-color: rgb(102, 190, 219);
     margin: 5px;
 }
 .bt-ver:hover{
@@ -82,28 +83,26 @@
   border-radius: 10px;
 }
 .estado-pendiente {
-  background-color: lightskyblue;
+  background-color: rgb(44, 172, 252);
 }
 .estado-aprobado {
-  background-color: lightgreen;
+  background-color: rgb(57, 238, 57);
 }
 .estado-rechazado {
-  background-color: lightcoral;
+  background-color: rgb(235, 67, 67);
 }
 /* boton para solicitar permisos */
 .btn-tabla {
     display: inline-block;
     padding: 10px 20px;
-    margin-bottom: 20px;
-    border: 1px solid lightblue;
     border-radius: 8px;
-    background-color: transparent;
-    color: lightblue;
+    background-color: var(--primario);
+    color: white;
     text-decoration: none;
     transition: all 0.3s;
+    border: 2px solid var(--primario);
 }
 
 .btn-tabla:hover {
-    background-color: lightblue;
-    color: white;
+    border: 2px solid var(--texto-primario);
 }

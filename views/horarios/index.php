@@ -50,10 +50,6 @@
               <?php endif; ?>
             </tr>
           <?php endforeach; ?>
-        <?php else : ?>
-          <tr>
-            <td colspan="<?= $rol === 'Admin' ? 9 : 8 ?>">No hay horarios registrados.</td>
-          </tr>
         <?php endif; ?>
       </tbody>
     </table>

@@ -10,7 +10,7 @@
     }
 
     .login-container {
-        background: #fff;
+        background: rgba(255, 255, 255) ;
         border-radius: 12px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         width: 100%;
@@ -24,7 +24,7 @@
 
     h2, h3 {
         text-align: center;
-        color: #333;
+        color: rgb(34, 34, 34);
         margin-bottom: 20px;
     }
 
@@ -48,10 +48,12 @@
         border-radius: 8px;
         font-size: 16px;
         cursor: pointer;
+        border: 2px solid #5433EB;
     }
 
     button:hover {
         background-color: #371fa0;
+        border: 2px solid white
     }
 
     .mensaje-error {
@@ -70,7 +72,7 @@
         display: block;
         text-align: center;
         margin-top: 15px;
-        color: #007bff;
+        color: #228ed6;
         text-decoration: none;
     }
 
