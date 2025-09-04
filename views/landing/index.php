@@ -80,8 +80,8 @@
             <h2 class="contacto-titulo">¿No estás registardo?</h2>
             <p class="contacto-subtitulo">Contáctanos y te ayudaremos a crear tu cuenta</p>
             <p class="label-contacto">correo de contacto:</p>
-            <p class="contenido-contacto">peoplepro_info@gmail.com</p>
-            <button onclick="copiarTexto('peoplepro_info@gmail.com')" id="copiar_correo" class="copiar-btn">copiar</button>
+            <p class="contenido-contacto">peoplepro.soporte@gmail.com</p>
+            <button onclick="copiarTexto('peoplepro.soporte@gmail.com')" id="copiar_correo" class="copiar-btn">copiar</button>
             <p class="label-contacto">numero de contacto:</p>
             <p class="contenido-contacto" >+57 3594465289</p>
             <button onclick="copiarTexto('3594465289')" id="copiar_numero" class="copiar-btn">copiar</button>

@@ -43,11 +43,11 @@
                   <span class="<?= $clase ?>"><?= htmlspecialchars($permiso['estado']) ?></span>
                 </td>
                 <td>
-                  <?php if ($rol === 'Admin'): ?>
-                    <a href="/peoplepro/public/index.php?action=permiso&method=actualizarEstado&id=<?= $permiso['id'] ?>&estado=Aprobado" class="bt-editar">
+                  <?php if ($rol === 'Admin' && $estado === 'pendiente'): ?>
+                    <a href="/peoplepro/public/index.php?action=permiso&method=actualizarEstado&id=<?= $permiso['id'] ?>&estado=Aprobado" class="bt-editar" onclick="confirm('¿Estas seguro que quieres aprovar este permiso?')")>
                       <i class="bi bi-check-circle-fill"></i> Aprobar
                     </a>
-                    <a href="/peoplepro/public/index.php?action=permiso&method=actualizarEstado&id=<?= $permiso['id'] ?>&estado=Rechazado" class="bt-rechazar">
+                    <a href="/peoplepro/public/index.php?action=permiso&method=actualizarEstado&id=<?= $permiso['id'] ?>&estado=Rechazado" class="bt-rechazar" onclick="confirm('¿Estas seguro que quieres rechazar este permiso?')">
                       <i class="bi bi-x-circle-fill"></i> Rechazar
                     </a>
                     <a href="/peoplepro/public/index.php?action=permiso&method=eliminar&id=<?= $permiso['id'] ?>" class="bt-eliminar" onclick="return confirm('¿Eliminar este permiso?')">
@@ -61,8 +61,6 @@
                 </td>
               </tr>
             <?php endforeach; ?>
-          <?php else: ?>
-            <tr><td colspan="<?= $rol === 'Admin' ? 6 : 6 ?>">No hay permisos registrados.</td></tr>
           <?php endif; ?>
         </tbody>
 
