@@ -45,7 +45,7 @@ $(document).ready(function () {
         responsive: true,
         info: false,
         language: {
-            url: '//cdn.datatables.net/plug-ins/2.3.2/i18n/es-CO.json',
+            url: 'https://cdn.datatables.net/plug-ins/2.3.2/i18n/es-ES.json'
         },
         columnDefs: [
             { responsivePriority: 1, targets: 0 },

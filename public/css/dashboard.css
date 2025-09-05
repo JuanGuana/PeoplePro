@@ -60,3 +60,8 @@
     font-weight: 400;
     color: var(--texto-secundario);
 }
+
+.vist {
+    text-align: center;
+    font-weight: 600;
+}

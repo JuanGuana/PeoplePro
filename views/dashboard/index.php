@@ -16,7 +16,7 @@
 
                 <!-- Tabla de visitantes dentro -->
                 <div class="card shadow p-3 mb-4">
-                    <h5 class="mb-3">👀 Visitantes dentro de la empresa</h5>
+                    <h2 class="mb-3 vist">Visitantes Activos</h2>
                     <?php if (!empty($visitantes_dentro)): ?>
                         <div class="table-responsive">
                             <table class="table table-striped align-middle">

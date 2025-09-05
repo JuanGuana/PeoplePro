@@ -42,7 +42,8 @@ class DashboardController extends Controller {
             'stats'          => $stats,
             'capacitaciones' => $capacitaciones,
             'beneficios'     => $beneficios,
-            'visitantes_dentro' => $visitantesDentro
+            'visitantes_dentro' => $visitantesDentro,
+            'visitantes_hoy' => $stats['visitantes_hoy'],
         ]);
 
 
