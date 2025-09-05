@@ -51,10 +51,12 @@
 }
 .beneficio-card p, .capacitacion-card p{
     font-weight: 700;
-    
+    color: var(--texto-primario);
+    width: 65%;
+    text-align: center;
 }
 .beneficio-card small, .capacitacion-card small{
     margin: 10px 0;
     font-weight: 400;
-    color: gray;
+    color: var(--texto-secundario);
 }

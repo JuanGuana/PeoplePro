@@ -20,7 +20,7 @@
                     <?php if (!empty($visitantes_dentro)): ?>
                         <div class="table-responsive">
                             <table class="table table-striped align-middle">
-                                <thead class="table-dark">
+                                <thead class="table-primary">
                                     <tr>
                                         <th>Nombre</th>
                                         <th>Documento</th>

@@ -68,7 +68,7 @@ $rol = $rol ?? ($_SESSION['usuario_rol'] ?? 'usuario'); // 👈 evita el "Undefi
     </form>
     <?php endif; ?>
 
-    <?php if ($rol === 'Empleado'): ?>
+    <?php if ($rol === 'Empleado ' || $rol === 'Seguridad'): ?>
     <form method="post" action="/peoplepro/public/index.php?action=usuario&method=actualizar&id=<?= htmlspecialchars($usuario['id']) ?>" class="formulario-usuario" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['id']) ?>">
 
@@ -85,7 +85,7 @@ $rol = $rol ?? ($_SESSION['usuario_rol'] ?? 'usuario'); // 👈 evita el "Undefi
         <input type="text" id="direccion" name="direccion" value="<?= htmlspecialchars($usuario['direccion']) ?>">
             
         <label for="rol">Rol:</label>
-        <select id="rol" name="rol" required class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <select id="rol" name="rol" required class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" disabled>
             <option value="Admin" <?= $usuario['rol'] === 'Admin' ? 'selected' : '' ?>>Admin</option>
             <option value="Empleado" <?= $usuario['rol'] === 'Empleado' ? 'selected' : '' ?>>Empleado</option>
             <option value="Seguridad" <?= $usuario['rol'] === 'Seguridad' ? 'selected' : '' ?>>Seguridad</option>
