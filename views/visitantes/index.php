@@ -34,7 +34,8 @@
                                     <td>
                                         <a class="bt-editar" href="/peoplepro/public/index.php?action=visitante&method=editar&id=<?= $v['id'] ?>"><i class="bi bi-pencil-fill"></i> Editar</a>
                                         <a class="bt-eliminar" href="/peoplepro/public/index.php?action=visitante&method=eliminar&id=<?= $v['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar?')"><i class="bi bi-trash3-fill"></i> Eliminar</a>
-                                        <a class="bt-salida" href=""><i class="bi bi-trash3-fill"></i>Salida</a>
+                                        <a class="bt-salida" href="/peoplepro/public/index.php?action=visitante&method=marcarSalida&id=<?= $v['id'] ?>" onclick="return confirm('¿Registrar salida ahora?')"><i class="bi bi-door-open-fill"></i> Salida
+                                        </a>
                                     </td>
                                 <?php endif; ?>
                             </tr>

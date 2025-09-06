@@ -78,12 +78,28 @@ class VisitanteController extends Controller
     }
 
     public function eliminar($id = null)
-    {
-        if (is_numeric($id)) {
-            $this->visitanteModel->eliminar($id);
-        }
+        {
+            if (is_numeric($id)) {
+                $this->visitanteModel->eliminar($id);
+            }
 
-        $this->redirect('index.php?action=visitante&method=index');
+            $this->redirect('index.php?action=visitante&method=index');
+        }
+        public function marcarSalida($id) {
+        require_once __DIR__ . '/../models/Visitante.php';
+        $visitanteModel = new Visitante();
+
+        date_default_timezone_set('America/Bogota');
+
+        // Generar fecha y hora actual
+        $fechaSalida = date('Y-m-d H:i:s');
+
+        // Actualizar en la BD
+        $visitanteModel->marcarSalida($id, $fechaSalida);
+
+        // Volver al index de visitantes
+        $this->redirect('/peoplepro/public/index.php?action=visitante');
     }
+
 }
 

@@ -58,5 +58,11 @@ class Visitante extends Model
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute(['id' => $id]);
     }
+
+    public function marcarSalida($id, $fechaSalida) {
+        $stmt = $this->conn->prepare("UPDATE visitantes SET fecha_salida = ? WHERE id = ?");
+        return $stmt->execute([$fechaSalida, $id]);
+    }
+
 }
 
