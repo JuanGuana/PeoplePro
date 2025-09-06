@@ -19,7 +19,7 @@
 
     <form action="/peoplepro/public/index.php?action=documento&method=guardar" method="POST" enctype="multipart/form-data">
         <label for="nombre">Nombre del documento:</label><br>
-        <input type="text" name="nombre" required><br><br>
+        <input type="text" name="nombre" placeholder="Nombre del documento" required><br><br>
 
         <label for="archivo">Seleccionar archivo:</label><br>
         <input type="file" name="archivo" required><br><br>

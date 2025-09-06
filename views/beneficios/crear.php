@@ -19,10 +19,10 @@
 
     <form action="/peoplepro/public/index.php?action=beneficio&method=crear" method="POST" enctype="multipart/form-data">
         <label for="nombre">Nombre:</label><br>
-        <input type="text" name="nombre" required><br><br>
+        <input type="text" name="nombre" placeholder="Nombre del beneficio" required><br><br>
 
         <label for="descripcion">Descripción:</label><br>
-        <textarea name="descripcion" rows="3"></textarea><br><br>
+        <textarea name="descripcion" rows="3" placeholder="Descripción del beneficio"></textarea><br><br>
 
         <label for="fecha_inicio">Fecha de inicio:</label><br>
         <input type="date" name="fecha_inicio" required><br><br>

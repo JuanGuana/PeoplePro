@@ -30,7 +30,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
                     <td><?= htmlspecialchars($doc['nombre']) ?></td>
                     <td>
                         <?php if ($rol === 'Admin'): ?>
-                            <a href="/peoplepro/<?= $doc['archivo'] ?>" download>Descargar</a>
+                            <a href="/peoplepro/<?= $doc['archivo'] ?>" download class="btn btn-primary"><i class="bi bi-download"></i> Descargar</a>
+
                         <?php else: ?>
                             <?= basename($doc['archivo']) ?>
                         <?php endif; ?>
