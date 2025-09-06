@@ -20,8 +20,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
                     <th>Fecha</th>
                     <?php if ($rol === 'Admin'): ?>
                         <th>Usuario</th>
-                        <th>Acciones</th>
                     <?php endif; ?>
+                        <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,12 +39,12 @@ if (session_status() === PHP_SESSION_NONE) session_start();
                     <td><?= $doc['fecha_subida'] ?></td>
                     <?php if ($rol === 'Admin'): ?>
                         <td><?= htmlspecialchars($doc['usuario']) ?></td>
+                    <?php endif; ?>
                         <td>
                             <a class="bt-eliminar" href="/peoplepro/public/index.php?action=documento&method=eliminar&id=<?= $doc['id'] ?>" onclick="return confirm('¿Eliminar documento?');">
                                 <i class="bi bi-trash3-fill"></i> Eliminar
                             </a>
                         </td>
-                    <?php endif; ?>
                 </tr>
             <?php endforeach; ?>
             </tbody>

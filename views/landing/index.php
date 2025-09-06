@@ -83,8 +83,8 @@
             <p class="contenido-contacto">peoplepro.soporte@gmail.com</p>
             <button onclick="copiarTexto('peoplepro.soporte@gmail.com')" id="copiar_correo" class="copiar-btn">copiar</button>
             <p class="label-contacto">numero de contacto:</p>
-            <p class="contenido-contacto" >+57 3594465289</p>
-            <button onclick="copiarTexto('3594465289')" id="copiar_numero" class="copiar-btn">copiar</button>
+            <p class="contenido-contacto" >+57 3215077239</p>
+            <button onclick="copiarTexto('3215077239')" id="copiar_numero" class="copiar-btn">copiar</button>
         </div>
         <img src="/peoplepro/public/img/contacto.gif" class="contacto-img" alt="Contacto">
     </section>
