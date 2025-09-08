@@ -16,7 +16,13 @@ class UsuarioController extends Controller {
     public function index() {
         $usuarios = $this->userModel->obtenerTodosConArea();
         $areas = $this->userModel->obtenerAreas();
-        $this->view('usuarios/index', ['usuarios' => $usuarios, 'areas' => $areas]);
+
+        $this->view('usuarios/index', [
+            'usuarios' => $usuarios,
+            'areas' => $areas,
+            'mensaje' => $_SESSION['mensaje'] ?? null
+        ]);
+        unset($_SESSION['mensaje']);
     }
 
     public function crear() {
@@ -30,13 +36,15 @@ class UsuarioController extends Controller {
             $estado = $_POST['estado'] ?? 'activo';
             $area_id = $_POST['area_id'] ?? null;
 
-           $this->userModel->crear(
+            if ($this->userModel->crear(
                 $nombre, $email, $password, $rol, $area_id, $direccion, $telefono, $estado
-            );
+            )) {
+                $_SESSION['mensaje'] = "✅ Usuario <b>$nombre</b> creado correctamente.";
+            } else {
+                $_SESSION['mensaje'] = "❌ No se pudo crear el usuario.";
+            }
 
-
-            header('Location: /peoplepro/public/index.php?action=usuario');
-            exit;
+            $this->redirect('/peoplepro/public/index.php?action=usuario');
         } else {
             $areas = $this->userModel->obtenerAreas();
             $this->view('usuarios/crear', ['areas' => $areas]);
@@ -48,8 +56,9 @@ class UsuarioController extends Controller {
         $areas = $this->userModel->obtenerAreas();
 
         if (!$usuario) {
-            header('Location: /peoplepro/public/index.php?action=usuario');
-            exit;
+            $_SESSION['mensaje'] = "⚠️ Usuario no encontrado.";
+            $this->redirect('/peoplepro/public/index.php?action=usuario');
+            return;
         }
 
         $this->view('usuarios/editar', ['usuario' => $usuario, 'areas' => $areas]);
@@ -70,16 +79,16 @@ class UsuarioController extends Controller {
                 $rol = $usuarioActual['rol'];
                 $area_id = $usuarioActual['area_id'];
 
-                $this->userModel->actualizar(
+                if ($this->userModel->actualizar(
                     $id, $nombre, $email, $rol, $area_id, $direccion, $telefono
-                );
+                )) {
+                    $_SESSION['usuario'] = $this->userModel->obtenerPorId($id); // refresca sesión
+                    $_SESSION['mensaje'] = "✅ Perfil actualizado correctamente.";
+                } else {
+                    $_SESSION['mensaje'] = "❌ No se pudo actualizar tu perfil.";
+                }
 
-                // Refrescar datos de sesión
-                $_SESSION['usuario'] = $this->userModel->obtenerPorId($id);
-
-                    header('Location: /peoplepro/public/index.php?action=dashboard');
-                exit;
-
+                $this->redirect('/peoplepro/public/index.php?action=dashboard');
             } else {
                 // Admin editando otro usuario
                 $nombre = $_POST['nombre'] ?? '';
@@ -90,23 +99,26 @@ class UsuarioController extends Controller {
                 $area_id = $_POST['area_id'] ?? null;
                 $estado = $_POST['estado'] ?? 'activo';
 
-                $this->userModel->actualizar(
+                if ($this->userModel->actualizar(
                     $id, $nombre, $email, $rol, $area_id, $direccion, $telefono, $estado
-                );
+                )) {
+                    $_SESSION['mensaje'] = "✅ Usuario <b>$nombre</b> actualizado correctamente.";
+                } else {
+                    $_SESSION['mensaje'] = "❌ No se pudo actualizar el usuario.";
+                }
 
-
-                    header('Location: /peoplepro/public/index.php?action=dashboard');
-
-                exit;
+                $this->redirect('/peoplepro/public/index.php?action=usuario');
             }
         }
-}
-
-    public function eliminar($id) {
-        $this->userModel->eliminar($id);
-        header('Location: /peoplepro/public/index.php?action=usuario');
-        exit;
     }
 
-}
+    public function eliminar($id) {
+        if ($this->userModel->eliminar($id)) {
+            $_SESSION['mensaje'] = "🗑️ Usuario eliminado correctamente.";
+        } else {
+            $_SESSION['mensaje'] = "❌ No se pudo eliminar el usuario.";
+        }
 
+        $this->redirect('/peoplepro/public/index.php?action=usuario');
+    }
+}

@@ -21,11 +21,19 @@ class DocumentoController extends Controller {
             $documentos = $this->documento->obtenerPorUsuario($usuario_id);
         }
 
-        $this->view('documentos/index', ['documentos' => $documentos, 'rol' => $rol]);
+        $data = [
+            'documentos' => $documentos,
+            'rol' => $rol,
+            'mensaje' => $_SESSION['mensaje'] ?? null
+        ];
+        unset($_SESSION['mensaje']);
+
+        $this->view('documentos/index', $data);
     }
 
     public function crear() {
         if ($_SESSION['usuario_rol'] !== 'Empleado') {
+            $_SESSION['mensaje'] = "⚠️ No tienes permisos para subir documentos.";
             $this->redirect('/peoplepro/public/index.php?action=documento');
             return;
         }
@@ -34,8 +42,10 @@ class DocumentoController extends Controller {
     }
 
     public function guardar() {
-        if ($_SESSION['usuario_rol'] !== 'Empleado' && $_SESSION['usuario_rol'] !== 'Seguridad') {
-            echo "<script>alert('No tienes permisos para subir documentos'); window.history.back();</script>";
+        $rol = $_SESSION['usuario_rol'] ?? '';
+        if ($rol !== 'Empleado' && $rol !== 'Seguridad') {
+            $_SESSION['mensaje'] = "⚠️ No tienes permisos para subir documentos.";
+            $this->redirect('/peoplepro/public/index.php?action=documento');
             return;
         }
 
@@ -44,7 +54,8 @@ class DocumentoController extends Controller {
             $nombre = trim($_POST['nombre'] ?? '');
 
             if (!isset($_FILES['archivo']) || $_FILES['archivo']['error'] !== UPLOAD_ERR_OK) {
-                echo "<script>alert('Error al subir el archivo'); window.history.back();</script>";
+                $_SESSION['mensaje'] = "❌ Error al subir el archivo.";
+                $this->redirect('/peoplepro/public/index.php?action=documento');
                 return;
             }
 
@@ -56,13 +67,15 @@ class DocumentoController extends Controller {
 
             // Validar tamaño
             if ($fileSize > $maxSize) {
-                echo "<script>alert('El archivo es demasiado grande. Máximo permitido: 5 MB'); window.history.back();</script>";
+                $_SESSION['mensaje'] = "⚠️ El archivo es demasiado grande. Máximo permitido: 5 MB.";
+                $this->redirect('/peoplepro/public/index.php?action=documento');
                 return;
             }
 
             // Validar tipo (solo PDF)
             if ($fileType !== 'application/pdf') {
-                echo "<script>alert('Solo se permiten archivos PDF'); window.history.back();</script>";
+                $_SESSION['mensaje'] = "⚠️ Solo se permiten archivos PDF.";
+                $this->redirect('/peoplepro/public/index.php?action=documento');
                 return;
             }
 
@@ -71,18 +84,26 @@ class DocumentoController extends Controller {
 
             if (move_uploaded_file($fileTmp, __DIR__ . '/../' . $ruta)) {
                 $this->documento->crear($nombre, $ruta, $usuario_id);
-                echo "<script>alert('Documento subido correctamente'); window.location.href='/peoplepro/public/index.php?action=documento';</script>";
+                $_SESSION['mensaje'] = "✅ Documento subido correctamente.";
             } else {
-                echo "<script>alert('No se pudo guardar el archivo'); window.history.back();</script>";
+                $_SESSION['mensaje'] = "❌ No se pudo guardar el archivo.";
             }
+
+            $this->redirect('/peoplepro/public/index.php?action=documento');
         }
     }
 
-
     public function eliminar($id) {
         if ($_SESSION['usuario_rol'] === 'Admin') {
-            $this->documento->eliminar($id);
+            if ($this->documento->eliminar($id)) {
+                $_SESSION['mensaje'] = "🗑️ Documento eliminado correctamente.";
+            } else {
+                $_SESSION['mensaje'] = "❌ No se pudo eliminar el documento.";
+            }
+        } else {
+            $_SESSION['mensaje'] = "⚠️ No tienes permisos para eliminar documentos.";
         }
+
         $this->redirect('/peoplepro/public/index.php?action=documento');
     }
 }

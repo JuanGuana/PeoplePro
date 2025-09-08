@@ -21,24 +21,29 @@ class LoginController extends Controller {
             $password = $_POST['password'] ?? '';
 
             if (empty($email) || empty($password)) {
-                $this->view('login/index', ['error' => 'Debes llenar todos los campos.']);
+                $_SESSION['mensaje'] = "⚠️ Debes llenar todos los campos.";
+                $this->redirect('/peoplepro/public/index.php?action=login');
                 return;
             }
 
             $resultado = $this->usuario->autenticar($email, $password);
 
-        if (isset($resultado['usuario'])) {
-            $_SESSION['usuario_id'] = $resultado['usuario']['id'];
-            $_SESSION['usuario_nombre'] = $resultado['usuario']['nombre'];
-            $_SESSION['usuario_rol'] = $resultado['usuario']['rol'];
-            $_SESSION['usuario_area_id'] = $resultado['usuario']['area_id'];
-            
-            $this->redirect('/peoplepro/public/index.php?action=dashboard');
-        }else {
-                $this->view('login/index', ['error' => $resultado['error']]);
+            if (isset($resultado['usuario'])) {
+                $_SESSION['usuario_id'] = $resultado['usuario']['id'];
+                $_SESSION['usuario_nombre'] = $resultado['usuario']['nombre'];
+                $_SESSION['usuario_rol'] = $resultado['usuario']['rol'];
+                $_SESSION['usuario_area_id'] = $resultado['usuario']['area_id'];
+
+                $this->redirect('/peoplepro/public/index.php?action=dashboard');
+            } else {
+                $_SESSION['mensaje'] = "❌ " . $resultado['error'];
+                $this->redirect('/peoplepro/public/index.php?action=login');
             }
         } else {
-            $this->view('login/index');
+            $this->view('login/index', [
+                'mensaje' => $_SESSION['mensaje'] ?? null
+            ]);
+            unset($_SESSION['mensaje']);
         }
     }
 
@@ -54,14 +59,12 @@ class LoginController extends Controller {
                 $this->usuario->guardarToken($usuario['id'], $token, $expiracion);
                 enviarCorreoRecuperacion($email, $token);
 
-                $this->view('login/index', [
-                    'mensaje' => '📧 Se envió un enlace de recuperación a tu correo.'
-                ]);
+                $_SESSION['mensaje'] = "📧 Se envió un enlace de recuperación a tu correo.";
             } else {
-                $this->view('login/index', [
-                    'error' => '❌ El correo no está registrado en el sistema.'
-                ]);
+                $_SESSION['mensaje'] = "❌ El correo no está registrado en el sistema.";
             }
+
+            $this->redirect('/peoplepro/public/index.php?action=login');
         }
     }
 
@@ -85,15 +88,12 @@ class LoginController extends Controller {
 
             if ($usuario) {
                 $this->usuario->actualizarPassword($usuario['id'], $nuevaPassword);
-
-                $this->view('login/index', [
-                    'mensaje' => '✅ Contraseña actualizada correctamente. Ahora puedes iniciar sesión.'
-                ]);
+                $_SESSION['mensaje'] = "✅ Contraseña actualizada correctamente. Ahora puedes iniciar sesión.";
             } else {
-                $this->view('login/index', [
-                    'error' => '❌ Token inválido o expirado.'
-                ]);
+                $_SESSION['mensaje'] = "❌ Token inválido o expirado.";
             }
+
+            $this->redirect('/peoplepro/public/index.php?action=login');
         }
     }
 }

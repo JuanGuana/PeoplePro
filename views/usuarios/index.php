@@ -20,6 +20,11 @@
             <option value="Empleado" selected>Empleado</option>
             <option value="Seguridad">Seguridad</option>
         </select>
+        <?php if (!empty($mensaje)): ?>
+    <div style="padding:10px; margin:10px 0; border-radius:5px; background:#f8f9fa; border:1px solid #ccc;">
+        <?= $mensaje ?>
+    </div>
+<?php endif; ?>
 
 
         <select id="area_id" name="area_id" required>

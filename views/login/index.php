@@ -21,6 +21,12 @@
         <?php if (isset($mensaje)): ?>
             <p class="mensaje-ok"><?= $mensaje ?></p>
         <?php endif; ?>
+        <?php if (!empty($mensaje)): ?>
+    <div style="padding:10px; margin:10px 0; border-radius:5px; background:#f8f9fa; border:1px solid #ccc; color:#333;">
+        <?= htmlspecialchars($mensaje) ?>
+    </div>
+<?php endif; ?>
+
 
         <!-- Formulario de login -->
         <form method="POST" action="/peoplepro/public/index.php?action=login">

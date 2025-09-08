@@ -1,4 +1,5 @@
 <?php $titulo = "Horarios"; ?>
+
 <?php include __DIR__ . '/../layout/header.php'; ?>
 
   <h2 class="titulo-principal">Lista de Horarios</h2>
@@ -9,6 +10,12 @@
         <i class="bi bi-calendar-plus"></i> Nuevo Horario
       </a>
     <?php endif; ?>
+    <?php if (!empty($mensaje)): ?>
+    <div style="padding:10px; margin:10px 0; border-radius:5px; background:#f8f9fa; border:1px solid #ccc; color:#333;">
+        <?= htmlspecialchars($mensaje) ?>
+    </div>
+<?php endif; ?>
+
 
     <table id="myTable" class="table table-striped nowrap responsive">
       <thead>

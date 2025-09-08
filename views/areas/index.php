@@ -9,6 +9,12 @@
         <a class="btn-tabla" href="/peoplepro/public/index.php?action=area&method=crear" title="Crear nueva área">
             <i class="bi bi-bookmark-plus-fill"></i> Nueva Área
         </a>
+        <?php if (!empty($mensaje)): ?>
+    <div style="padding:10px; margin:10px 0; border-radius:5px; background:#f8f9fa; border:1px solid #ccc; color:#333;">
+        <?= htmlspecialchars($mensaje) ?>
+    </div>
+<?php endif; ?>
+
 
         <table id="myTable" class="table table-striped nowrap responsive">
             <thead>

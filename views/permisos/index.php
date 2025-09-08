@@ -9,6 +9,12 @@
         <i class="bi bi-envelope-plus"></i> Solicitar Permiso
       </a>
     <?php endif; ?>
+    <?php if (!empty($mensaje)): ?>
+    <div style="padding:10px; margin:10px 0; border-radius:5px; background:#f1f1f1; border:1px solid #ccc;">
+        <?= $mensaje ?>
+    </div>
+<?php endif; ?>
+
     <!-- tabla de permisos -->
     <table id="myTable" class="table table-striped nowrap responsive">
       <thead>

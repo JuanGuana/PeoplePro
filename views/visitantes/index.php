@@ -43,4 +43,10 @@
                     </tbody>
                 </table>
         </main>
+        <?php if (!empty($mensaje)): ?>
+    <div style="padding:10px; margin:10px 0; border-radius:5px; background:#f8f9fa; border:1px solid #ccc;">
+        <?= $mensaje ?>
+    </div>
+<?php endif; ?>
+
 <?php include __DIR__ . '/../layout/footer.php'; ?>
