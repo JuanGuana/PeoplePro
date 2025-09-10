@@ -48,7 +48,6 @@ body {
     position: relative;
     width: 20px;
     height: 2px;
-    background-color: var(--color-icono-menu);
     border-radius: 10px;
     transition: all 0.5s ease-in-out;
 }
@@ -84,7 +83,6 @@ body {
     white-space: pre-wrap;
     padding: 0 5px 5px 0;
     animation: blink-caret 0.75s step-end infinite;
-    color: var(--color-logo);
     font-family: "Libre Franklin", sans-serif;
     font-weight:900;
     margin-left: 20px;

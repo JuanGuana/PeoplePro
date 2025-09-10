@@ -20,10 +20,6 @@ function iniciales($nombreCompleto) {
     return strtoupper($nombreCompleto[0]);
 }
 
-function colorAleatorio() {
-    return sprintf("#%06X", mt_rand(0, 0xFFFFFF));
-}
-$color = colorAleatorio();
 // Redirigir si no hay sesión iniciada
 if (!$rol) {
     header("Location: /peoplepro/public/index.php?action=login");
@@ -44,20 +40,49 @@ if (!$rol) {
 <header class="header">
     <div class="izquierda">
         <!-- Botón hamburguesa -->
-        <button class="menu-hamburguesa" onclick="toggleMenu()">
-            <span class="linea"></span>
-            <span class="linea"></span>
-            <span class="linea"></span>
-        </button>
-        <div id="logo"></div> 
+        
+        <?php if ($rol === 'Admin'): ?>
+            <button class="menu-hamburguesa" onclick="toggleMenu()">
+                <span class="linea" style="background-color:#5ebcd8ff"></span>
+                <span class="linea" style="background-color:#5ebcd8ff"></span>
+                <span class="linea" style="background-color:#5ebcd8ff"></span>
+            </button>
+            <div id="logo" style="color: #5ebcd8ff;"></div> 
+        <?php elseif ($rol === 'Empleado'): ?>
+            <button class="menu-hamburguesa" onclick="toggleMenu()">
+                <span class="linea" style="background-color:#5ed86eff"></span>
+                <span class="linea" style="background-color:#5ed86eff"></span>
+                <span class="linea" style="background-color:#5ed86eff"></span>
+            </button>
+            <div id="logo" style="color: #5ed86eff;"></div>
+        <?php elseif ($rol === 'Seguridad'): ?>
+            <button class="menu-hamburguesa" onclick="toggleMenu()">
+                <span class="linea" style="background-color:#d8955eff"></span>
+                <span class="linea" style="background-color:#d8955eff"></span>
+                <span class="linea" style="background-color:#d8955eff"></span>
+            </button>
+            <div id="logo" style="color: #d8955eff;"></div>
+        <?php endif; ?>
     </div>
 
     <!-- Cerrar sesión -->
     <div class="derecha">
+        <?php if ($rol === 'Admin'): ?>
         <p><?= htmlspecialchars(nombreCorto($nombre)) ?></p>
-        <div class="iniciales-contenedor" style="background-color:<?= $color ?>">
+        <div class="iniciales-contenedor" style="background-color:#5ebcd8ff">
             <p class="iniciales"><?= htmlspecialchars(iniciales($nombre)) ?></p>
         </div>
+        <?php elseif ($rol === 'Empleado'): ?>
+            <p><?= htmlspecialchars(nombreCorto($nombre)) ?></p>
+        <div class="iniciales-contenedor" style="background-color:#5ed86eff">
+            <p class="iniciales"><?= htmlspecialchars(iniciales($nombre)) ?></p>
+        </div>
+        <?php elseif ($rol === 'Seguridad'): ?>
+            <p><?= htmlspecialchars(nombreCorto($nombre)) ?></p>
+        <div class="iniciales-contenedor" style="background-color:#d8955eff">
+            <p class="iniciales"><?= htmlspecialchars(iniciales($nombre)) ?></p>
+        </div>
+        <?php endif; ?>
 
     </div>
 </header>
