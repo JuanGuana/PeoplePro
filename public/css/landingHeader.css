@@ -64,16 +64,21 @@
 }
 /* boton de login */
 .login{
-    background-color: var(--primario);
-    padding: 10px;
     text-decoration: none;
-    color: white;
     font-weight: 400;
+    font-size: 1rem;
+    cursor: pointer;
     transition: all 0.3s ease;
+    border: none;
     border-radius: 5px;
+    background-color: #5433eb;
+    padding: 10px;
+    color: white;
+    border: 1px solid #5433eb;
 }
 .login:hover {
     scale: 1.05;
+    border: 1px solid #ffffff;
 }
 /* menu hamburgesa  */
 .menu-hamburguesa {
@@ -102,6 +107,23 @@
     background-color: var(--primario);
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
+}
+.manual-usuario {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #1d53e9;
+    border-radius: 5px;
+    background-color: #1d53e9;
+    padding: 10px;
+    color: white;
+    margin-right: 15px;
+}
+.manual-usuario:hover {
+    scale: 1.05;
+    border: 1px solid #ffffff;
 }
 /* Estados normales */
 .menu-hamburguesa .linea:nth-child(1){

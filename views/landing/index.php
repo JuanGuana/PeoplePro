@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!-- icono de la pestaña -->
     <link rel="shortcut icon" href="/peoplepro/public/img/logo.png"/>
 </head>
@@ -27,7 +28,13 @@
                 <li><a href="#contacto">Contáctanos</a></li>
             </ul>
         </nav>
-        <a href="/peoplepro/views/login/index.php" class="login">iniciar sesión</a>
+        <div>
+            <a href="/peoplepro/public/manual/manual-usuario.pdf" download="manual-usuario.pdf" >
+            <button class="manual-usuario"><i class="bi bi-journals"></i> manual usuario</button>
+            </a>
+            <a href="/peoplepro/views/login/index.php"><button class="login">iniciar sesión</button></a>
+        </div>
+
     </header>
 
     <section class="home" id="home">
